@@ -1,0 +1,38 @@
+
+@media only screen and (min-width : 320px) and (max-width: 480px){
+	.input-container input[type=text], .input-container input[type=password]  {
+		width: 82%;
+	}
+	.get-quote-continue{
+		width:23em !important;
+	}
+}
+
+@media only screen 
+and (min-width : 360px) and (max-width : 768px){
+
+}
+
+@media only screen 
+and (min-width : 480px) {
+
+	.get-quote-continue{
+		width: 33.19em !important;
+	}
+}
+@media screen (min-width : 640px) {	
+	.get-quote-continue{
+		width: 33.19em !important;
+	}
+}
+
+@media screen (min-width : 768px) {	
+	.get-quote-continue{
+		width: 33.19em !important;
+	}
+}
+@media screen (min-width : 1024px) {	
+	.get-quote-continue{
+		width: 88% !important;
+	}
+}

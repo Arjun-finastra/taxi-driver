@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mobile App</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
+	
+    <link href="../css/jquerymobile.min.css" type="text/css" rel="stylesheet">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome/css/font-awesome.min.css">
+    <link href="../css/media-query.css" type="text/css" rel="stylesheet">
+	<script src="../js/jquery.min.js"></script>
+   	<script src="../js/jquerymobile.min.js"></script>
+    <script src="../js/logger.js"></script>
+	<script src="../cordova.js"></script>
+	<script src="../js/functions.js"></script>
+	<!-- TemplateBeginEditable name="EditableHead" -->
+
+	
+	<!-- TemplateEndEditable --> 
+</head>
+
+<body>
+	<div data-role="page">
+	<div id="page">
+	<header data-role="none">
+		<div id="header-logo">
+			<div class="tile-box"><a href="../dashboard.html" rel="external"><img src="../images/taxi-logo.png" alt="Get a Taxi App"></a></div>
+		</div>
+		<!-- TemplateBeginEditable name="EditableHeader" -->
+	  
+		<!-- TemplateEndEditable -->
+	</header>
+	<div data-role="none" id="content">
+		<!-- TemplateBeginEditable name="EditableBody" -->
+	  
+		<!-- TemplateEndEditable -->
+		<div style="clear:both"></div>
+	</div>
+	<footer data-role="footer" data-position="fixed">
+		
+    <!-- TemplateBeginEditable name="EditableFooter" -->
+	
+	<!-- TemplateEndEditable -->
+	</footer>
+	</div>
+	</div>
+</body>
+</html>

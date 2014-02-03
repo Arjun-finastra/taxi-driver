@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<title>Mobile App</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
+	
+    <link href="css/jquerymobile.min.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+    <link href="css/media-query.css" type="text/css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+   	<script src="js/jquerymobile.min.js"></script>
+    <script src="js/logger.js"></script>
+	<script src="cordova.js"></script>
+	<script src="js/functions.js"></script>
+	<!-- InstanceBeginEditable name="EditableHead" -->
+	<!-- InstanceEndEditable --> 
+</head>
+
+<body>
+	<div data-role="page">
+	<div id="page">
+	<header data-role="none">
+		<div id="header-logo">
+			<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
+		</div>
+		<!-- InstanceBeginEditable name="EditableHeader" -->
+	<script type="text/javascript">
+    
+    function callbackLogin(data) {
+        
+        if(data.success != false) {
+            setLoginState(data);
+            location.replace('dashboard.html');
+        } else {
+            console.log(data);
+            showMessage(data);
+            //location.replace('index.html');
+        }
+    }
+    
+    </script>
+		<!-- InstanceEndEditable -->
+	</header>
+	<div data-role="none" id="content">
+		<!-- InstanceBeginEditable name="EditableBody" -->
+
+	<div class="my-profile-bg content-position"> 
+    	<h2>User Login</h2>        
+             <div id="result"></div>         
+        	<form id="login" method="post" action="" onsubmit="return submitForm(this)">
+
+					<div class='input-container'>
+                            <div class="icon-ph"><i class="fa fa-user fa-fw"></i></div>
+                           <input class="custom-text" type="text" placeholder="Username" name="data[User][username]" data-role="none">
+                    </div>
+                    <div class='input-container'>
+                            <div class="icon-ph"><i class="fa fa-key fa-fw"></i></div>
+                           <input class="custom-text" type="password" placeholder="Password" name="data[User][password]" data-role="none">
+                    </div>
+                    
+                    
+                    
+                    
+                    <input type="hidden" name='controller' value="Users"  />
+					<input type="hidden" name='action' value="login"  />	
+					<input type="hidden" name='callback' value="callbackLogin" />
+                    																	
+			
+					<div class='input-container'><button type="submit" class="login-width" data-role="none">Login</button></div>
+
+
+            </form>
+                <a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a> 
+                <a href="register.html" data-transition="slide" style="color:#FFF">Register</a>
+                <a href="get-quote.html" style="color:#FFF" rel="external">Get-Quote</a>      
+                <a href="push.html" style="color:#FFF" rel="external">Get-Push</a>              
+
+	</div>        
+                                
+		<!-- InstanceEndEditable -->
+		<div style="clear:both"></div>
+	</div>
+	<footer data-role="footer" data-position="fixed">
+		
+    <!-- InstanceBeginEditable name="EditableFooter" -->
+	
+	<!-- InstanceEndEditable -->
+	</footer>
+	</div>
+	</div>
+</body>
+<!-- InstanceEnd --></html>

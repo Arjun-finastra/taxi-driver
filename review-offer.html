@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<title>Mobile App</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
+	
+    <link href="css/jquerymobile.min.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+    <link href="css/media-query.css" type="text/css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+   	<script src="js/jquerymobile.min.js"></script>
+    <script src="js/logger.js"></script>
+	<script src="cordova.js"></script>
+	<script src="js/functions.js"></script>
+	<!-- InstanceBeginEditable name="EditableHead" -->
+    <script type="text/javascript">
+	
+
+	$(document).ready(
+		function() {
+			option = getLocalStorage('option');
+			price = getLocalStorage('price');
+			//alert(dump(price));
+			$('#from_address_out').text(price.location_from);
+			$('#to_address_out').text(price.location_to);
+			$('#rate_amount_out').text(price.peak_rate);
+
+			
+			$('#vehichle_type_out').text(option.vehicle_type);
+			$('#taxi_type_out').text(option.taxi_type);
+			$('#baby_seat_out').text(option.baby_seat);
+			$('#wheel_chair_out').text(option.wheel_chair);
+			
+									
+			$('#job_form_location').val(price.location_from);
+			$('#job_to_location').val(price.location_to);
+			$('#job_calculated_fare').val(price.peak_rate);
+			
+			
+			$('#job_vehicle_type').val(option.vehicle_type);
+			$('#job_taxi_type').val(option.taxi_type);
+			$('#job_baby_seat').val(option.baby_seat);
+			$('#job_wheel_chair').val(option.wheel_chair);
+			
+			$('#current_location_latitude').val(option.current_lat);
+			$('#current_location_longitude').val(option.current_lng);
+			
+		}
+	);
+    </script>
+    
+    	<script type="text/javascript">
+    
+    function callbackJob(data) {
+        alert('yes');
+        if(data.success != false) {
+			//setLocalStorage('price',data.data.Tarif);
+			
+			//alert(data.message);
+			location.replace('hire-taxi.html');
+			//return false;
+        } else {
+            console.log('noooooooo');
+            showMessage(data);
+        }
+    }
+    
+    </script>
+	<!-- InstanceEndEditable --> 
+</head>
+
+<body>
+	<div data-role="page">
+	<div id="page">
+	<header data-role="none">
+		<div id="header-logo">
+			<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
+		</div>
+		<!-- InstanceBeginEditable name="EditableHeader" -->
+	  
+		<!-- InstanceEndEditable -->
+	</header>
+	<div data-role="none" id="content">
+		<!-- InstanceBeginEditable name="EditableBody" -->
+	  
+
+			 <div class="get-quote-bg content-position">
+                    <div id="job_summary">
+                        <div align="center">Job Summary </div>
+                        <ul>
+                        	<li>From  <span id="from_address_out"></span> to <span id="to_address_out"></span> </li>
+							<li>Vehicle Type: <span id="vehichle_type_out"></span></li>
+                            <li>Taxi Type: <span id="taxi_type_out"></span></li>
+                            <li>Baby Seat: <span id="baby_seat_out"></span></li>
+                            <li>Wheel Chair: <span id="wheel_chair_out"></span></li>
+                            <li> RATE : <span id="rate_amount_out"></span> </li>
+
+                        </ul> 
+                    </div> 
+                            
+				<form  action="#" method="POST" enctype="multipart/form-data" onSubmit="return submitForm(this)">
+                         <div class='input-container'>
+                            <div class="icon-ph"><i class="fa fa-money fa-fw"></i></div>
+                            <input class="custom-text" type="text" placeholder="Offer another rate" data-role="none" name="data[job][customer_offer]">
+                            </div>
+                 <div class='input-container'>                     
+                 <div class="icon-rh"><i class="fa fa-chevron-left fa-fw"></i></div>
+
+                 <a href="get.html" data-rel="back"><button type="submit" data-role="none" class="get-quote-back"></button></a>
+			     <a href="hire-taxi.html" data-transition="slidefade"></a>
+                 <button type="submit" data-role="none" class="get-quote-continue">Continue</button>
+                    <input type="hidden" name='controller' value="Jobs"  />
+					<input type="hidden" name='action' value="jobPost"  />	
+					<input type="hidden" name='callback' value="callbackJob" />
+					<input type="hidden" id="job_form_location" value="" name="data[job][location_from]" />
+					<input type="hidden" id="job_to_location" value="" name="data[job][location_to]" />
+                    <input type="hidden" id="job_calculated_fare" value="" name="data[job][calculated_fare]" />
+                    <input type="hidden" id="job_taxi_type" value="" name="data[job][taxi_type]" />                   
+                    <input type="hidden" id="job_vehicle_type" value="" name="data[job][vehicle_type]" />
+                    <input type="hidden" id="job_baby_seat" value="" name="data[job][baby_seat]" /> 
+                    <input type="hidden" id="job_wheel_chair" value="" name="data[job][wheel_chair]" /> 
+                    <input type="hidden" id="current_location_latitude" value="" name="data[job][current_lat]" /> 
+					<input type="hidden" id="current_location_longitude" value="" name="data[job][current_lng]" />                                     
+                      </div> 
+    			</form>
+			 </div>
+			
+		<!-- InstanceEndEditable -->
+		<div style="clear:both"></div>
+	</div>
+	<footer data-role="footer" data-position="fixed">
+		
+    <!-- InstanceBeginEditable name="EditableFooter" -->
+	
+	<!-- InstanceEndEditable -->
+	</footer>
+	</div>
+	</div>
+</body>
+<!-- InstanceEnd --></html>
