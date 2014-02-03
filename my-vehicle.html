@@ -25,50 +25,37 @@
 			<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
 		</div>
 		<!-- InstanceBeginEditable name="EditableHeader" -->
-	  
+	<script type="text/javascript">
+    
+    function callbackLogin(data) {
+        
+        if(data.success != false) {
+            setLoginState(data);
+            location.replace('dashboard.html');
+        } else {
+            console.log(data);
+            showMessage(data);
+            //location.replace('index.html');
+        }
+    }
+    
+    </script>
 		<!-- InstanceEndEditable -->
 	</header>
 	<div data-role="none" id="content">
 		<!-- InstanceBeginEditable name="EditableBody" -->
-	  
-			 <div class="tile mini get-quote-bg">
-             	
-				<a href="my-vehicle.html" data-transition="slide"></a>
-                <div class="tile-box"><i class="fa fa-bullseye fa-4x"></i>
-				<div>My Vehicle</div>
-					
-                </div>
-           
 
-			 </div>
-			 <div class="tile mini my-profile-bg">
-			 	<a href="profile.html" data-transition="slide"></a>
-				<div class="tile-box"><i class="fa fa-user fa-4x"></i>
-				<div>My Profile</div>
-                </div>
-			</div>
-			<div class="tile mini help-bg">
-				<a href="help.html" data-transition="flip"></a>
-				<div class="tile-box">
-				<i class="fa fa-briefcase fa-4x"></i>
-				<div>My Jobs</div>
-				</div>
-			</div>
-			<div class="tile mini my-profile-bg">
-				<a href="help.html" data-transition="flip"></a>
-				<div class="tile-box">
-				<i class="fa fa-check-circle-o fa-4x"></i>
-				<div>My Invoices</div>
-				</div>
-			</div>
-			<div class="tile mini sign-out-bg">
-				<a href="logout.html" data-transition="flip"></a>
-				<div class="tile-box">
-				<i class="fa fa-sign-out fa-4x"></i>
-				<div>Sign Out</div>
-				</div>
-			</div>  
-			
+	<div class="my-profile-bg content-position"> 
+    	<h2>My Vehicle</h2>        
+             <div id="result"></div>         
+        	
+                <a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a> 
+                <a href="register.html" data-transition="slide" style="color:#FFF">Register</a>
+                <a href="get-quote.html" style="color:#FFF" rel="external">Get-Quote</a>      
+                <a href="push.html" style="color:#FFF" rel="external">Get-Push</a>              
+
+	</div>        
+                                
 		<!-- InstanceEndEditable -->
 		<div style="clear:both"></div>
 	</div>
