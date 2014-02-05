@@ -1,80 +1,166 @@
 <!DOCTYPE HTML>
-<html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
-<head>
-	<title>Mobile App</title>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
-	
-    <link href="css/jquerymobile.min.css" type="text/css" rel="stylesheet">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
-    <link href="css/media-query.css" type="text/css" rel="stylesheet">
-	<script src="js/jquery.min.js"></script>
-   	<script src="js/jquerymobile.min.js"></script>
-    <script src="js/logger.js"></script>
-	<script src="cordova.js"></script>
-	<script src="js/functions.js"></script>
-	<!-- InstanceBeginEditable name="EditableHead" -->
-	<!-- InstanceEndEditable --> 
-</head>
+<html>
+	<!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+	<head>
+		<title>Mobile App</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
 
-<body>
-	<div data-role="page">
-	<div id="page">
-	<header data-role="none">
-		<div id="header-logo">
-			<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
+		<link href="css/jquerymobile.min.css" type="text/css" rel="stylesheet">
+		<link href="css/style.css" type="text/css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+		<link href="css/media-query.css" type="text/css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquerymobile.min.js"></script>
+		<script src="js/logger.js"></script>
+		<script src="cordova.js"></script>
+		<script src="js/functions.js"></script>
+		<!-- InstanceBeginEditable name="EditableHead" -->
+		<!-- InstanceEndEditable -->
+	</head>
+
+	<body>
+		<div data-role="page">
+			<div id="page">
+				<header data-role="none">
+					<div id="header-logo">
+						<div class="tile-box">
+							<a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a>
+						</div>
+					</div>
+					<!-- InstanceBeginEditable name="EditableHeader" -->
+					<script type="text/javascript">
+					
+						$(document).ready(function() {
+							
+							params = { callback : 'callbackVehicleList', controller : 'Vehicles', action : 'vehicleList', data : [{ userId : localStorage.getItem('driverUserId') }] }; 
+							
+							getAjaxData(params, 'callbackVehicleList');
+							
+							$("input[name='vehicleActive']").on('click', function() { 
+							
+									valueText = $(this).val(); 
+								
+									alert(valueText);	
+							
+							});
+												
+						});
+						
+						function callbackVehicleList(data) { 
+								
+							if (data.success == true) { 
+							
+								$.each(data.data, function(key, value) { $.each(data.data[key], function(key, value) { if (key == 'Vehicle') { $('#my-vehicle-list ul').append('<li>' + key + ': ' + value.registration_no + '&#9;&#9;<input type="radio" name="vehicleActive" value="' + value.id + '">Active</li>'); console.log(value.registration_no); } }) }); 
+						
+								checkDriversActiveVehicle(); 
+						
+							}
+						}
+
+						function checkDriversActiveVehicle() { 
+						
+							params = { callback : 'callbackActiveVehicle', controller : 'DriversVehicles', action : 'checkVehicleisCurrent', data : [{ userId : 1 }] }; 
+						
+							getAjaxData(params, 'callbackActiveVehicle'); 
+						
+						}
+
+						function callbackActiveVehicle(data) { 
+						
+							if(data.success == true){ 
+							
+								$.each(data.data, function(key, value) { 
+								
+									var checkedId = value.id; console.log(value.id); 
+									
+									$('input:radio[name=vehicleActive][value='+checkedId+']').prop('checked', true);								
+								})
+	
+							} 
+							
+						}						
+						
+						//$("[name=vehicleActive]").click(function() { 
+							
+								//valueText = $(this).val(); 
+								
+								//alert(valueText);
+							
+								//params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ vechicleId : valueText }] }; 
+							
+								//getAjaxData(params, 'callbackMakeVehicleCurrent');  
+								
+						//}); 
+
+						
+						/*$("[name=vehicleActive]").click(function() { 
+							
+								valueText = $(this).val(); 
+								
+								alert(valueText);	
+							
+						});*/
+						
+						/*$("input[name='vehicleActive']").click(function() { 
+							
+								valueText = $(this).val(); 
+								
+								alert(valueText);	
+							
+						}); */
+
+						
+						function callbackMakeVehicleCurrent(data) { 
+						
+							console.log('Yes'); alert('Yes'); 
+						
+						}
+
+
+						
+
+						
+
+
+
+					</script>
+					<!-- InstanceEndEditable -->
+				</header>
+				<div data-role="none" id="content">
+					<!-- InstanceBeginEditable name="EditableBody" -->
+
+					<div class="my-profile-bg content-position">
+						<h2>My Vehicle</h2>
+						<div id="result"></div>
+						Assigned Vehicles are:-      </br></br>
+						<div id="my-vehicle-list">
+							<form data-role="none">
+								<ul>
+									<li>
+										I am in rest &#9;&#9;
+										<input type="radio" name="vehicleActive" value="inactive" data-role="none"  checked>
+										Offline
+									</li>
+								</ul>
+							</form>
+						</div>
+
+						<a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a>
+						<a href="register.html" data-transition="slide" style="color:#FFF">Register</a>
+
+					</div>
+
+					<!-- InstanceEndEditable -->
+					<div style="clear:both"></div>
+				</div>
+				<footer data-role="footer" data-position="fixed">
+
+					<!-- InstanceBeginEditable name="EditableFooter" -->
+
+					<!-- InstanceEndEditable -->
+				</footer>
+			</div>
 		</div>
-		<!-- InstanceBeginEditable name="EditableHeader" -->
-	<script type="text/javascript">
-	
-		$( document ).ready(function() {
-			//console.log( "ready!" );
-			params = {callback: 'callbackVehicleList', controller: 'Vehicles', action: 'vehicleList', data: [{ userId: localStorage.getItem('driverUserId')}]};
-			getAjaxData(params, 'callbackVehicleList');
-		});
-		
-		function callbackVehicleList(data) {
-			//alert('Posted successfully');
-			if(data.success == true) 
-			{
-				$('#from_address_out').text(data.data);
-				console.log(data.data);
-				
-/*				var arrayLength = arrayVariable.length;
-
-				for (i=0; i<arrayLength; i++) {
-					$('<div class="results" />').text(arrayVariable[i]).appendTo('body');
-				}*/
-			}
-		}
-    
-    </script>
-		<!-- InstanceEndEditable -->
-	</header>
-	<div data-role="none" id="content">
-		<!-- InstanceBeginEditable name="EditableBody" -->
-
-	<div class="my-profile-bg content-position"> 
-    	<h2>My Vehicle</h2>        
-             <div id="result"></div>
-             Assigned Vehicles are:      </br></br>    
-        	
-                <a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a> 
-                <a href="register.html" data-transition="slide" style="color:#FFF">Register</a>
-          
-
-	</div>        
-                                
-		<!-- InstanceEndEditable -->
-		<div style="clear:both"></div>
-	</div>
-	<footer data-role="footer" data-position="fixed">
-		
-    <!-- InstanceBeginEditable name="EditableFooter" -->
-	
-	<!-- InstanceEndEditable -->
-	</footer>
-	</div>
-	</div>
-</body>
-<!-- InstanceEnd --></html>
+	</body>
+	<!-- InstanceEnd -->
+</html>
