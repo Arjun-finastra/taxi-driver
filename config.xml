@@ -5,8 +5,8 @@ id        = "com.taxicab"
 version   = "0.0.2">
 
 	<name>Taxi Driver</name>
-	<description>Get a Taxi</description>
-	<author href="http://smart-catalog.com.au" email="tanvir.gaus@gmail.com">Taxi.mobi</author>
+	<description>Driver End</description>
+	<author href="http://smart-catalog.com.au" email="tanvir.gaus@gmail.com">Taxi.Driver</author>
 
 	<feature name="http://api.phonegap.com/1.0/device" />
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
