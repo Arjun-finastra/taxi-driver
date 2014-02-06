@@ -36,12 +36,17 @@
 							
 							getAjaxData(params, 'callbackVehicleList');
 							
-							$("input[name='vehicleActive']").on('click', function() { 
+							$("body").on('click', "input[name='vehicleActive']",function() { 
 							
-									valueText = $(this).val(); 
+								valueText = $(this).val(); 
 								
-									alert(valueText);	
+								//if(valueText != 'inactive') {
+								
+									params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ currentId : valueText, previousId: checkedId }] }; 
 							
+									getAjaxData(params, 'callbackMakeVehicleCurrent');  
+								//}
+						
 							});
 												
 						});
@@ -71,7 +76,7 @@
 							
 								$.each(data.data, function(key, value) { 
 								
-									var checkedId = value.id; console.log(value.id); 
+									checkedId = value.id; console.log(value.id); 
 									
 									$('input:radio[name=vehicleActive][value='+checkedId+']').prop('checked', true);								
 								})
@@ -79,40 +84,10 @@
 							} 
 							
 						}						
-						
-						//$("[name=vehicleActive]").click(function() { 
-							
-								//valueText = $(this).val(); 
-								
-								//alert(valueText);
-							
-								//params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ vechicleId : valueText }] }; 
-							
-								//getAjaxData(params, 'callbackMakeVehicleCurrent');  
-								
-						//}); 
-
-						
-						/*$("[name=vehicleActive]").click(function() { 
-							
-								valueText = $(this).val(); 
-								
-								alert(valueText);	
-							
-						});*/
-						
-						/*$("input[name='vehicleActive']").click(function() { 
-							
-								valueText = $(this).val(); 
-								
-								alert(valueText);	
-							
-						}); */
-
-						
+									
 						function callbackMakeVehicleCurrent(data) { 
 						
-							console.log('Yes'); alert('Yes'); 
+							//console.log('Yes'); alert('Yes'); 
 						
 						}
 
