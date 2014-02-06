@@ -4,8 +4,8 @@ xmlns:gap = "http://phonegap.com/ns/1.0"
 id        = "com.taxicab"
 version   = "0.0.2">
 
-	<name>Taxi Mobi</name>
-	<description>Get a Taxi</description>
+	<name>Taxi Driver</name>
+	<description>Driver End</description>
 	<author href="http://smart-catalog.com.au" email="tanvir.gaus@gmail.com">Taxi.mobi</author>
 
 	<feature name="http://api.phonegap.com/1.0/device" />
