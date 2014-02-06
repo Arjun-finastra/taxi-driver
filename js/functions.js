@@ -144,6 +144,8 @@ function submitForm(formObj) {
 /* Global AJAX Request with JSONP */
 
 function getAjaxData(params, callback) {
+
+	//alert(serviceURL);
 	controller 	= params['controller'];
 	action		= params['action'];
 	ajaxData =  $.param(params); /*params.serialize();*/ 
