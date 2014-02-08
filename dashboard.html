@@ -1,88 +1,157 @@
 <!DOCTYPE HTML>
-<html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
-<head>
-	<title>Mobile App</title>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
-	
-    <link href="css/jquerymobile.min.css" type="text/css" rel="stylesheet">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
-    <link href="css/media-query.css" type="text/css" rel="stylesheet">
-	<script src="js/jquery.min.js"></script>
-   	<script src="js/jquerymobile.min.js"></script>
-    <script src="js/logger.js"></script>
-	<script src="cordova.js"></script>
-	<script src="js/functions.js"></script>
-	<!-- InstanceBeginEditable name="EditableHead" -->
-    <script type="text/javascript">
-  
-    	localStorage.setItem('driverUserId','4');
-    </script>
-	<!-- InstanceEndEditable --> 
-</head>
+<html>
+	<!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+	<head>
+		<title>Mobile App</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
 
-<body>
-	<div data-role="page">
-	<div id="page">
-	<header data-role="none">
-		<div id="header-logo">
-			<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
+		<link href="css/jquerymobile.min.css" type="text/css" rel="stylesheet">
+		<link href="css/style.css" type="text/css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+		<link href="css/media-query.css" type="text/css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquerymobile.min.js"></script>
+		<script src="js/logger.js"></script>
+		<script src="cordova.js"></script>
+		<script src="js/functions.js"></script>
+		<!-- InstanceBeginEditable name="EditableHead" -->
+		<script type="text/javascript">
+			localStorage.setItem('driverUserId', '4');
+
+			$(document).ready(function() {
+
+				params = {
+					callback : 'callbackIsOnduty',
+					controller : 'Drivers',
+					action : 'isOnduty',
+					data : [{
+						driverId : 4
+					}]
+				};
+
+				getAjaxData(params, 'callbackIsOnduty');
+
+			});
+
+			function callbackIsOnduty(data) {
+
+				if (data.success == true) {
+
+					$.each(data.data, function(key, value) {
+						$.each(data.data[key], function(key, value) {
+							if (key == 'is_onduty' && value == '0') {
+								$('#dutyActive').append('Off Duty');
+								console.log(key +'=>'+value);
+							} else if( key == 'is_onduty' && value == '1' ){
+								$('#dutyActive').append('On Duty');
+							
+							}
+							
+						})
+					});
+				} else {
+
+				}
+			}
+
+		</script>
+		<!-- InstanceEndEditable -->
+	</head>
+
+	<body>
+		<div data-role="page">
+			<div id="page">
+				<header data-role="none">
+					<div id="header-logo">
+						<div class="tile-box">
+							<a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a>
+						</div>
+					</div>
+					<!-- InstanceBeginEditable name="EditableHeader" -->
+
+					<!-- InstanceEndEditable -->
+				</header>
+				<div data-role="none" id="content">
+					<!-- InstanceBeginEditable name="EditableBody" -->
+
+					<div class="tile mini onduty-bg">
+						<!--<a href="my-status.html" data-transition="flip"></a>-->
+						<div class="tile-box">
+							             <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
+                <label class="onoffswitch-label" for="myonoffswitch" data-role="none">
+                    <div class="onoffswitch-inner"></div>
+                    <div class="onoffswitch-switch"></div>
+                </label>
+                
+
+            </div>
+							<div id="dutyActive"></div>
+						</div>
+                        
+					</div>
+
+					<div class="tile mini get-quote-bg">
+
+						<a href="my-vehicles.html" data-transition="slide"></a>
+						<div class="tile-box">
+							<i class="fa fa-bullseye fa-4x"></i>
+							<div>
+								My Vehicle
+							</div>
+
+						</div>
+
+					</div>
+					<div class="tile mini my-profile-bg">
+						<a href="profile.html" data-transition="slide"></a>
+						<div class="tile-box">
+							<i class="fa fa-user fa-4x"></i>
+							<div>
+								My Profile
+							</div>
+						</div>
+					</div>
+					<div class="tile mini help-bg">
+						<a href="my-jobs.html" data-transition="flip"></a>
+						<div class="tile-box">
+							<i class="fa fa-briefcase fa-4x"></i>
+							<div>
+								My Jobs
+							</div>
+						</div>
+					</div>
+					<div class="tile mini my-profile-bg">
+						<a href="my-invoices.html" data-transition="flip"></a>
+						<div class="tile-box">
+							<i class="fa fa-check-circle-o fa-4x"></i>
+							<div>
+								My Invoices
+							</div>
+						</div>
+					</div>
+
+					<div class="tile mini sign-out-bg">
+						<a href="logout.html" data-transition="flip"></a>
+						<div class="tile-box">
+							<i class="fa fa-sign-out fa-4x"></i>
+							<div>
+								Sign Out
+							</div>
+						</div>
+					</div>
+
+					<!-- InstanceEndEditable -->
+					<div style="clear:both"></div>
+				</div>
+				<footer data-role="footer" data-position="fixed">
+
+					<!-- InstanceBeginEditable name="EditableFooter" -->
+
+					<!-- InstanceEndEditable -->
+				</footer>
+			</div>
 		</div>
-		<!-- InstanceBeginEditable name="EditableHeader" -->
-	  
-		<!-- InstanceEndEditable -->
-	</header>
-	<div data-role="none" id="content">
-		<!-- InstanceBeginEditable name="EditableBody" -->
-	  
-			 <div class="tile mini get-quote-bg">
-             	
-				<a href="my-vehicles.html" data-transition="slide"></a>
-                <div class="tile-box"><i class="fa fa-bullseye fa-4x"></i>
-				<div>My Vehicle</div>
-					
-                </div>
-           
-
-			 </div>
-			 <div class="tile mini my-profile-bg">
-			 	<a href="profile.html" data-transition="slide"></a>
-				<div class="tile-box"><i class="fa fa-user fa-4x"></i>
-				<div>My Profile</div>
-                </div>
-			</div>
-			<div class="tile mini help-bg">
-				<a href="my-jobs.html" data-transition="flip"></a>
-				<div class="tile-box">
-				<i class="fa fa-briefcase fa-4x"></i>
-				<div>My Jobs</div>
-				</div>
-			</div>
-			<div class="tile mini my-profile-bg">
-				<a href="my-invoices.html" data-transition="flip"></a>
-				<div class="tile-box">
-				<i class="fa fa-check-circle-o fa-4x"></i>
-				<div>My Invoices</div>
-				</div>
-			</div>
-			<div class="tile mini sign-out-bg">
-				<a href="logout.html" data-transition="flip"></a>
-				<div class="tile-box">
-				<i class="fa fa-sign-out fa-4x"></i>
-				<div>Sign Out</div>
-				</div>
-			</div>  
-			
-		<!-- InstanceEndEditable -->
-		<div style="clear:both"></div>
-	</div>
-	<footer data-role="footer" data-position="fixed">
-		
-    <!-- InstanceBeginEditable name="EditableFooter" -->
-	
-	<!-- InstanceEndEditable -->
-	</footer>
-	</div>
-	</div>
-</body>
-<!-- InstanceEnd --></html>
+	</body>
+	<!-- InstanceEnd -->
+</html>

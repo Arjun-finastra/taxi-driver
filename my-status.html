@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<title>Mobile App</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" >
+	
+    <link href="css/jquerymobile.min.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+    <link href="css/media-query.css" type="text/css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+   	<script src="js/jquerymobile.min.js"></script>
+    <script src="js/logger.js"></script>
+	<script src="cordova.js"></script>
+	<script src="js/functions.js"></script>
+	<!-- InstanceBeginEditable name="EditableHead" -->
+    <script type="text/javascript">
+	
+	
+	
+	//$(document).on('pageinit', '#page',  function(){
+        // code 
+		
+	
+    //});
+    			$(document).on('pagebeforeshow', function(){
+				alert('its working');
+				
+				driver = 4;
+				
+				params = {
+					callback : 'callbackIsOnduty',
+					controller : 'Drivers',
+					action : 'isOnduty',
+					data : [{
+						driverId : driver
+					}]
+				};
+
+				getAjaxData(params, 'callbackIsOnduty');
+				
+				$('input[type=checkbox][name=onoffswitch]').click(function() {
+					
+					if ( $('input[type=checkbox][name=onoffswitch]').is(':checked')) { makeChange = 0; } else { makeChange = 1; }
+					
+					params = {
+					callback : 'callbackChangeDuty',
+					controller : 'Drivers',
+					action : 'changeOnduty',
+					data : [{ changeStatus : makeChange, driverId : driver }]
+					};
+
+				getAjaxData(params, 'callbackChangeDuty');
+				});
+
+			});
+
+			function callbackIsOnduty(data) {
+
+				if (data.success == true) {
+
+					$.each(data.data, function(key, value) {
+						$.each(data.data[key], function(key, value) {
+							if (key == 'is_onduty' && value == '0') {
+
+								console.log(key +'=>'+value);
+							} else if( key == 'is_onduty' && value == '1' ){
+
+								$('input[type=checkbox][name=onoffswitch]').prop('checked', true);
+								//input[type=checkbox]
+								console.log(key +'=>'+value);							
+							}
+							
+						})
+					});
+				} else {
+
+				}
+			}
+			
+			function callbackChangeDuty(data) {
+
+				if (data.success == true) {
+					alert('ok');
+				} else {
+
+				}
+			}
+
+		</script>
+	<!-- InstanceEndEditable --> 
+</head>
+
+<body>
+	<div data-role="page">
+	<div id="page">
+	<header data-role="none">
+		<div id="header-logo">
+			<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
+		</div>
+		<!-- InstanceBeginEditable name="EditableHeader" -->
+            <script type="text/javascript">
+
+				</script>
+		<!-- InstanceEndEditable -->
+	</header>
+	<div data-role="none" id="content">
+		<!-- InstanceBeginEditable name="EditableBody" -->
+
+	<div class="my-profile-bg content-position"> 
+    	<h2>My Status</h2>        
+             <div id="result"></div>       
+             
+             <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
+                <label class="onoffswitch-label" for="myonoffswitch" data-role="none">
+                    <div class="onoffswitch-inner"></div>
+                    <div class="onoffswitch-switch"></div>
+                </label>
+                
+
+            </div>  
+            </br>
+            </br>
+            </br>
+        	
+                <a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a> 
+                <a href="register.html" data-transition="slide" style="color:#FFF">Register</a>
+                <a href="get-quote.html" style="color:#FFF" rel="external">Get-Quote</a>      
+                <a href="push.html" style="color:#FFF" rel="external">Get-Push</a>              
+
+	</div>        
+                                
+		<!-- InstanceEndEditable -->
+		<div style="clear:both"></div>
+	</div>
+	<footer data-role="footer" data-position="fixed">
+		
+    <!-- InstanceBeginEditable name="EditableFooter" -->
+	
+	<!-- InstanceEndEditable -->
+	</footer>
+	</div>
+	</div>
+</body>
+<!-- InstanceEnd --></html>
