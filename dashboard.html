@@ -15,8 +15,10 @@
 		<script src="cordova.js"></script>
 		<script src="js/functions.js"></script>
 		<!-- InstanceBeginEditable name="EditableHead" -->
+		<link href="style.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript">
 			localStorage.setItem('driverUserId', '4');
+			driver = 4;
 
 			$(document).ready(function() {
 
@@ -31,6 +33,26 @@
 
 				getAjaxData(params, 'callbackIsOnduty');
 
+				$("body").on('click', "input[type=checkbox][name=onoffswitch]",function(){
+
+				 var id = $(this).attr('id');
+
+				 //alert(id);
+
+				 if ( $('input[type=checkbox][name=onoffswitch]').is(':checked')) {
+				 	makeChange = 0; /*alert('Yesss 000'); */ } else { makeChange = 1; /*alert('Yesss 000');*/
+				 }
+
+				 params = {
+				 callback : 'callbackChangeDuty',
+				 controller : 'Drivers',
+				 action : 'changeOnduty',
+				 data : [{ changeStatus : makeChange, driverId : driver }]
+				 };
+
+				 getAjaxData(params, 'callbackChangeDuty');
+				 }); 
+
 			});
 
 			function callbackIsOnduty(data) {
@@ -40,15 +62,26 @@
 					$.each(data.data, function(key, value) {
 						$.each(data.data[key], function(key, value) {
 							if (key == 'is_onduty' && value == '0') {
-								$('#dutyActive').append('Off Duty');
-								console.log(key +'=>'+value);
-							} else if( key == 'is_onduty' && value == '1' ){
-								$('#dutyActive').append('On Duty');
-							
+								//$('#dutyActive').append('Off Duty');
+								console.log(key + '=>' + value);
+							} else if (key == 'is_onduty' && value == '1') {
+								//$('#dutyActive').append('On Duty');
+								$('input[type=checkbox][name=onoffswitch]').prop('checked', true);
+
 							}
-							
+
 						})
 					});
+				} else {
+
+				}
+			}
+
+			function callbackChangeDuty(data) {
+
+				if (data.success == true) {
+					alert('ok');
+					window.location.href = "my-vehicles.html";
 				} else {
 
 				}
@@ -73,31 +106,39 @@
 				</header>
 				<div data-role="none" id="content">
 					<!-- InstanceBeginEditable name="EditableBody" -->
+                    <div id="content_info"></div>
 
 					<div class="tile mini onduty-bg">
-						<!--<a href="my-status.html" data-transition="flip"></a>-->
-						<div class="tile-box">
-							             <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
-                <label class="onoffswitch-label" for="myonoffswitch" data-role="none">
-                    <div class="onoffswitch-inner"></div>
-                    <div class="onoffswitch-switch"></div>
-                </label>
-                
 
-            </div>
-							<div id="dutyActive"></div>
+						<div class="tile-box">
+							Duty
+								<div class="onoffswitch">
+									<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
+									<label class="onoffswitch-label" for="myonoffswitch" data-role="none"> <div class="onoffswitch-inner"></div> <div class="onoffswitch-switch"></div> </label>
+
+								</div>
+
 						</div>
-                        
+
 					</div>
 
 					<div class="tile mini get-quote-bg">
 
-						<a href="my-vehicles.html" data-transition="slide"></a>
 						<div class="tile-box">
-							<i class="fa fa-bullseye fa-4x"></i>
-							<div>
-								My Vehicle
+                        Go on Rest
+							<div class="onoffswitch">
+								<input type="checkbox" name="onoffswitch-LF" id="gotorest" data-role="none">
+								<!--<label class="onoffswitch-label-LF" for="myonoffswitch-LF" data-role="none"> <div class="onoffswitch-inner-LF"></div> <div class="onoffswitch-switch-LF"></div> </label>-->
+
+							</div>
+							</br>
+							</br>
+							</br>
+                            Go Offline
+                            <div class="onoffswitch">
+								<input type="checkbox" name="onoffswitch-EF" id="gotooffline" data-role="none">
+								<!--<label class="onoffswitch-label-LF" for="myonoffswitch-EF" data-role="none"> <div class="onoffswitch-inner-EF"></div> <div class="onoffswitch-switch-EF"></div> </label>-->
+
 							</div>
 
 						</div>

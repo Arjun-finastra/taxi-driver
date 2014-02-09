@@ -415,12 +415,12 @@ cursor: pointer;
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-    content: "ON";
-    padding-left: 10px;
+    content: "ONLINE";
+    padding-left:0px;
     background-color: #2FCCFF; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
-    content: "OFF";
+    content: "OFFLINE";
     padding-right: 10px;
     background-color: #F5EBEB; color: #999999;
     text-align: right;
