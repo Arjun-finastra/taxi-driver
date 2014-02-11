@@ -33,56 +33,40 @@
 						$(document).ready(function() {
 							
 							params = { callback : 'callbackVehicleList', controller : 'Vehicles', action : 'vehicleList', data : [{ userId : 4 }] }; 
-							
 							getAjaxData(params, 'callbackVehicleList');
 							
 							$("body").on('click', "input[name='vehicleActive']",function() { 
-							
-								valueText = $(this).val(); 
-								
-								//if(valueText != 'inactive') {
-								
-									params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ currentId : valueText, previousId: checkedId }] }; 
-							
-									getAjaxData(params, 'callbackMakeVehicleCurrent');  
-								//}
-						
+								valueText = $(this).val(); 						
+								params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ currentId : valueText, previousId: checkedId }] }; 
+								getAjaxData(params, 'callbackMakeVehicleCurrent');  
 							});
-												
+							
+							$("#goback").click(function(e) {  
+								//alert(1);
+								window.location.href = "dashboard.html";
+							});
+						
 						});
 						
 						function callbackVehicleList(data) { 
-								
 							if (data.success == true) { 
-							
 								$.each(data.data, function(key, value) { $.each(data.data[key], function(key, value) { if (key == 'Vehicle') { $('#my-vehicle-list ul').append('<li>' + key + ': ' + value.registration_no + '&#9;&#9;<input type="radio" name="vehicleActive" value="' + value.id + '">Active</li>'); console.log(value.registration_no); } }) }); 
-						
 								checkDriversActiveVehicle(); 
-						
 							}
 						}
 
 						function checkDriversActiveVehicle() { 
-						
 							params = { callback : 'callbackActiveVehicle', controller : 'DriversVehicles', action : 'checkVehicleisCurrent', data : [{ userId : 1 }] }; 
-						
 							getAjaxData(params, 'callbackActiveVehicle'); 
-						
 						}
 
 						function callbackActiveVehicle(data) { 
-						
 							if(data.success == true){ 
-							
 								$.each(data.data, function(key, value) { 
-								
 									checkedId = value.id; console.log(value.id); 
-									
 									$('input:radio[name=vehicleActive][value='+checkedId+']').prop('checked', true);								
 								})
-	
-							} 
-							
+							}			
 						}						
 									
 						function callbackMakeVehicleCurrent(data) { 
@@ -119,9 +103,10 @@
 								</ul>
 							</form>
 						</div>
+						
 
-						<a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a>
-						<a href="register.html" data-transition="slide" style="color:#FFF">Register</a>
+						<div id="goback" data-role="none" style="text-align:center; cursor:pointer; ">Go to Dashboard</div>
+						
 
 					</div>
 

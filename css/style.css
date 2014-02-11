@@ -394,49 +394,165 @@ cursor: pointer;
 }
 
 .onoffswitch {
-    position: relative; width: 90px;
+    position: relative; width: 100px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+	display:none;
 }
+
 .onoffswitch-checkbox {
     display: none;
 }
+
 .onoffswitch-label {
     display: block; overflow: hidden; cursor: pointer;
-    border: 2px solid #5A665E; border-radius: 0px;
+    border: 0px solid #999999; border-radius: 0px;
 }
+
 .onoffswitch-inner {
     width: 200%; margin-left: -100%;
     -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
     -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
 }
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-    float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+
+.onoffswitch-inner > div {
+    float: left; position: relative; width: 50%; height: 30px; padding: 0; line-height: 30px;
     font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
-.onoffswitch-inner:before {
-    content: "ONLINE";
-    padding-left:0px;
-    background-color: #2FCCFF; color: #FFFFFF;
+
+.onoffswitch-inner .onoffswitch-active {
+    padding-left: 15px;
+    background-color: #C2C2C2; color: #FFFFFF;
 }
-.onoffswitch-inner:after {
-    content: "OFFLINE";
-    padding-right: 10px;
-    background-color: #F5EBEB; color: #999999;
+
+.onoffswitch-inner .onoffswitch-inactive {
+    padding-right: 15px;
+    background-color: #C2C2C2; color: #FFFFFF;
     text-align: right;
 }
+
 .onoffswitch-switch {
-    width: 18px; margin: 6px;
-    background: #FFFFFF;
-    border: 2px solid #5A665E; border-radius: 0px;
-    position: absolute; top: 0; bottom: 0; right: 56px;
-    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+    width: 40px; margin: 0px; text-align: center; 
+    border: 0px solid #999999;border-radius: 0px; 
+    position: absolute; top: 0; bottom: 0;
 }
+.onoffswitch-active .onoffswitch-switch {
+    background: #27A1CA; left: 0;
+}
+.onoffswitch-inactive .onoffswitch-switch {
+    background: #A1A1A1; right: 0;
+}
+
+.onoffswitch-active .onoffswitch-switch:before {
+    content: " "; position: absolute; top: 0; left: 40px; 
+    border-style: solid; border-color: #27A1CA transparent transparent #27A1CA; border-width: 15px 10px;
+}
+
+
+.onoffswitch-inactive .onoffswitch-switch:before {
+    content: " "; position: absolute; top: 0; right: 40px; 
+    border-style: solid; border-color: transparent #A1A1A1 #A1A1A1 transparent; border-width: 15px 10px;
+}
+
+
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px;
+
+
+	
+	
+	
+#information{
+	
+	height:80px;
+	background:#069;
+	margin:4px;
 }
+#leftInfo{
+left:0px;
+float:left;
+}
+
+#rightInfo{
+//right:0px;
+float:right;
+}
+
+[class*='btn-'] {
+	border-radius: 0px;
+	color: #fff;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	padding: 8px 16px;
+	text-decoration: none;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	
+	-webkit-transition: background-color 0.1s linear;
+	-moz-transition: background-color 0.1s linear;
+	-o-transition: background-color 0.1s linear;
+	  transition: background-color 0.1s linear;	
+}
+
+	[class*='btn-']:hover {
+		cursor: pointer;
+	}
+
+	.btn-off {
+		background-color: rgb( 51, 102, 204 );
+		/*border: 1px solid rgb( 44, 91, 104 );*/	
+	}
+	
+		.btn-off:hover {
+			background-color: rgb( 58, 131, 213 );	
+		}
+		
+		.btn-off:active {
+			background-color: rgb( 42, 91, 191 );	
+		}
+		
+	.btn-rest {
+		background-color: rgb( 74, 61, 117 );
+		/*border: 1px solid rgb( 44, 37, 59 );*/
+	}
+	
+		.btn-rest:hover {
+			background-color: rgb( 92, 76, 131 );	
+		}
+		
+		.btn-rest:active {
+			background-color: rgb( 54, 44, 87 );	
+		}
+
+
+
+.yellow_circle {
+	position: relative;
+	margin-top: 2px;
+	width: 14px; height: 14px;
+	border-radius: 50%;
+	background: yellow;
+	
+	overflow: hidden;
+	position: absolute;
+	/*top: -1em; right: 50%; bottom: 50%; left: -1em;*/
+	transform-origin: 100% 100%;
+	transform: rotate(45deg) skewX(30deg);
+}
+
+
+.green_circle {
+	position: relative;
+	margin-top: 2px;
+	width: 14px; height: 14px;
+	border-radius: 50%;
+	background: #CCEEFF;
+	
+	overflow: hidden;
+	position: absolute;
+	/*top: -1em; right: 50%; bottom: 50%; left: -1em;*/
+	transform-origin: 100% 100%;
+	transform: rotate(45deg) skewX(30deg);
+}		
 	
