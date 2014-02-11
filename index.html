@@ -26,6 +26,13 @@
 		</div>
 		<!-- InstanceBeginEditable name="EditableHeader" -->
 	<script type="text/javascript">
+	
+	$(document).ready(function() {
+								$("#godashboard").click(function(e) {  
+								//alert(1);
+								window.location.href = "dashboard.html";
+							});
+	});
     
     function callbackLogin(data) {
         
@@ -71,10 +78,12 @@
 
 
             </form>
-                <a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a> 
+<!--                 <a href="dashboard.html" data-transition="flip" style="color:#FFF">Dashboard</a> 
                 <a href="register.html" data-transition="slide" style="color:#FFF">Register</a>
                 <a href="get-quote.html" style="color:#FFF" rel="external">Get-Quote</a>      
-                <a href="push.html" style="color:#FFF" rel="external">Get-Push</a>              
+                <a href="push.html" style="color:#FFF" rel="external">Get-Push</a> -->
+
+				<div id="godashboard" data-role="none" style="text-align:center; cursor:pointer; ">Go to Dashboard</div>				
 
 	</div>        
                                 
