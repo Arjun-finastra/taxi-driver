@@ -39,11 +39,12 @@
 								valueText = $(this).val(); 						
 								params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ currentId : valueText, previousId: checkedId }] }; 
 								getAjaxData(params, 'callbackMakeVehicleCurrent');  
+								
 							});
 							
 							$("#goback").click(function(e) {  
 								//alert(1);
-								window.location.href = "dashboard.html";
+								//window.location.href = "dashboard.html";
 							});
 						
 						});
@@ -71,7 +72,11 @@
 									
 						function callbackMakeVehicleCurrent(data) { 
 						
-							//console.log('Yes'); alert('Yes'); 
+							if(data.success == true) {
+								window.location.href = "dashboard.html";
+							}
+							
+							
 						
 						}
 
