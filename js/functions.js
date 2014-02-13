@@ -4,15 +4,14 @@ var serviceURL		= "http://dev.smart-catalog.com.au/uk/taxi-app/services/";
  * Setting var value as per Dev enviornment
  */
 var	loc = window.location.toString();
-if(loc.search("taxi-customer") != -1){
+if(loc.search("taxi-customer") != -1 || loc.search("taxi-driver") != -1){
 	serviceURL = "http://taxi-app.dev/services/"; // For configured dev sites
 } else if(loc.search("/localhost/") != -1) {
-	//serviceURL = "http://localhost/projects/uk/taxi-app/services/"; // For localhost
-	serviceURL = "http://taxi-app.dev/services/"; // For configured dev sites
+	serviceURL = "http://localhost/projects/uk/taxi-app/services/"; // For localhost
 }
 
 var pageTitle		= '';
-var nonSecurePages	= ["index.html","forgot-password.html","registration.html"];
+var nonSecurePages	= ["index.html","forgot-password.html","register.html"];
 
 var User = null;
 	$(document).bind("mobileinit", function(){
@@ -30,7 +29,7 @@ var User = null;
 /* Set login State*/
 function setLoginState(data) {
 	setLocalStorage("loggedin", "yes");
-	setLocalStorage("User", data.User[0]);
+	setLocalStorage("User", data.data);
 	getLoginState();
 }
 /* Get login State */
@@ -57,6 +56,7 @@ function allowAccess()
 	User = getLocalStorage("User");
 	if(!empty(User)) { 
 		userToken = User.token;
+		console.log(userToken);
 	} else {
 		userToken = null;	
 	}
@@ -144,8 +144,6 @@ function submitForm(formObj) {
 /* Global AJAX Request with JSONP */
 
 function getAjaxData(params, callback) {
-
-	//alert(serviceURL);
 	controller 	= params['controller'];
 	action		= params['action'];
 	ajaxData =  $.param(params); /*params.serialize();*/ 

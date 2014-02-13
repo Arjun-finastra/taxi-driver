@@ -25,22 +25,24 @@
 			<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
 		</div>
 		<!-- InstanceBeginEditable name="EditableHeader" -->
-	  <script type="text/javascript">
-
-		function callbackRegister(data) {
-			
-			if(data.success == true) {
-				//setLoginState(data);
-				//location.replace('dashboard.html');
-			} else {
-				console.log(data);
-				showMessage(data);
-				//location.replace('index.html');
-			}
+	<script type="text/javascript">
+	$(document).ready(function() {
+		allowAccess();
+	});
+	
+	function callbackRegister(data) {
+		if(data.success == true) {
+			setLoginState(data);
+			location.replace('dashboard.html');
+			//alert('Yes');
+		} else {
+			console.log(data);
+			showMessage(data);
 		}
+	}
 		
-		</script>
-      
+    </script>
+   
       
 		<!-- InstanceEndEditable -->
 	</header>
@@ -65,29 +67,17 @@
                 	<input class="custom-text" type="text" placeholder="Phone No" data-role="none" name="data[Profile][phone]">
                 </div>
                 <div class='input-container'>
-                    <div class="icon-ph"><i class="fa fa-share fa-fw"></i></div>
-                	<input class="custom-text" type="text" placeholder="Licence No" data-role="none" name="data[Profile][licence]">
-                </div>
-                <div class='input-container'>
-                    <div class="icon-ph"><i class="fa fa-thumb-tack fa-fw"></i></div>
-                	<input class="custom-text" type="text" placeholder="Expire Date" data-role="none" name="data[Profile][valid]">
-                </div>
-                <div class='input-container'>
-                    <div class="icon-ph"><i class="fa fa-calendar-o fa-fw"></i></div>
-                	<input class="custom-text" type="text" placeholder="Taxi Permission No" data-role="none" name="data[Profile][permissionNo]">
-                </div>
-                <div class='input-container'>
                     <div class="icon-rh"><i class="fa fa-chevron-left fa-fw"></i></div>
                     <a href="dashboard.html" data-rel="back"><button type="submit" data-role="none" class="get-quote-back"></button></a>
                     <button type="submit" data-role="none" class="get-quote-continue">Continue</button>
-               	</div>
-                                                       
+               	</div>                                       
 										                                        
                 <input type="hidden" name="controller" value="Users"  />
 				<input type="hidden" name="action" value="register"  />	
 				<input type="hidden" name="callback" value="callbackRegister" />
-                <input type="hidden" name="data[User][role]" value="customers" />
+                <input type="hidden" name="data[User][role]" value="driver" />
                 <input type="hidden" name="data[Member][member_id]" value="1" />
+				
        		</form> 
     </div>
                                 

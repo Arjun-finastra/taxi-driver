@@ -21,7 +21,10 @@
 			driver = 4;
 
 			$(document).ready(function() {
-
+				allowAccess();
+				
+				$("#logout").click(function(){ 	logout();	});
+				
 				params = {
 					callback : 'callbackIsOnduty',
 					controller : 'Drivers',
@@ -243,7 +246,7 @@
 					</div>
 
 					<div class="tile mini sign-out-bg">
-						<a href="logout.html" data-transition="flip"></a>
+						<a href="logout.html" id="logout"></a>
 						<div class="tile-box">
 							<i class="fa fa-sign-out fa-4x"></i>
 							<div>
