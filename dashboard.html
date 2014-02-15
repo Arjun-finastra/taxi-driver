@@ -17,14 +17,14 @@
 		<!-- InstanceBeginEditable name="EditableHead" -->
 		
 		<script type="text/javascript">
-			//localStorage.setItem('driverUserId', '4');
-			//driver = 4;
-			currentUser = getLocalStorage("User");
-			//currentUser.id;
-			driver = currentUser.id;
+
+
 			$(document).ready(function() {
-				//alert(currentUser.id);
 				allowAccess();
+				currentUser = getLocalStorage("User");
+				driver = currentUser.id;
+				
+				
 				
 				$("#logout").click(function(){ 	logout();	});
 				
