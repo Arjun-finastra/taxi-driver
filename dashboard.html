@@ -18,9 +18,12 @@
 		
 		<script type="text/javascript">
 			//localStorage.setItem('driverUserId', '4');
-			driver = 4;
-
+			//driver = 4;
+			currentUser = getLocalStorage("User");
+			//currentUser.id;
+			driver = currentUser.id;
 			$(document).ready(function() {
+				//alert(currentUser.id);
 				allowAccess();
 				
 				$("#logout").click(function(){ 	logout();	});
@@ -107,10 +110,7 @@
 									//$('#goUnrest').css("display", "inline");
 									//$('#goOnrest').css("display", "none");
 									//window.location.reload(true);
-								}
-								
-								//if( value['DriversVehicle']['is_current'] != 1 ) $('#activeVehicleInfo').append('rest mood');
-								
+								}						
 							})					
 						}
 					});

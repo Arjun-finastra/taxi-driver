@@ -29,10 +29,12 @@
 					</div>
 					<!-- InstanceBeginEditable name="EditableHeader" -->
 					<script type="text/javascript">
+						currentUser = getLocalStorage("User");
+						driver = currentUser.id;
 					
 						$(document).ready(function() {
 							
-							params = { callback : 'callbackVehicleList', controller : 'Vehicles', action : 'vehicleList', data : [{ userId : 4 }] }; 
+							params = { callback : 'callbackVehicleList', controller : 'Vehicles', action : 'vehicleList', data : [{ userId : driver }] }; 
 							getAjaxData(params, 'callbackVehicleList');
 							
 							$("body").on('click', "input[name='vehicleActive']",function() { 
@@ -57,7 +59,7 @@
 						}
 
 						function checkDriversActiveVehicle() { 
-							params = { callback : 'callbackActiveVehicle', controller : 'DriversVehicles', action : 'checkVehicleisCurrent', data : [{ userId : 1 }] }; 
+							params = { callback : 'callbackActiveVehicle', controller : 'DriversVehicles', action : 'checkVehicleisCurrent', data : [{ userId : driver }] }; 
 							getAjaxData(params, 'callbackActiveVehicle'); 
 						}
 
