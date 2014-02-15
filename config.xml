@@ -27,7 +27,7 @@ version   = "0.0.2">
 	
 	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
-	<plugin name="App" value="com.phonegap.App"/>
+	<plugin name="Driver'sAPP" value="com.phonegap.Driver"/>
 
 
 	<!--
