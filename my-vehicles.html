@@ -71,7 +71,8 @@
 						function callbackActiveVehicle(data) { 
 							if(data.success == true){ 
 								$.each(data.data, function(key, value) { 
-									checkedId = value.id; console.log(value.id); 
+									checkedId = value['DriversVehicle']['id']; 
+									console.log(value['DriversVehicle']['id']); 
 									$('input:radio[name=vehicleActive][value='+checkedId+']').prop('checked', true);								
 								})
 							}			
