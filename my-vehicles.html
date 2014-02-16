@@ -42,8 +42,9 @@
 							params = { callback : 'callbackVehicleList', controller : 'Vehicles', action : 'vehicleList', data : [{ userId : driver }] }; 
 							getAjaxData(params, 'callbackVehicleList');
 							
+							checkedId = $("input[name='vehicleActive']:checked").val();
 							$("body").on('click', "input[name='vehicleActive']",function() { 
-								valueText = $(this).val(); 						
+								valueText = $(this).val(); 	
 								params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ currentId : valueText, previousId: checkedId }] }; 
 								getAjaxData(params, 'callbackMakeVehicleCurrent');  
 								
