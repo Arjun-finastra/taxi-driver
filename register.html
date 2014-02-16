@@ -13,6 +13,14 @@
     <script src="js/logger.js"></script>
 	<script src="cordova.js"></script>
 	<script src="js/functions.js"></script>
+        <script type="text/javascript">
+	$( document ).ready(function() {
+	 allowAccess();
+		 $(document).on( 'pagecreate','#page', function(event){
+		  setUserToken();
+		 });
+	});
+ 	</script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
 	<!-- InstanceEndEditable --> 
 </head>
@@ -26,10 +34,7 @@
 		</div>
 		<!-- InstanceBeginEditable name="EditableHeader" -->
 	<script type="text/javascript">
-	$(document).ready(function() {
-		allowAccess();
-	});
-	
+
 	function callbackRegister(data) {
 		if(data.success == true) {
 			setLoginState(data);

@@ -13,6 +13,14 @@
     <script src="js/logger.js"></script>
 	<script src="cordova.js"></script>
 	<script src="js/functions.js"></script>
+        <script type="text/javascript">
+	$( document ).ready(function() {
+	 allowAccess();
+		 $(document).on( 'pagecreate','#page', function(event){
+		  setUserToken();
+		 });
+	});
+ 	</script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
     <script type="text/javascript">
 	
@@ -53,13 +61,8 @@
     	<script type="text/javascript">
     
     function callbackJob(data) {
-        alert('yes');
         if(data.success != false) {
-			//setLocalStorage('price',data.data.Tarif);
-			
-			//alert(data.message);
 			location.replace('hire-taxi.html');
-			//return false;
         } else {
             console.log('noooooooo');
             showMessage(data);
