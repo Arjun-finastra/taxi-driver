@@ -27,9 +27,13 @@
 
 	$(document).ready(
 		function() {
+			currentUser = getLocalStorage("User");
+			driver = currentUser.id;
+			
 			option = getLocalStorage('option');
 			price = getLocalStorage('price');
 			//alert(dump(price));
+			
 			$('#from_address_out').text(price.location_from);
 			$('#to_address_out').text(price.location_to);
 			$('#rate_amount_out').text(price.peak_rate);
@@ -40,7 +44,8 @@
 			$('#baby_seat_out').text(option.baby_seat);
 			$('#wheel_chair_out').text(option.wheel_chair);
 			
-									
+			
+			$('#job_poster_id').val(driver);			
 			$('#job_form_location').val(price.location_from);
 			$('#job_to_location').val(price.location_to);
 			$('#job_calculated_fare').val(price.peak_rate);
@@ -116,6 +121,7 @@
                     <input type="hidden" name='controller' value="Jobs"  />
 					<input type="hidden" name='action' value="jobPost"  />	
 					<input type="hidden" name='callback' value="callbackJob" />
+					<input type="hidden" id="job_poster_id" value="" name="data[job][user_id]" />
 					<input type="hidden" id="job_form_location" value="" name="data[job][location_from]" />
 					<input type="hidden" id="job_to_location" value="" name="data[job][location_to]" />
                     <input type="hidden" id="job_calculated_fare" value="" name="data[job][calculated_fare]" />
