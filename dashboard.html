@@ -31,27 +31,26 @@
 				currentUser = getLocalStorage("User");
 				driver = currentUser.id;
 				
+				params = { callback : 'callbackGetDriverid', controller : 'Drivers', action : 'getDriverid', data : [{ driverId : currentUser.id }] };
+				getAjaxData(params, 'callbackGetDriverid');
+				
+				//driverid = localStorage.getItem(driverid);
 				
 				
 				$("#logout").click(function(){ 	logout();	});
 				
-				params = {
-					callback : 'callbackIsOnduty',
-					controller : 'Drivers',
-					action : 'isOnduty',
-					data : [{
-						driverId : driver
-					}]
-				};
-
+				params = { callback : 'callbackIsOnduty', controller : 'Drivers', action : 'isOnduty', data : [{ driverId : driver }] };
 				getAjaxData(params, 'callbackIsOnduty');
+				
+				params = { callback : 'callbackNotification', controller : 'Notifications', action : 'notification', data : [{ driverId : localStorage.getItem("driverid") }] };
+				getAjaxData(params, 'callbackNotification');
 
 				$("body").on('click', "input[type=checkbox][name=onoffswitch]", function() {
 					if ($('input[type=checkbox][name=onoffswitch]').is(':checked')) { makeChange = 0; } else { makeChange = 1; }
 					params = { callback : 'callbackChangeDuty', controller : 'Drivers', action : 'changeOnduty', data : [{ changeStatus : makeChange, driverId : driver }] };
 					getAjaxData(params, 'callbackChangeDuty');
 				});
-							
+										
 				$('#goOffline').click(function(e) {  
 					//alert(1);
 					params = { callback : 'callbackGoOffline', controller : 'Drivers', action : 'goOffline', data : [{ driverId : driver }] };
@@ -113,10 +112,7 @@
 									//$('#goUnrest').css("display", "none");
 									//window.location.reload(true);
 								} else if(value['DriversVehicle']['is_current'] == 0 /*&& window.variable == 7*/ ) {
-									//$('#activeVehicleInfo').append('Diver is now on rest mood');
-									//$('#goUnrest').css("display", "inline");
-									//$('#goOnrest').css("display", "none");
-									//window.location.reload(true);
+
 								}						
 							})					
 						}
@@ -158,6 +154,22 @@
 
 				}
 			}
+		
+			function callbackNotification(data){
+				if (data.success == true && data.data.Notification.job_id ) {
+					$('#notification').append('you are offered one job, job id'+data.data.Notification.job_id);
+				} else {
+
+				}
+			}
+			
+			function callbackGetDriverid(data){
+				if (data.success == true) {
+					localStorage.driverid = data.data.Driver.id;
+				} else {
+
+				}
+			}
 			
 
 		</script>
@@ -178,6 +190,7 @@
 	<div data-role="none" id="content">
 		<!-- InstanceBeginEditable name="EditableBody" -->
 					<div id="information">
+						<div id="notification"></div>
 						<div id="leftInfo">
 							<span id="username"></span><span id="dutyStatus"></span>
 							<div id="activeVehicleInfo"></div>
