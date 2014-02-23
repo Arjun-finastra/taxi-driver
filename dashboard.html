@@ -36,7 +36,7 @@
 				getAjaxData(params, 'callbackGetDriverid');
 				
 				//callPushFunction();
-				document.addEventListener('deviceready', onDeviceReady, true);
+				
 				
 				params = { callback : 'callbackIsOnduty', controller : 'Drivers', action : 'isOnduty', data : [{ driverId : driver }] };
 				getAjaxData(params, 'callbackIsOnduty');
@@ -172,7 +172,7 @@
 				}
 			}
 			
-
+		document.addEventListener('deviceready', onDeviceReady, true);
 		</script>
 		<!-- InstanceEndEditable --> 
 </head>
