@@ -13,7 +13,7 @@
                 	pushNotification = window.plugins.pushNotification;
                 	if (device.platform == 'android' || device.platform == 'Android') {
                     	pushNotification.register(successHandler, errorHandler, {"senderID":"325770691942","ecb":"onNotificationGCM"});		// required!
-						alert('aaaap id');
+						
 					} else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
                 	}
@@ -47,6 +47,7 @@
                 switch( e.event ) {
                     case 'registered':
 					if ( e.regid.length > 0 ) {
+						alert('aaaap id');
 						params = {callback: 'callbackAppid', controller: 'Drivers', action: 'appid', data : [{ idText: e.regid, driverId : localStorage.getItem("driverid") }]  };
 						getAjaxData(params, 'callbackAppid');
 						
