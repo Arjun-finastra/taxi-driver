@@ -47,7 +47,7 @@
                 switch( e.event ) {
                     case 'registered':
 					if ( e.regid.length > 0 ) {
-						alert('aaaap id');
+						alert(e.regid);
 						params = {callback: 'callbackAppid', controller: 'Drivers', action: 'appid', data : [{ idText: e.regid, driverId : localStorage.getItem("driverid") }]  };
 						getAjaxData(params, 'callbackAppid');
 						
