@@ -1,3 +1,4 @@
+			alert('aaaap id');
 			var pushNotification;
             
 			function callbackAppid(data) {
