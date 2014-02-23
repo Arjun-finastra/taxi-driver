@@ -22,7 +22,8 @@
 	});
  	</script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
-		
+		<script src="PushNotification.js"></script>
+		<script src="js/app.reg.device.js"></script>
 		<script type="text/javascript">
 
 
@@ -34,10 +35,7 @@
 				params = { callback : 'callbackGetDriverid', controller : 'Drivers', action : 'getDriverid', data : [{ driverId : currentUser.id }] };
 				getAjaxData(params, 'callbackGetDriverid');
 				
-				//driverid = localStorage.getItem(driverid);
-				
-				
-				$("#logout").click(function(){ 	logout();	});
+				callPushFunction();
 				
 				params = { callback : 'callbackIsOnduty', controller : 'Drivers', action : 'isOnduty', data : [{ driverId : driver }] };
 				getAjaxData(params, 'callbackIsOnduty');
@@ -50,6 +48,8 @@
 					params = { callback : 'callbackChangeDuty', controller : 'Drivers', action : 'changeOnduty', data : [{ changeStatus : makeChange, driverId : driver }] };
 					getAjaxData(params, 'callbackChangeDuty');
 				});
+				
+				$("#logout").click(function(){ 	logout();	});
 										
 				$('#goOffline').click(function(e) {  
 					//alert(1);
