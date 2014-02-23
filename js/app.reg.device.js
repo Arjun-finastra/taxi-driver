@@ -1,4 +1,4 @@
-			alert('aaaap id');
+			
 			var pushNotification;
             
 			function callbackAppid(data) {
@@ -13,6 +13,7 @@
                 	pushNotification = window.plugins.pushNotification;
                 	if (device.platform == 'android' || device.platform == 'Android') {
                     	pushNotification.register(successHandler, errorHandler, {"senderID":"325770691942","ecb":"onNotificationGCM"});		// required!
+						alert('aaaap id');
 					} else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
                 	}
