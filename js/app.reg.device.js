@@ -1,5 +1,3 @@
-function callPushFunction(){
-
 			var pushNotification;
             
 			function callbackAppid(data) {
@@ -60,5 +58,3 @@ function callPushFunction(){
 			function successHandler (result) {  }
             function errorHandler (error) { }
             
-			document.addEventListener('deviceready', onDeviceReady, true);
-}

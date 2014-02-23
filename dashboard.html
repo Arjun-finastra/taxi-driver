@@ -35,7 +35,8 @@
 				params = { callback : 'callbackGetDriverid', controller : 'Drivers', action : 'getDriverid', data : [{ driverId : currentUser.id }] };
 				getAjaxData(params, 'callbackGetDriverid');
 				
-				callPushFunction();
+				//callPushFunction();
+				document.addEventListener('deviceready', onDeviceReady, true);
 				
 				params = { callback : 'callbackIsOnduty', controller : 'Drivers', action : 'isOnduty', data : [{ driverId : driver }] };
 				getAjaxData(params, 'callbackIsOnduty');
