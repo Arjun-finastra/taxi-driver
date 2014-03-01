@@ -45,7 +45,7 @@
             }
 
             function onNotificationGCM(e) {
-				alert(e.event);
+				alert(e);
                 switch( e.event ) {
                     case 'registered':
 					if ( e.regid.length > 0 ) {
