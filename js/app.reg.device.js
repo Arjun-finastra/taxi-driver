@@ -2,7 +2,7 @@
 			
 			var pushNotification;
             
-			function callbackAppid(data) {
+			function callbackAPPID(data) {
 				alert('Posted successfully');
 							
 			}	
@@ -48,8 +48,8 @@
                 switch( e.event ) {
                     case 'registered':
 					if ( e.regid.length > 0 ) {
-						params = {callback: 'callbackAppid', controller: 'Drivers', action: 'appid', data : [{ idText: e.regid}]  };
-						getAjaxData(params, 'callbackAppid');
+						params = { callback : 'callbackAPPID', controller : 'Driver', action : 'appid', data : [{ userId : e.regid }] }; 
+						getAjaxData(params, 'callbackAPPID');
 						
 						//console.log("regID = " + e.regid);	
 						alert("regID = " + e.regid);
