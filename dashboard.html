@@ -126,8 +126,11 @@
 			function callbackChangeDuty(data) {
 
 				if (data.success == true) {
-					window.location.href = "my-vehicles.html";
 					document.addEventListener('deviceready', onDeviceReady, true);
+					setTimeout(function() {   
+						window.location.href = "my-vehicles.html";
+					}, 500);
+					
 				} else {
 
 				}
