@@ -1,3 +1,5 @@
+			alert('Yess');
+			
 			var pushNotification;
             
 			function callbackAppid(data) {
