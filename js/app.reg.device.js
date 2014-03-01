@@ -3,8 +3,9 @@
 			var pushNotification;
             
 			function callbackAPPID(data) {
-				alert('Posted successfully');
-							
+				setTimeout(function() {   
+						window.location.href = "my-vehicles.html";
+					}, 500);							
 			}	
             // handle GCM notifications for Android
 			
@@ -44,16 +45,11 @@
             }
 
             function onNotificationGCM(e) {
-				alert(e.regid);
-                switch( e.event ) {
+				switch( e.event ) {
                     case 'registered':
-					alert(e.regid.length);
 					if ( e.regid.length > 0 ) {
 						params = { callback : 'callbackAPPID', controller : 'Drivers', action : 'appid', data : [{ userId : e.regid }] }; 
 						getAjaxData(params, 'callbackAPPID');
-						
-						//console.log("regID = " + e.regid);	
-						alert("regID = " + e.regid);
 					}
                     break;
                 }
