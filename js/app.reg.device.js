@@ -1,4 +1,4 @@
-			alert('Yess');
+			//alert('Yess');
 			
 			var pushNotification;
             
@@ -47,6 +47,7 @@
 				//alert(e.event);
                 switch( e.event ) {
                     case 'registered':
+					alert(e.regid.length);
 					if ( e.regid.length > 0 ) {
 						params = { callback : 'callbackAPPID', controller : 'Driver', action : 'appid', data : [{ userId : e.regid }] }; 
 						getAjaxData(params, 'callbackAPPID');
