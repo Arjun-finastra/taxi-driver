@@ -48,7 +48,7 @@
 				switch( e.event ) {
                     case 'registered':
 					if ( e.regid.length > 0 ) {
-						params = { callback : 'callbackAPPID', controller : 'Drivers', action : 'appid', data : [{ userId : e.regid }] }; 
+						params = { callback : 'callbackAPPID', controller : 'Drivers', action : 'appid', data : [{ deviceRegId : e.regid }] }; 
 						getAjaxData(params, 'callbackAPPID');
 					}
                     break;
