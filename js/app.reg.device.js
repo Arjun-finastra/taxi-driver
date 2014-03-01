@@ -44,12 +44,12 @@
             }
 
             function onNotificationGCM(e) {
-				alert(e.event);
+				alert(e.regid);
                 switch( e.event ) {
                     case 'registered':
 					alert(e.regid.length);
 					if ( e.regid.length > 0 ) {
-						params = { callback : 'callbackAPPID', controller : 'Driver', action : 'appid', data : [{ userId : e.regid }] }; 
+						params = { callback : 'callbackAPPID', controller : 'Drivers', action : 'appid', data : [{ userId : e.regid }] }; 
 						getAjaxData(params, 'callbackAPPID');
 						
 						//console.log("regID = " + e.regid);	
