@@ -126,9 +126,30 @@
 			function callbackChangeDuty(data) {
 
 				if (data.success == true) {
-					document.addEventListener('deviceready', onDeviceReady, true);
+					//document.addEventListener('deviceready', onDeviceReady, true);
+					
+					try 
+				{ 
+                	pushNotification = window.plugins.pushNotification;
+                	if (device.platform == 'android' || device.platform == 'Android') {
+                    	pushNotification.register(successHandler, errorHandler, {"senderID":"325770691942","ecb":"onNotificationGCM"});		// required!
+						//alert();
+					} else {
+                    	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
+                	}
+                }
+				catch(err) 
+				{ 
+					txt="There was an error on this page.\n\n"; 
+					txt+="Error description: " + err.message + "\n\n"; 
+					alert(txt); 
+				} 
+				
+				
+				
+				
 					setTimeout(function() {   
-						window.location.href = "my-vehicles.html";
+						//window.location.href = "my-vehicles.html";
 					}, 500);
 					
 				} else {
