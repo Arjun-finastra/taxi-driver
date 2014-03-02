@@ -74,7 +74,10 @@
 					var myId = this.id;
 										
 					if(myId == 'acceptJob'){
-						alert('uuuuuuuu');
+						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : job.id }] };
+						getAjaxData(params, 'callbackJobAccepted');
+						
+						
 						
 					}else if (myId == 'rejectJob'){
 						alert('pppppppp');
@@ -207,6 +210,16 @@
 				}
 			}
 			
+			
+			
+			function callbackJobAccepted(data){
+				if (data.success == true) {
+					//localStorage.driverid = data.data.Driver.id;
+					alert('thanks');
+				} else {
+
+				}
+			}
 		
 		</script>
 		<!-- InstanceEndEditable --> 
