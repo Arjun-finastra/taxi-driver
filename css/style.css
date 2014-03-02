@@ -555,4 +555,12 @@ float:right;
 	transform-origin: 100% 100%;
 	transform: rotate(45deg) skewX(30deg);
 }		
-	
+.joboffer{
+	height: 100%;
+	width:100%;
+	background: grey;
+
+}
+.JobStatus{
+	cursor:pointer;
+}

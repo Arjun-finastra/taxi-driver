@@ -136,3 +136,9 @@
 .onoffswitch-checkbox-LF:checked + .onoffswitch-label-LF .onoffswitch-switch-EF {
 	right: 0px;
 }
+.joboffer{
+	height: 100%;
+	width:100%;
+	background: #FFF;
+
+}

@@ -70,8 +70,15 @@
 					getAjaxData(params, 'callbackGoUnrest');
 				});
 				
-				$('#notification').click(function(e) {  
-				
+				$('.JobStatus').click(function(e) {  
+					var myId = this.id;
+										
+					if(myId == 'acceptJob'){
+						alert('uuuuuuuu');
+						
+					}else if (myId == 'rejectJob'){
+						alert('pppppppp');
+					}
 				});
 
 			});
@@ -181,7 +188,12 @@
 		
 			function callbackNotification(data){
 				if (data.success == true && data.data.Notification.job_id ) {
+					setLocalStorage('job',data.data.Job);
+					job = getLocalStorage('job');
 					$('#notification').append('<a href="#popupBasic" data-rel="popup" data-transition="pop">one new job, job id'+data.data.Notification.job_id+'</a>');
+					$('#from_address_out').text(job.from_address);
+					$('#to_address_out').text(job.to_address);
+					$('#rate_amount_out').text(job.customer_offer);
 				} else {
 
 				}
@@ -216,7 +228,15 @@
 					<div id="information">
 						<div id="notification"></div>
 							<div data-role="popup" id="popupBasic">
-								<p>This is a completely basic popup, no options set.</p>
+								<div data-role="none" class="joboffer">
+								<ul>
+									<li>From  <span id="from_address_out"></span> to <span id="to_address_out"></span> </li>
+									<li> RATE : <span id="rate_amount_out"></span> </li>
+								</ul>
+								
+								<div class="JobStatus" id="acceptJob">Accept</div>
+								<div class="JobStatus" id="rejectJob">Reject</div>
+								</div>
 							</div>
 						<div id="leftInfo">
 							<span id="username"></span><span id="dutyStatus"></span>
