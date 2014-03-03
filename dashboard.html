@@ -222,6 +222,33 @@
 			}
 		
 		</script>
+		<script type="text/javascript" charset="utf-8">
+
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+        //var element = document.getElementById('geolocation');
+        //element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+        //                    'Longitude: ' + position.coords.longitude     + '<br />' +
+        //                    '<hr />'      + element.innerHTML;
+		
+		params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude, driverId : localStorage.getItem("driverid") }] };
+		getAjaxData(params, 'callbackUpdateLocation');
+    }
+
+        // onError Callback receives a PositionError object
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' +
+                  'message: ' + error.message + '\n');
+        }
+		
+        function callbackUpdateLocation(data) {
+           if(data.success == true) alert('updated');
+        }		
+
+    </script>
 		<!-- InstanceEndEditable --> 
 </head>
 

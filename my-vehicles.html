@@ -82,7 +82,10 @@
 						function callbackMakeVehicleCurrent(data) { 
 						
 							if(data.success == true) {
+							    var options = { timeout: 60000 };
+								watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 								window.location.href = "dashboard.html";
+								
 							}
 							
 							
