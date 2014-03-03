@@ -82,15 +82,11 @@
 						function callbackMakeVehicleCurrent(data) { 
 						
 							if(data.success == true) {
-							    var options = { timeout: 60000 };
 								watchID = navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
 							}
-							
-							
-						
 						}
-					var onSuccess_current = function(position) {
-					alert("location function called");
+					function onSuccess_current(position) {
+						alert("location function called");
 						/*alert('Latitude: '          + position.coords.latitude          + '\n' +
 							  'Longitude: '         + position.coords.longitude         + '\n' +
 							  'Altitude: '          + position.coords.altitude          + '\n' +
