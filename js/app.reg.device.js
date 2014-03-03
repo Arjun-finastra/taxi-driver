@@ -3,7 +3,7 @@
 			var pushNotification;
             
 			function callbackAPPID(data) {
-				alert('yesssssssssssssss');
+				//alert('yesssssssssssssss');
 				window.location.href = "my-vehicles.html";
 							
 			}	

@@ -83,14 +83,33 @@
 						
 							if(data.success == true) {
 							    var options = { timeout: 60000 };
-								watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-								window.location.href = "dashboard.html";
-								
+								watchID = navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
 							}
 							
 							
 						
 						}
+					var onSuccess = function(position) {
+						/*alert('Latitude: '          + position.coords.latitude          + '\n' +
+							  'Longitude: '         + position.coords.longitude         + '\n' +
+							  'Altitude: '          + position.coords.altitude          + '\n' +
+							  'Accuracy: '          + position.coords.accuracy          + '\n' +
+							  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+							  'Heading: '           + position.coords.heading           + '\n' +
+							  'Speed: '             + position.coords.speed             + '\n' +
+							  'Timestamp: '         + position.timestamp                + '\n'); */
+							
+							params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude, driverId : localStorage.getItem("driverid") }] };
+							getAjaxData(params, 'callbackUpdateLocation');
+
+					};
+					
+					function callbackUpdateLocation(data) {
+					   if(data.success == true) {
+						window.location.href = "dashboard.html";
+							alert('updated');
+					   }
+					}	
 
 
 						
