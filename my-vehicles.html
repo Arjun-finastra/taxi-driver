@@ -56,6 +56,8 @@
 								//alert(1);
 								//window.location.href = "dashboard.html";
 							});
+							
+							navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
 						
 						});
 						
@@ -85,7 +87,7 @@
 						
 							if(data.success == true) {
 								alert("vehicle change success");
-								navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
+								
 							}
 						}
 					
