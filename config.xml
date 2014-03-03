@@ -28,7 +28,7 @@ version   = "0.0.2">
 	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 
-	
+	<feature name="Geolocation"><param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" /></feature>
 
 
 	<!--
