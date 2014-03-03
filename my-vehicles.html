@@ -87,7 +87,11 @@
 						
 							if(data.success == true) {
 								alert("vehicle change success");
+								try {
 								navigator.geolocation.getCurrentPosition(onSuccess, onError);
+								} catch (e){
+									alert(e.message);
+								}
 								
 							}
 						}
