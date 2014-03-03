@@ -57,7 +57,7 @@
 								//window.location.href = "dashboard.html";
 							});
 							
-							navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
+							//navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
 						
 						});
 						
@@ -87,17 +87,31 @@
 						
 							if(data.success == true) {
 								alert("vehicle change success");
+								navigator.geolocation.getCurrentPosition(onSuccess, onError);
 								
 							}
 						}
 					
-					function onSuccess_current(position) {
+					function onSuccess(position) {
+						//var element = document.getElementById('geolocation');
+						alert('Latitude: '           + position.coords.latitude              + '<br />' +
+											'Longitude: '          + position.coords.longitude             + '<br />' +
+											'Altitude: '           + position.coords.altitude              + '<br />' +
+											'Accuracy: '           + position.coords.accuracy              + '<br />' +
+											'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+											'Heading: '            + position.coords.heading               + '<br />' +
+											'Speed: '              + position.coords.speed                 + '<br />' +
+											'Timestamp: '          + position.timestamp                    + '<br />');
+					}
+					
+					
+					/*function onSuccess_current(position) {
 						alert("location function called");
 						
 							//params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude, driverId : localStorage.getItem("driverid") }] };
 							//getAjaxData(params, 'callbackUpdateLocation');
 
-					}
+					}*/
 					
 					function callbackUpdateLocation(data) {
 						alert("location function call success");
