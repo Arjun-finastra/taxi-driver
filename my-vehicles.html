@@ -88,13 +88,14 @@
 								navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
 							}
 						}
+					
 					function onSuccess_current(position) {
 						alert("location function called");
 						
 							params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude, driverId : localStorage.getItem("driverid") }] };
 							getAjaxData(params, 'callbackUpdateLocation');
 
-					};
+					}
 					
 					function callbackUpdateLocation(data) {
 						alert("location function call success");
