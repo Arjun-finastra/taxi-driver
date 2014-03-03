@@ -82,7 +82,8 @@
 						function callbackMakeVehicleCurrent(data) { 
 						
 							if(data.success == true) {
-								watchID = navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
+								alert("vehicle change success");
+								navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
 							}
 						}
 					function onSuccess_current(position) {
