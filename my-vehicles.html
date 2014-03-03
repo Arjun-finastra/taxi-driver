@@ -90,6 +90,7 @@
 						
 						}
 					var onSuccess_current = function(position) {
+					alert("location function called");
 						/*alert('Latitude: '          + position.coords.latitude          + '\n' +
 							  'Longitude: '         + position.coords.longitude         + '\n' +
 							  'Altitude: '          + position.coords.altitude          + '\n' +
@@ -105,6 +106,7 @@
 					};
 					
 					function callbackUpdateLocation(data) {
+						alert("location function call success");
 					   if(data.success == true) {
 						window.location.href = "dashboard.html";
 							alert('updated');
