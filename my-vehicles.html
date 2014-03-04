@@ -98,7 +98,7 @@
 					
 					function onSuccess(position) {
 						alert("update success");
-						params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude }] };
+						params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude, driverId : localStorage.getItem("driverid") }] };
 						getAjaxData(params, 'callbackUpdateLocation');
 						
 					}
@@ -110,7 +110,6 @@
 					
 				
 				function callbackUpdateLocation(data) {
-						alert("location function call success");
 					   if(data.success == true) {
 					   alert('lets redirect');
 						window.location.href = "dashboard.html";
