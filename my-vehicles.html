@@ -86,12 +86,13 @@
 						function callbackMakeVehicleCurrent(data) { 
 						
 							if(data.success == true) {
+								window.location.href = "my-vehicles.html";
 								alert("vehicle change success");
-								try {
-								navigator.geolocation.getCurrentPosition(onSuccess, onError);
-								} catch (e){
-									alert(e.message);
-								}
+								//try {
+								//navigator.geolocation.getCurrentPosition(onSuccess, onError);
+								//} catch (e){
+								//	alert(e.message);
+								//}
 								
 							}
 						}
