@@ -86,21 +86,21 @@
 						function callbackMakeVehicleCurrent(data) { 
 						
 							if(data.success == true) {
-								window.location.href = "my-vehicles.html";
+								//window.location.href = "my-vehicles.html";
 								alert("vehicle change success");
-								//try {
-								//navigator.geolocation.getCurrentPosition(onSuccess, onError);
-								//} catch (e){
-								//	alert(e.message);
-								//}
+								try {
+									navigator.geolocation.getCurrentPosition(onSuccess, onError);
+								} catch (e){
+									alert(e.message);
+								}
 								
 							}
 						}
 					
 					function onSuccess(position) {
 						alert("update success");
-						params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude, driverId : localStorage.getItem("driverid") }] };
-						getAjaxData(params, 'callbackUpdateLocation');
+						//params = { callback : 'callbackUpdateLocation', controller : 'DriversVehicles', action : 'updateLocation', data : [{ latitude : position.coords.latitude, longitude : position.coords.longitude, driverId : localStorage.getItem("driverid") }] };
+						//getAjaxData(params, 'callbackUpdateLocation');
 						
 					}
 					
