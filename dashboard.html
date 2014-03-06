@@ -197,6 +197,9 @@
 					$('#from_address_out').text(job.from_address);
 					$('#to_address_out').text(job.to_address);
 					$('#rate_amount_out').text(job.customer_offer);
+					
+					
+					$(".joboffer").css({ height: $(window).height(),  width: $(window).width()});
 				} else {
 
 				}
@@ -248,8 +251,8 @@
 									<li> RATE : <span id="rate_amount_out"></span> </li>
 								</ul>
 								
-								<div class="JobStatus" id="acceptJob">Accept</div>
-								<div class="JobStatus" id="rejectJob">Reject</div>
+								<div class="JobStatus btn-off" id="acceptJob">Accept</div>
+								<div class="JobStatus btn-off" id="rejectJob">Reject</div>
 								</div>
 							</div>
 						<div id="leftInfo">

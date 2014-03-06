@@ -527,6 +527,7 @@ float:right;
 
 
 
+
 .yellow_circle {
 	position: relative;
 	margin-top: 2px;
@@ -556,9 +557,7 @@ float:right;
 	transform: rotate(45deg) skewX(30deg);
 }		
 .joboffer{
-	height: 100%;
-	width:100%;
-	background: grey;
+
 
 }
 .JobStatus{
