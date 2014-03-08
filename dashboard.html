@@ -191,12 +191,18 @@
 		
 			function callbackNotification(data){
 				if (data.success == true && data.data.Notification.job_id ) {
-					setLocalStorage('job',data.data.Job);
+					setLocalStorage('job',JSON.parse(data.data.Job.options));
 					job = getLocalStorage('job');
+					//alert(job.from_detail);
+					//console.log(job.from_detail);
 					$('#notification').append('<a href="#popupBasic" data-rel="popup" data-transition="pop">one new job, job id'+data.data.Notification.job_id+'</a>');
-					$('#from_address_out').text(job.from_address);
-					$('#to_address_out').text(job.to_address);
-					$('#rate_amount_out').text(job.customer_offer);
+					$('#from_address_out').text(job.from_detail);
+					$('#to_address_out').text(job.to_detail);
+					$('#rate_amount_out').text(data.data.Job.customer_offer);
+					$('#vehichle_type_out').text(job.vehicle_type);
+					$('#taxi_type_out').text(job.taxi_type);
+					$('#baby_seat_out').text(job.baby_seat);
+					$('#wheel_chair_out').text(job.wheel_chair);
 					
 					
 					$(".joboffer").css({ height: $(window).height(),  width: $(window).width()});
@@ -218,7 +224,11 @@
 			function callbackJobAccepted(data){
 				if (data.success == true) {
 					//localStorage.driverid = data.data.Driver.id;
-					alert('thanks');
+					//alert('thanks');
+					$('#popupBasic').popup('close');
+					
+					//$.mobile.changePage(url, { allowSamePageTransition : true, transition : 'none', showLoadMsg : true, reloadPage : true });
+					
 				} else {
 
 				}
@@ -248,6 +258,10 @@
 								<div data-role="none" class="joboffer">
 								<ul>
 									<li>From  <span id="from_address_out"></span> to <span id="to_address_out"></span> </li>
+									<li>Vehicle Type: <span id="vehichle_type_out"></span></li>
+									<li>Taxi Type: <span id="taxi_type_out"></span></li>
+									<li>Baby Seat: <span id="baby_seat_out"></span></li>
+									<li>Wheel Chair: <span id="wheel_chair_out"></span></li>
 									<li> RATE : <span id="rate_amount_out"></span> </li>
 								</ul>
 								
