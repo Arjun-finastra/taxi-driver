@@ -74,7 +74,7 @@
 					var myId = this.id;
 										
 					if(myId == 'acceptJob'){
-						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : localStorage.getItem('jobId') }] };
+						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
 						getAjaxData(params, 'callbackJobAccepted');
 						
 						
@@ -192,7 +192,7 @@
 			function callbackNotification(data){
 				if (data.success == true && data.data.Notification.job_id ) {
 					setLocalStorage('job',JSON.parse(data.data.Job.options));
-					setLocalStorage('jobId', data.data.Notification.job_id));
+					setLocalStorage('jobId', data.data.Job.options));
 					job = getLocalStorage('job');
 					//alert(job.from_detail);
 					//console.log(job.from_detail);
