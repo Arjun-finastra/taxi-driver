@@ -229,6 +229,9 @@
 					//alert('thanks');
 					$('#popupBasic').popup('close');
 					
+					$('#show-map').trigger('click');
+					
+					
 					//$.mobile.changePage(url, { allowSamePageTransition : true, transition : 'none', showLoadMsg : true, reloadPage : true });
 					
 				} else {
@@ -258,6 +261,8 @@
 						<div id="notification"></div>
 							<div data-role="popup" id="popupBasic">
 								<div data-role="none" class="joboffer">
+								<a type='hidden' id="show-map" href="geo:38.897096,-77.036545">open map</a>
+					
 								<ul>
 									<li>From  <span id="from_address_out"></span> to <span id="to_address_out"></span> </li>
 									<li>Vehicle Type: <span id="vehichle_type_out"></span></li>
@@ -356,6 +361,7 @@
 					<!-- InstanceEndEditable -->
 		<div style="clear:both"></div>
 	</div>
+	
 	<footer data-role="footer" data-position="fixed">
 		
     <!-- InstanceBeginEditable name="EditableFooter" -->
