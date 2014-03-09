@@ -74,7 +74,7 @@
 					var myId = this.id;
 										
 					if(myId == 'acceptJob'){
-						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : job.id }] };
+						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : localStorage.getItem('jobId') }] };
 						getAjaxData(params, 'callbackJobAccepted');
 						
 						
@@ -192,13 +192,14 @@
 			function callbackNotification(data){
 				if (data.success == true && data.data.Notification.job_id ) {
 					setLocalStorage('job',JSON.parse(data.data.Job.options));
+					setLocalStorage('jobId', data.data.Notification.job_id));
 					job = getLocalStorage('job');
 					//alert(job.from_detail);
 					//console.log(job.from_detail);
 					$('#notification').append('<a href="#popupBasic" data-rel="popup" data-transition="pop">one new job, job id'+data.data.Notification.job_id+'</a>');
 					$('#from_address_out').text(job.from_detail);
 					$('#to_address_out').text(job.to_detail);
-					$('#rate_amount_out').text(data.data.Job.customer_offer);
+					$('#rate_amount_out').text(data.data.Job  customer_offer);
 					$('#vehichle_type_out').text(job.vehicle_type);
 					$('#taxi_type_out').text(job.taxi_type);
 					$('#baby_seat_out').text(job.baby_seat);
