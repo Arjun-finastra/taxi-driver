@@ -36,6 +36,8 @@
 		<script type="text/javascript">
 
 			 var myVariable = '';
+			 var currentLat;
+			 var currentLng;
 			$(document).ready(function() {
 			
 				currentUser = getLocalStorage("User");
@@ -225,6 +227,8 @@
 					$('#baby_seat_out').text(job.baby_seat);
 					$('#wheel_chair_out').text(job.wheel_chair);
 					
+					window.currentLat = job.latitude;
+					window.currentLng = job.longitude;
 					
 					$(".joboffer").css({ height: $(window).height(),  width: $(window).width()});
 				} else {
@@ -256,7 +260,7 @@
 					$('#popupBasic').popup('close');
 					//window.location.reload(true);
 					//$("#show-map a").trigger('click');
-					window.open("geo:38.897096,-77.036545");
+					window.open("geo:"+currentLat+","+currentLng+");
 					
 					
 					//$.mobile.changePage(url, { allowSamePageTransition : true, transition : 'none', showLoadMsg : true, reloadPage : true });
