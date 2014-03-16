@@ -1,3 +1,22 @@
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
+body {
+  -webkit-touch-callout: none;
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;
+  /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;
+}
+
 html,body{
 	height:100% !important;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -167,13 +186,13 @@ cursor: pointer;
 
 .icon-ph {
     display: inline-block;
-    width: auto;
+    width: 45px;
     height: auto;
-    min-width: 1em;
+    /*min-width: 1em;*/
 	padding: 0.812em 0.625em;
 /*    font-size: 1.875em;*/
     font-weight: normal;
-    line-height: 1.25em;
+    /*line-height: 1.25em;*/
     text-align: center;
     text-shadow: 0 .0625em 0 #ffffff;
     background-color: #000;
@@ -335,8 +354,8 @@ cursor: pointer;
 
 
 .input-container input[type=text], .input-container input[type=password]  {
-	width: 88%;
-	height: 2.75em;
+	width: 100%;
+	height: 45px;
 	margin-bottom: 1em;
 	border: solid 0em #e9e9e9;
 	padding-left: 4.06em;
