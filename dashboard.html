@@ -256,18 +256,9 @@
 			
 			function callbackJobAccepted(data){
 				if (data.success == true) {
-					//localStorage.driverid = data.data.Driver.id;
-					//alert('thanks');
 					$('#popupBasic').popup('close');
-					//window.location.reload(true);
-					//$("#show-map a").trigger('click');
-					//window.open("geo:38.897096,-77.036545");
-					
 					urlString = "geo:"+window.currentLat+","+window.currentLng;
 					window.open(urlString);
-					
-					
-					//$.mobile.changePage(url, { allowSamePageTransition : true, transition : 'none', showLoadMsg : true, reloadPage : true });
 					
 				} else {
 
