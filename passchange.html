@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+    <head>
+        <title>Mobile App</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/jquerymobile.css" />
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
+		<!-- jQuery / jQueryMobile Scripts -->
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+ 		<!-- style link -->       
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        
+		<script src="js/logger.js"></script>
+		<script src="cordova.js"></script>
+		<script src="js/functions.js"></script>
+        <script src="PushNotification.js"></script>
+		<script src="js/app.reg.device.js"></script>
+		<script type="text/javascript">
+        	$(document).ready(function() {
+         		allowAccess();
+             	$(document).on( 'pagecreate','#page', function(event){
+              		setUserToken();
+             	});
+				
+				currentUser = getLocalStorage("User");
+				$('#idUpdate').val(currentUser.id);
+        	});
+			
+	function callbackchangePassword(data) {
+        if(data.success == true && data.data != null) {
+			//alert(data.message);
+			console.log(data.message);
+	
+        } else if (data.success == true && data.data == null ){
+			//location.reload();
+			//alert('No user found, give correct login info');
+		}
+    }
+        </script>
+	<!-- InstanceBeginEditable name="EditableHead" -->
+    <script src="js/jquery.geocomplete.js"></script>
+	<!-- InstanceEndEditable --> 
+    </head>
+    <body>
+        
+    <div data-role="page" data-theme='b'>
+		<header data-role="none">
+			<div id="header-logo">
+				<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
+			</div>
+		<!-- InstanceBeginEditable name="EditableHeader" -->
+	  
+		<!-- InstanceEndEditable -->
+		</header>
+        
+        <div id="content"> 
+		<!-- InstanceBeginEditable name="EditableBody" -->
+	  
+      		<div class="get-quote-bg content-position">
+             
+             	<h2>Change Password</h2>
+               <form method="post" action="" onsubmit="return submitForm(this)">
+                                       
+					<div class='input-container'>
+                        <div class="icon-ph"><i class="ui-icon-chevron-left"></i></div>
+                        <input class="custom-text" type="text" placeholder="Current Password" data-role="none" id="fullName" name="data[User][oldPassword]">
+                    </div>
+                    <div class='input-container'>
+                        <div class="icon-ph"><i class="ui-icon-chevron-left"></i></div>
+                        <input class="custom-text" type="text" placeholder="New Password" data-role="none" id="fullAddress" name="data[User][changedPassword]">
+                    </div>
+                    <div class='input-container'>
+                         <div class="icon-ph"><i class="ui-icon-chevron-left"></i></div>
+                        <input class="custom-text" type="text" placeholder="Repeat Password" data-role="none" id="cityName" name="data[User][repeatPassword]">
+                    </div>
+                                      
+										                                                                                                                        
+                     <input type="hidden" name='controller' value="Users"  />
+					<input type="hidden" name='action' value="changePasswordApp"  />	
+					<input type="hidden" name='callback' value="callbackchangePassword" />
+					<input type="hidden" id="idUpdate" value="" name="data[User][id]" />
+					
+					<div class='input-container'><button type="submit" class="login" data-role="none">Change Password</button></div>
+                                    
+                                </form>
+
+			 </div>
+			
+		<!-- InstanceEndEditable -->
+		<div style="clear:both"></div>
+	</div>
+	<footer data-role="footer" data-position="fixed">
+		
+    <!-- InstanceBeginEditable name="EditableFooter" -->
+	
+	<!-- InstanceEndEditable -->
+	</footer>
+	</div>
+	</div>
+</body>
+<!-- InstanceEnd --></html>

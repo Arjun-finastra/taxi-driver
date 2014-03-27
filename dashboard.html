@@ -227,8 +227,9 @@
 					$('#baby_seat_out').text(job.baby_seat);
 					$('#wheel_chair_out').text(job.wheel_chair);
 					
-					window.currentLat = job.latitude;
-					window.currentLng = job.longitude; 
+					window.currentLat = job.current_lat;
+					window.currentLng = job.current_lng; 
+					//console.log(job.latitude+"=>"+job.longitude);
 					
 					
 					$(".joboffer").css({ height: $(window).height(),  width: $(window).width()});
@@ -331,24 +332,29 @@
 
 					<div class="tile mini onduty-bg">
 
+						<a href="my-vehicles.html" rel="external"></a>
 						<div class="tile-box">
-
-
+							<i class="icon-play-circle fa-4x"></i>
+							<div>
+								My Vehicle
+							</div>
 						</div>
 
 					</div>
 
 					<div class="tile mini get-quote-bg">
 
+						<a href="passchange.html" rel="external"></a>
 						<div class="tile-box">
-						
-
-
+							<i class="icon-play-circle fa-4x"></i>
+							<div>
+								Change Password
+							</div>
 						</div>
 
 					</div>
 					<div class="tile mini my-profile-bg">
-						<a href="profile.html" data-transition="slide"></a>
+						<a href="profile.html" rel="external"></a>
 						<div class="tile-box">
 							<i class="icon-play-circle fa-4x"></i>
 							<div>
