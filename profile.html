@@ -16,24 +16,22 @@
 		<!-- jQuery / jQueryMobile Scripts -->
         <link href="css/style.css" type="text/css" rel="stylesheet">
  		<!-- style link -->       
+        <link rel="stylesheet" href="css/screen.css" media="screen"/>
+		<link rel="stylesheet" href="css/lightbox.css" media="screen"/>
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
         
 		<script src="js/logger.js"></script>
 		<script src="cordova.js"></script>
 		<script src="js/functions.js"></script>
+        <script src="js/lightbox-2.6.min.js"></script>
+        <script src="js/modernizr.custom.js"></script>
 		<script type="text/javascript">
-        	$(document).on( 'pagecreate','#page', function(event){
+        	$(document).ready(function() {
          		allowAccess();
-             	
-              		//setUserToken();
-             	//});
-				
-				
-				currentUser = getLocalStorage("User");
-				
-				params = { callback : 'callbackGetProfile', controller : 'Profiles', action : 'getProfile', data : [{ userId : currentUser.id }] };
-				getAjaxData(params, 'callbackGetProfile');
+             	$(document).on( 'pagecreate','#page', function(event){
+              		setUserToken();
+             	});
         	});
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
@@ -85,7 +83,7 @@ function callbackGetProfile(data) {
     </head>
     <body>
         
-    <div data-role="page" data-theme='b' id="page">
+    <div data-role="page" data-theme='b'>
 		<header data-role="none">
 			<div id="header-logo">
 				<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
