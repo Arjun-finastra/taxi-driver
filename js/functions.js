@@ -402,7 +402,15 @@ function alertDialog(title, msg) {
 	
 	showHideLightBox(1);
 }
-
+function showDialog(dialog) {
+	if($(dialog).is(':hidden')) {
+		$('#lightbox-overlay').show();
+		$(dialog).show();
+	} else {
+		$('#lightbox-overlay').hide();
+		$(dialog).hide();
+	}
+}
 function showHideLightBox(stat) {
 	if(stat == 1) {
 		$('#lightbox-overlay').show();
