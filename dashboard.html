@@ -331,10 +331,14 @@
 				} else {
 				}
 			}
-		document.addEventListener("backbutton", backKeyDown, true); 
-		function backKeyDown() { 
-			 // Call my back key code here.
-			alert('go back!');
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+		function onDeviceReady() {
+			document.addEventListener("resume", onResume, false);
+		}
+		
+		function onResume() {
+			alert('resumed');
 		}
 		</script>
 
