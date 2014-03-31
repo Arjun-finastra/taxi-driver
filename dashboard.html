@@ -28,7 +28,10 @@
              	$(document).on( 'pagecreate','#page', function(event){
               		setUserToken();
              	});
+				
+				
         	});
+			
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
 		<script src="PushNotification.js"></script>
@@ -124,7 +127,8 @@
 					params = { callback : 'callbackJobCompleted', controller : 'Jobs', action : 'jobCompleted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
 					getAjaxData(params, 'callbackJobCompleted');
 				});
-
+				
+				//if(jobId.id == JobPostNo && jobId.status > 0 ) alert('Job accepted already');
 			});
 			
 			// Job Status if rejected then 							status == 0 
@@ -250,6 +254,8 @@
 					job = getLocalStorage('job');
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
+					//JobPostNo = jobId
+					setLocalStorage('JobPostNo',jobId.id);
 					//alert(job.from_detail);
 					//console.log(job.from_detail);
 					//confirmDialog("Window","DO some");
@@ -297,8 +303,8 @@
 					//$('#arrivedDiv').popup('open');
 					
 					
-					//urlString = "geo:"+window.currentLat+","+window.currentLng;
-					//window.open(urlString);
+					urlString = "geo:"+window.currentLat+","+window.currentLng;
+					window.open(urlString);
 					
 				} else {
 
@@ -325,7 +331,11 @@
 				} else {
 				}
 			}
-		
+		document.addEventListener("backbutton", backKeyDown, true); 
+		function backKeyDown() { 
+			 // Call my back key code here.
+			alert('go back!');
+		}
 		</script>
 
 		<!-- InstanceEndEditable --> 
