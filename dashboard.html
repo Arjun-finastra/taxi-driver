@@ -16,8 +16,8 @@
 		<!-- jQuery / jQueryMobile Scripts -->
         <link href="css/style.css" type="text/css" rel="stylesheet">
  		<!-- style link -->       
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/jquery.mobile-1.3.1.min.js"></script>
         
 		<script src="js/logger.js"></script>
 		<script src="cordova.js"></script>
@@ -98,23 +98,41 @@
 						
 						
 					}else if (myId == 'rejectJob'){
-						alert('pppppppp');
+						//alert('pppppppp');
 					}
 				});
 				
 				$('#arrivedJob').click(function(e) { 
 					$("#arrivedJob").hide();
 					$("#pickedJob").show();
+					params = { callback : 'callbackDriverArrived', controller : 'Jobs', action : 'driverArrived', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
+					getAjaxData(params, 'callbackDriverArrived');
 				});
 				
 				$('#pickedJob').click(function(e) { 
 					//$("#arrivedJob").hide();
 					$("#pickedJob").hide();
 					$("#completeJob").show();
+					params = { callback : 'callbackDriverPicked', controller : 'Jobs', action : 'driverPicked', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
+					getAjaxData(params, 'callbackDriverPicked');
+				});
+				
+				$('#completeJob').click(function(e) { 
+					//$("#arrivedJob").hide();
+					//$("#pickedJob").hide();
+					$("#completeJob").show();
+					params = { callback : 'callbackJobCompleted', controller : 'Jobs', action : 'jobCompleted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
+					getAjaxData(params, 'callbackJobCompleted');
 				});
 
 			});
-
+			
+			// Job Status if rejected then 							status == 0 
+			// Job Status if accepted then 							status == 1
+			// Job Status if arrived to client place then 			status == 2
+			// Job Status if picked up the client  then 			status == 3
+			// Job Status if dropped the client then 				status == 5
+			
 			function callbackIsOnduty(data) {
 				userCounting = 0; 
 				driverCounting = 0;
@@ -284,6 +302,27 @@
 					
 				} else {
 
+				}
+			}
+			
+			function callbackDriverArrived(data){
+				if (data.success == true) {
+				
+				} else {
+				}
+			}
+			
+			function callbackDriverPicked(data){
+				if (data.success == true) {
+				
+				} else {
+				}
+			}
+			
+			function callbackJobCompleted(data){
+				if (data.success == true) {
+				
+				} else {
 				}
 			}
 		
