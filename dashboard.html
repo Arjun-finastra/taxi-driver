@@ -28,8 +28,6 @@
              	$(document).on( 'pagecreate','#page', function(event){
               		setUserToken();
              	});
-				
-				
         	});
 			
         </script>
@@ -44,39 +42,35 @@
 			$(document).ready(function() {
 			
 				currentUser = getLocalStorage("User");
-				//driver = currentUser.id;
-				
-				
+							
 				params = { callback : 'callbackGetDriverid', controller : 'Drivers', action : 'getDriverid', data : [{ userId : currentUser.id }] };
 				getAjaxData(params, 'callbackGetDriverid');
 				
-				//callPushFunction();
-				//window.location.reload();
-				//alert(localStorage.getItem('driverid'));
-				
-
+				if(getLocalStorage("acceptanceStatus") > 10 && getLocalStorage("acceptanceStatus") < 15 ){
+				 	$('#popupBasic').popup('open');
+				}
 				
 				params = { callback : 'callbackNotification', controller : 'Notifications', action : 'notification', data : [{ driverId : localStorage.getItem("driverid") }] };
 				getAjaxData(params, 'callbackNotification');
 
 				$("body").on('click', "input[type=checkbox][name=onoffswitch]", function() {
-					//alert('change clicked');
 					if ($('input[type=checkbox][name=onoffswitch]').is(':checked')) { makeChange = 0; } else { makeChange = 1; }
 					params = { callback : 'callbackChangeDuty', controller : 'Drivers', action : 'changeOnduty', data : [{ changeStatus : makeChange, driverId : localStorage.getItem("driverid") }] };
 					getAjaxData(params, 'callbackChangeDuty');
 				});
 				
-				$("#logout").click(function(){ 	logout();	});
+				$("#logout").click(function(){ 	
+				
+					logout();
+
+				});
 										
 				$('#goOffline').click(function(e) {  
-					//alert(1);
 					params = { callback : 'callbackGoOffline', controller : 'Drivers', action : 'goOffline', data : [{ driverId : localStorage.getItem("driverid") }] };
 					getAjaxData(params, 'callbackGoOffline');
 				});
 				
 				$('#goOnrest').click(function(e) {  
-					//alert(1);
-					//$(this).css('display','none')
 					params = { callback : 'callbackGoOnrest', controller : 'Drivers', action : 'goOnrest', data : [{ driverId : localStorage.getItem("driverid") }] };
 					getAjaxData(params, 'callbackGoOnrest');
 				});
@@ -88,18 +82,12 @@
 				
 				$('.JobStatus').click(function(e) {  
 					var myId = this.id;
-										
 					if(myId == 'acceptJob'){
-					
 						$("#acceptJob").hide();
 						$("#rejectJob").hide();
-						//rejectJob
 						$("#arrivedJob").show();
 						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
 						getAjaxData(params, 'callbackJobAccepted');
-						
-						
-						
 					}else if (myId == 'rejectJob'){
 						//alert('pppppppp');
 					}
@@ -131,6 +119,7 @@
 				//if(jobId.id == JobPostNo && jobId.status > 0 ) alert('Job accepted already');
 			});
 			
+			//			=== >         This change happens to database job table 
 			// Job Status if rejected then 							status == 0 
 			// Job Status if accepted then 							status == 1
 			// Job Status if arrived to client place then 			status == 2
@@ -141,17 +130,13 @@
 				userCounting = 0; 
 				driverCounting = 0;
 				if (data.success == true) {
-					//alert('callbackIsOnduty alerted');
-					//console.log(data.data);
 					$.each(data.data, function(key, value) {
 						$.each(value, function(keyUP, valueUP) {
-						//alert(keyUP+'=>'+valueUP);
-						
 						if(keyUP == 'User' && userCounting == 0) {
 							$('#username').append(valueUP.username);
-							userCounting++;
-						
+							userCounting++;			
 						}
+						
 						if(keyUP == 'Driver' && driverCounting == 0) {
 							if (valueUP.is_onduty == '0') {
 									$('#dutyStatus').append(' is offline');
@@ -167,10 +152,7 @@
 									$('#goUnrest').css("display", "none");
 									window.variable = 9;
 								} else if (valueUP.is_onduty == '2') {
-								
-									
 									window.variable = 7;
-									
 									$('#goUnrest').css("display", "inline");
 									$('#goOnrest').css("display", "none");
 									$('#dutyStatus').append(' is on rest.'+'<span class="yellow_circle"></span>');
@@ -196,29 +178,20 @@
 			}
 
 			function callbackChangeDuty(data) {
-				
 				if (data.success == true) {
-				//alert('duty changed');
-					//document.addEventListener('deviceready', onDeviceReady, true);
-					
-					try 
-				{ 
-                	pushNotification = window.plugins.pushNotification;
-                	if (device.platform == 'android' || device.platform == 'Android') {
-                    	pushNotification.register(successHandler, errorHandler, {"senderID":"325770691942","ecb":"onNotificationGCM"});		// required!
-						//alert();
-					} else {
-                    	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
-                	}
-                }
-				catch(err) 
-				{ 
-					txt="There was an error on this page.\n\n"; 
-					txt+="Error description: " + err.message + "\n\n"; 
-					alert(txt); 
-				} 
-				
-							
+					try{ 
+						pushNotification = window.plugins.pushNotification;
+						if (device.platform == 'android' || device.platform == 'Android') {
+							pushNotification.register(successHandler, errorHandler, {"senderID":"325770691942","ecb":"onNotificationGCM"});		// required!
+						} else {
+							pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
+						}
+					}
+					catch(err){ 
+						txt="There was an error on this page.\n\n"; 
+						txt+="Error description: " + err.message + "\n\n"; 
+						alert(txt); 
+					} 
 				} else {
 
 				}
@@ -254,12 +227,9 @@
 					job = getLocalStorage('job');
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
-					//JobPostNo = jobId
 					setLocalStorage('JobPostNo',jobId.id);
-					//alert(job.from_detail);
-					//console.log(job.from_detail);
-					//confirmDialog("Window","DO some");
-					//$('#popupBasic').popup('open');
+					setLocalStorage('acceptanceStatus',10);
+
 					$('#notification').append('<a href="#popupBasic" data-rel="popup" data-transition="pop">one new job, job id'+data.data.Notification.job_id+'</a>');
 					$('#from_address_out').text(job.from_detail);
 					$('#to_address_out').text(job.to_detail);
@@ -283,29 +253,28 @@
 			function callbackGetDriverid(data){
 				if (data.success == true) {
 					localStorage.driverid = data.data.Driver.id;
-					//window.location.reload(true);
 					myVariable = data.data.Driver.id; 
 					
 					params = { callback : 'callbackIsOnduty', controller : 'Drivers', action : 'isOnduty', data : [{ driverId : data.data.Driver.id }] };
 					getAjaxData(params, 'callbackIsOnduty');
-				
-					//globalVar 
 				} else {
 
 				}
 			}
 			
+			// Local storage job acceptance status 		
 			
+			// If Not accepted yet then				acceptanceStatus = 10;
+			// If Job is accepted by Driver then 	acceptanceStatus = 11;
+			// If Driver arrived to client 			acceptanceStatus = 12;
+			// If Driver picked the client			acceptanceStatus = 13;
+			// If Driver completed the job 			acceptanceStatus = 15;
 			
 			function callbackJobAccepted(data){
 				if (data.success == true) {
-					//$('#popupBasic').popup('close');
-					//$('#arrivedDiv').popup('open');
-					
-					
+					setLocalStorage('acceptanceStatus',11);
 					urlString = "geo:"+window.currentLat+","+window.currentLng;
 					window.open(urlString);
-					
 				} else {
 
 				}
@@ -313,33 +282,26 @@
 			
 			function callbackDriverArrived(data){
 				if (data.success == true) {
-				
+					setLocalStorage('acceptanceStatus',12);
 				} else {
 				}
 			}
 			
 			function callbackDriverPicked(data){
 				if (data.success == true) {
-				
+					setLocalStorage('acceptanceStatus',13);
 				} else {
 				}
 			}
 			
 			function callbackJobCompleted(data){
 				if (data.success == true) {
-				
+					setLocalStorage('acceptanceStatus',15);
+					$('#popupBasic').popup('close');
 				} else {
 				}
 			}
-		document.addEventListener("deviceready", onDeviceReady, false);
-		
-		function onDeviceReady() {
-			document.addEventListener("resume", onResume, false);
-		}
-		
-		function onResume() {
-			alert('resumed');
-		}
+
 		</script>
 
 		<!-- InstanceEndEditable --> 
