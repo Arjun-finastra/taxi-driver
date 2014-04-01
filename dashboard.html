@@ -46,12 +46,11 @@
 				params = { callback : 'callbackGetDriverid', controller : 'Drivers', action : 'getDriverid', data : [{ userId : currentUser.id }] };
 				getAjaxData(params, 'callbackGetDriverid');
 				
-				if(getLocalStorage("acceptanceStatus") > 10 && getLocalStorage("acceptanceStatus") < 15 ){
-				 	$('#popupBasic').popup('open');
-				}
+
 				
 				params = { callback : 'callbackNotification', controller : 'Notifications', action : 'notification', data : [{ driverId : localStorage.getItem("driverid") }] };
 				getAjaxData(params, 'callbackNotification');
+				
 
 				$("body").on('click', "input[type=checkbox][name=onoffswitch]", function() {
 					if ($('input[type=checkbox][name=onoffswitch]').is(':checked')) { makeChange = 0; } else { makeChange = 1; }
@@ -228,9 +227,11 @@
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
 					setLocalStorage('JobPostNo',jobId.id);
-					setLocalStorage('acceptanceStatus',10);
 
-					$('#notification').append('<a href="#popupBasic" data-rel="popup" data-transition="pop">one new job, job id'+data.data.Notification.job_id+'</a>');
+					
+
+					$('#notification').append('<a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink">one new job, job id'+data.data.Notification.job_id+'</a>');
+					
 					$('#from_address_out').text(job.from_detail);
 					$('#to_address_out').text(job.to_detail);
 					$('#rate_amount_out').text(data.data.Job.customer_offer);
@@ -242,9 +243,29 @@
 					window.currentLat = job.current_lat;
 					window.currentLng = job.current_lng; 
 					//console.log(job.latitude+"=>"+job.longitude);
-					
-					
 					$(".joboffer").css({ height: $(window).height(),  width: $(window).width()});
+					if(getLocalStorage("acceptanceStatus") > 10 && getLocalStorage("acceptanceStatus") < 15 ){
+						if(getLocalStorage("acceptanceStatus") == 11){
+							$("#acceptJob").hide();
+							$("#rejectJob").hide();
+							$("#arrivedJob").show();
+							$('#popupBasic').popup('open');
+						}else if(getLocalStorage("acceptanceStatus") == 12){
+							$("#acceptJob").hide();
+							$("#rejectJob").hide();
+							$("#pickedJob").show();
+							$('#popupBasic').popup('open');
+						}else if(getLocalStorage("acceptanceStatus") == 13){
+							$("#acceptJob").hide();
+							$("#rejectJob").hide();
+							$("#completeJob").show();
+							$('#popupBasic').popup('open');
+						}
+						
+					}
+					
+					
+					//$(".joboffer").css({ height: $(window).height(),  width: $(window).width()});
 				} else {
 
 				}
