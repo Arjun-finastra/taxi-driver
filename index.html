@@ -58,7 +58,7 @@
         
         if(data.success != false) {
             setLoginState(data);
-            location.replace('dashboard.html');
+            window.location.href = "dashboard.html";
         } else {
             console.log(data);
             showMessage(data);
@@ -76,14 +76,14 @@
 	<div class="my-profile-bg content-position"> 
     	<h2>User Login</h2>        
              <div id="result"></div>         
-        	<form id="login" method="post" action="" onsubmit="return submitForm(this)">
+        	<form id="login" method="post" action="" onsubmit="return submitForm(this)" data-ajax="false">
 
 					<div class='input-container'>
-                            <div class="icon-ph"><i class="fa fa-user fa-fw"></i></div>
+                            <div class="icon-ph"><i class="icon-ellipsis-vertical"></i></div>
                            <input class="custom-text" type="text" placeholder="Username" name="data[User][username]" data-role="none">
                     </div>
                     <div class='input-container'>
-                            <div class="icon-ph"><i class="fa fa-key fa-fw"></i></div>
+                            <div class="icon-ph"><i class="icon-ellipsis-vertical"></i></div>
                            <input class="custom-text" type="password" placeholder="Password" name="data[User][password]" data-role="none">
                     </div>
                     

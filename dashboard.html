@@ -227,10 +227,11 @@
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
 					setLocalStorage('JobPostNo',jobId.id);
-
-					
-
-					$('#notification').append('<a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink">one new job, job id'+data.data.Notification.job_id+'</a>');
+					if( getLocalStorage("acceptanceStatus") != 15 ) {
+						$('#notification').append('<div class="message warning"><i class="icon-warning-sign"></i><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a></p></div>');
+					}else if (getLocalStorage("acceptanceStatus") == 15){
+						$('#notification').append('<div class="message success"><i class="icon-ok"></i><p>This is a success message.</p></div>');
+					}
 					
 					$('#from_address_out').text(job.from_detail);
 					$('#to_address_out').text(job.to_detail);
@@ -260,6 +261,14 @@
 							$("#rejectJob").hide();
 							$("#completeJob").show();
 							$('#popupBasic').popup('open');
+						}
+						else if(getLocalStorage("acceptanceStatus") == 15){
+							$("#acceptJob").hide();
+							$("#rejectJob").hide();
+							$("#completeJob").hide();
+							//$('#popupBasic').popup('open');
+							
+							
 						}
 						
 					}
@@ -343,26 +352,46 @@
 		<!-- InstanceBeginEditable name="EditableBody" -->
 				<div id="information" data-role="none">
 					
-						<div id="notification" data-role="none"></div>
+						
 						<div data-role="popup" id="popupBasic">
-								<div data-role="none" class="joboffer">
-								
-					
-								<ul>
-									<li>From  <span id="from_address_out"></span> to <span id="to_address_out"></span> </li>
-									<li>Vehicle Type: <span id="vehichle_type_out"></span></li>
-									<li>Taxi Type: <span id="taxi_type_out"></span></li>
-									<li>Baby Seat: <span id="baby_seat_out"></span></li>
-									<li>Wheel Chair: <span id="wheel_chair_out"></span></li>
-									<li> RATE : <span id="rate_amount_out"></span> </li>
-								</ul>
-								
-								<div class="JobStatus btn-off" id="acceptJob">Accept</div>
-								<div class="JobStatus btn-off" id="rejectJob">Reject</div>
-								<div class="JobStatus btn-off" id="arrivedJob" style="display:none">Arrived</div>
-								<div class="JobStatus btn-off" id="pickedJob" style="display:none">Picked UP</div>
-								<div class="JobStatus btn-off" id="completeJob" style="display:none">Dropped Off</div>
+							<div data-role="none" class="joboffer">
+								<div data-role="header" data-theme="b">
+									<h1>One new Job...</h1>
 								</div>
+								
+								<div data-role="content" data-theme="b">
+									<ul>
+										<li>From  <span id="from_address_out"></span> to <span id="to_address_out"></span> </li>
+										<li>Vehicle Type: <span id="vehichle_type_out"></span></li>
+										<li>Taxi Type: <span id="taxi_type_out"></span></li>
+										<li>Baby Seat: <span id="baby_seat_out"></span></li>
+										<li>Wheel Chair: <span id="wheel_chair_out"></span></li>
+										<li> RATE : <span id="rate_amount_out"></span> </li>
+									</ul>
+									<div class='showastabs center nobg'>
+										<div class="JobStatus btn-off" id="acceptJob">Accept</div>
+										<div class="JobStatus btn-off" id="rejectJob">Reject</div>
+										<div class="JobStatus btn-off" id="arrivedJob" style="display:none">Arrived</div>
+										<div class="JobStatus btn-off" id="pickedJob" style="display:none">Picked UP</div>
+										<div class="JobStatus btn-off" id="completeJob" style="display:none">Dropped Off</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						 <div data-role="popup" id="popupDialog" data-theme="b">
+            
+							<div data-role="header" data-theme="b">
+								<h1>Delete from library?</h1>
+							</div>
+					
+							<div data-role="content" data-theme="b">
+								<p>This is a regular page, styled as a dialog. To create a dialog, just link to a normal page and include a transition and <code>data-rel="dialog"</code> attribute.</p>
+								<div class='showastabs center nobg'>
+										<a href="dialog/index.html" data-rel="back" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">Sounds good</a>
+										<a href="dialog/index.html" data-rel="back" data-icon="delete" data-iconpos="left" data-role="button" data-inline="true">Cancel</a>
+								</div>
+								
+							</div>
 						</div>
 						
 						<div id="leftInfo" data-role="none">
@@ -388,8 +417,9 @@
 							</div>
 
 						</div>
-					</div>
-					
+						
+				</div>
+				<div id="notification" data-role="none" style="clear:both; margin: 2px;"></div>	
 
 					<div class="tile mini onduty-bg">
 
