@@ -59,6 +59,8 @@
 						//$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
 						
 						if(e.payload.message == 'New Job'){
+							navigator.notification.beep(3);
+							navigator.notification.vibrate(2500);
 							$('#popupBasic').popup('open');
 						}
                     break;

@@ -29,6 +29,7 @@ version   = "0.0.2">
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 
 	<feature name="Geolocation"><param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" /></feature>
+	<feature name="Notification"><param name="android-package" value="org.apache.cordova.Notification" /></feature>
 
 
 	<!--
