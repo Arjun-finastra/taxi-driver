@@ -230,7 +230,7 @@
 					if( getLocalStorage("acceptanceStatus") != 15 ) {
 						$('#notification').append('<div class="message warning"><i class="icon-warning-sign"></i><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a></p></div>');
 					}else if (getLocalStorage("acceptanceStatus") == 15){
-						$('#notification').append('<div class="message success"><i class="icon-ok"></i><p>This is a success message.</p></div>');
+						$('#notification').append('<div class="message success"><p>You just completed a job</p></div>');
 					}
 					
 					$('#from_address_out').text(job.from_detail);
@@ -328,6 +328,7 @@
 				if (data.success == true) {
 					setLocalStorage('acceptanceStatus',15);
 					$('#popupBasic').popup('close');
+					window.location.reload();
 				} else {
 				}
 			}
