@@ -23,6 +23,9 @@
 		<script src="cordova.js"></script>
 		<script src="js/functions.js"></script>
 		<script type="text/javascript">
+		if (getLocalStorage("acceptanceStatus") === null || (getLocalStorage("acceptanceStatus") <11) {
+			setLocalStorage('acceptanceStatus',10);
+		}
         	$(document).ready(function() {
          		allowAccess();
              	$(document).on( 'pagecreate','#page', function(event){
@@ -229,7 +232,7 @@
 					setLocalStorage('JobPostNo',jobId.id);
 					if( getLocalStorage("acceptanceStatus") != 15 ) {
 						$('#notification').append('<div class="message warning"><i class="icon-warning-sign"></i><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a></p></div>');
-					}else if (getLocalStorage("acceptanceStatus") == 15){
+					}else if (getLocalStorage("acceptanceStatus") == 16){
 						$('#notification').append('<div class="message success"><p>You just completed a job</p></div>');
 					}
 					
