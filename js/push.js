@@ -130,5 +130,11 @@
             function errorHandler (error) {
                 $("#app-status-ul").append('<li>error:'+ error +'</li>');
             }
+			
+			
+			function callbackAPPID (data) {
+                //$("#app-status-ul").append('<li>error:'+ error +'</li>');
+				window.location.href = "my-vehicles.html";
+            }
             
 			//document.addEventListener('deviceready', onDeviceReady, true);
