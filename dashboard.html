@@ -29,6 +29,7 @@
 		
         	$(document).ready(function() {
          		allowAccess();
+				
              	$(document).on( 'pagecreate','#page', function(event){
               		setUserToken();
              	});
@@ -288,6 +289,8 @@
 			
 			function callbackGetDriverid(data){
 				if (data.success == true) {
+					window.location.reload();
+					
 					localStorage.driverid = data.data.Driver.id;
 					myVariable = data.data.Driver.id; 
 					
