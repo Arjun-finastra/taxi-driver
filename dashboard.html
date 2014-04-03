@@ -289,8 +289,8 @@
 			
 			function callbackGetDriverid(data){
 				if (data.success == true) {
-					window.location.reload();
-					
+					//window.location.reload();
+					response.setIntHeader("Refresh", 1);
 					localStorage.driverid = data.data.Driver.id;
 					myVariable = data.data.Driver.id; 
 					
