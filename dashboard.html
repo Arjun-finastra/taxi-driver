@@ -227,9 +227,9 @@
 			}
 		
 			function callbackNotification(data){
-				if (data.success == true || data.data.Notification.job_id ) {
-				//if (data.success == true ) {
-					setLocalStorage('job',JSON.parse(data.data.Job.options));
+				if (data.success == true ) {
+				//if (data.data.Job.options ) {
+					//setLocalStorage('job',JSON.parse(data.data.Job.options));
 					job = getLocalStorage('job');
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
@@ -290,7 +290,7 @@
 			function callbackGetDriverid(data){
 				if (data.success == true) {
 					//window.location.reload();
-					response.setIntHeader("Refresh", 1);
+					//response.setIntHeader("Refresh", 1);
 					localStorage.driverid = data.data.Driver.id;
 					myVariable = data.data.Driver.id; 
 					
