@@ -227,9 +227,9 @@
 			}
 		
 			function callbackNotification(data){
-				if (data.success == true ) {
+				if (data.success == true  ) {
 				//if (data.data.Job.options ) {
-					//setLocalStorage('job',JSON.parse(data.data.Job.options));
+					setLocalStorage('job',JSON.parse(data.data.Job.options));
 					job = getLocalStorage('job');
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
