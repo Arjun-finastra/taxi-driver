@@ -23,9 +23,10 @@
 		<script src="cordova.js"></script>
 		<script src="js/functions.js"></script>
 		<script type="text/javascript">
-		if (getLocalStorage("acceptanceStatus") === null || (getLocalStorage("acceptanceStatus") <11) {
-			setLocalStorage('acceptanceStatus',10);
+		if ( getLocalStorage("acceptanceStatus") === null || getLocalStorage("acceptanceStatus") < 11 ) 	{	
+			setLocalStorage('acceptanceStatus',10);  
 		}
+		
         	$(document).ready(function() {
          		allowAccess();
              	$(document).on( 'pagecreate','#page', function(event){
@@ -36,7 +37,7 @@
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
 		<script src="PushNotification.js"></script>
-		<script src="js/app.reg.device.js"></script>
+		<script src="js/push.js"></script>
 		<script type="text/javascript">
 
 			 var myVariable = '';
@@ -181,7 +182,8 @@
 
 			function callbackChangeDuty(data) {
 				if (data.success == true) {
-					try{ 
+					document.addEventListener('deviceready', onDeviceReady, true);
+					/*try{ 
 						pushNotification = window.plugins.pushNotification;
 						if (device.platform == 'android' || device.platform == 'Android') {
 							pushNotification.register(successHandler, errorHandler, {"senderID":"325770691942","ecb":"onNotificationGCM"});		// required!
@@ -193,7 +195,7 @@
 						txt="There was an error on this page.\n\n"; 
 						txt+="Error description: " + err.message + "\n\n"; 
 						alert(txt); 
-					} 
+					}*/
 				} else {
 
 				}
@@ -224,7 +226,8 @@
 			}
 		
 			function callbackNotification(data){
-				if (data.success == true && data.data.Notification.job_id ) {
+				if (data.success == true || data.data.Notification.job_id ) {
+				//if (data.success == true ) {
 					setLocalStorage('job',JSON.parse(data.data.Job.options));
 					job = getLocalStorage('job');
 					setLocalStorage('jobId',data.data.Job);
