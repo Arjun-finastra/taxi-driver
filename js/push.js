@@ -59,7 +59,7 @@
             
             // handle GCM notifications for Android
             function onNotificationGCM(e) {
-                $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+                //$("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
                 
                 switch( e.event )
                 {
@@ -100,6 +100,7 @@
 						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');*/
 						
 						if(e.payload.message == 'New Job'){
+							alert("yesssssssss");
 							//navigator.notification.beep(3);
 							//navigator.notification.vibrate(2500);
 							$('#popupBasic').popup('open');
