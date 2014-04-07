@@ -22,6 +22,9 @@
 		<script src="js/logger.js"></script>
 		<script src="cordova.js"></script>
 		<script src="js/functions.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+		<script src="PushNotification.js"></script>
+		<script src="js/push.js"></script>
 		<script type="text/javascript">
 
 		
@@ -32,13 +35,12 @@
               		setUserToken();
              	});
         	});
-		if ( getLocalStorage("acceptanceStatus") === null || getLocalStorage("acceptanceStatus") < 11 ) 	{	
-			setLocalStorage('acceptanceStatus',10);  
-		}	
+		//if ( getLocalStorage("acceptanceStatus") === null || getLocalStorage("acceptanceStatus") < 11 ) 	{	
+			//setLocalStorage('acceptanceStatus',10);  
+		//}	
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
-		<script src="PushNotification.js"></script>
-		<script src="js/push.js"></script>
+
 		<script type="text/javascript">
 
 			 var myVariable = '';
@@ -90,7 +92,9 @@
 						$("#acceptJob").hide();
 						$("#rejectJob").hide();
 						$("#arrivedJob").show();
-						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
+						calculateDistances(job.from_detail,job.to_detail);
+						
+						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id,  }] };
 						getAjaxData(params, 'callbackJobAccepted');
 					}else if (myId == 'rejectJob'){
 						//alert('pppppppp');
@@ -312,7 +316,7 @@
 			function callbackJobAccepted(data){
 				if (data.success == true) {
 					setLocalStorage('acceptanceStatus',11);
-					urlString = "geo:"+window.currentLat+","+window.currentLng;
+					urlString = "geo:"+window.currentLat+","+window.currentLng+";u=35";
 					window.open(urlString);
 				} else {
 
@@ -341,7 +345,29 @@
 				} else {
 				}
 			}
+						function calculateDistances(f,t) {
+						  var service = new google.maps.DistanceMatrixService();
+						  service.getDistanceMatrix(
+							{
+							  origins: [f],
+							  destinations: [t],
+							  travelMode: google.maps.TravelMode.DRIVING,
+							  unitSystem: google.maps.UnitSystem.METRIC,
+							  avoidHighways: false,
+							  avoidTolls: false
+							}, callback);
+						}
 
+						function callback(response, status) {
+						  if (status != google.maps.DistanceMatrixStatus.OK) {
+							alert('Error was: ' + status);
+						  } else {
+							console.log(response.rows[0].elements[0].distance.text);
+							console.log(response.rows[0].elements[0].duration.text);
+							setLocalStorage('driverDistance',response.rows[0].elements[0].distance.text);
+							setLocalStorage('arrivalDuration',response.rows[0].elements[0].duration.text);
+							}
+						}
 		</script>
 
 		<!-- InstanceEndEditable --> 
