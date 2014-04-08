@@ -188,19 +188,6 @@
 			function callbackChangeDuty(data) {
 				if (data.success == true) {
 					document.addEventListener('deviceready', onDeviceReady, true);
-					/*try{ 
-						pushNotification = window.plugins.pushNotification;
-						if (device.platform == 'android' || device.platform == 'Android') {
-							pushNotification.register(successHandler, errorHandler, {"senderID":"325770691942","ecb":"onNotificationGCM"});		// required!
-						} else {
-							pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
-						}
-					}
-					catch(err){ 
-						txt="There was an error on this page.\n\n"; 
-						txt+="Error description: " + err.message + "\n\n"; 
-						alert(txt); 
-					}*/
 				} else {
 
 				}
@@ -231,8 +218,9 @@
 			}
 		
 			function callbackNotification(data){
-				if (data.success == true  ) {
+				if (data.success == true && data.data!="emptyData" ) {
 				//if (data.data.Job.options ) {
+					console.log(data.data);
 					setLocalStorage('job',JSON.parse(data.data.Job.options));
 					job = getLocalStorage('job');
 					setLocalStorage('jobId',data.data.Job);

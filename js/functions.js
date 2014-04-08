@@ -56,7 +56,7 @@ function allowAccess()
 	User = getLocalStorage("User");
 	if(!empty(User)) { 
 		userToken = User.token;
-		console.log(userToken);
+		//console.log(userToken);
 	} else {
 		userToken = null;	
 	}
