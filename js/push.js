@@ -80,31 +80,43 @@
                     case 'message':
                     	// if this flag is set, this notification happened while we were in the foreground.
                     	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
-                    	/*if (e.foreground)
+                    	if (e.foreground)
                     	{
-							$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+							//$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 							
 							// if the notification contains a soundname, play it.
-							var my_media = new Media("/android_asset/www/"+e.soundname);
-							my_media.play();
+							//var my_media = new Media("/android_asset/www/"+e.soundname);
+							//my_media.play();
+							if(e.payload.title == 'New Job'){
+								alert("New Job");
+								window.location.reload();
+							}
+							
 						}
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
-							if (e.coldstart)
-								$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
-							else
-							$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+							if (e.coldstart){
+								if(e.payload.title == 'New Job'){
+									alert("New Job");
+									window.location.reload();
+								}
+							}else{
+							
+							}
+								//$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+							//else
+							//$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
 						}
 							
-						$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');*/
+						//$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+						//$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');*/
 						
-						if(e.payload.message == 'New Job'){
+						/*if(e.payload.message == 'New Job'){
 							//alert("yesssssssss");
 							//navigator.notification.beep(3);
 							//navigator.notification.vibrate(2500);
 							$('#popupBasic').popup('open');
-						}
+						}*/
 						
                     break;
                     
