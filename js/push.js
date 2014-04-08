@@ -85,10 +85,10 @@
 							//$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 							
 							// if the notification contains a soundname, play it.
-							//var my_media = new Media("/android_asset/www/"+e.soundname);
-							//my_media.play();
+							var my_media = new Media(e.soundname);
+							my_media.play();
 							if(e.payload.title == 'New Job'){
-								alert("New Job");
+								//alert("New Job");
 								window.location.reload();
 							}
 							
@@ -97,7 +97,7 @@
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
 							if (e.coldstart){
 								if(e.payload.title == 'New Job'){
-									alert("New Job");
+									//alert("New Job");
 									window.location.reload();
 								}
 							}else{
