@@ -226,7 +226,7 @@
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
 					setLocalStorage('JobPostNo',jobId.id);
-					if( getLocalStorage("acceptanceStatus") == 10  ) {
+					if( getLocalStorage("acceptanceStatus") == 10 && jobId.status !=5 ) {
 						$('#notification').append('<div class="message warning"><i class="icon-warning-sign"></i><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a></p></div>');
 					}else if(getLocalStorage("acceptanceStatus") == 15 && jobId.status !=5 ){
 						$('#notification').append('<div class="message warning"><i class="icon-warning-sign"></i><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a></p></div>');
