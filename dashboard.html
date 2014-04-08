@@ -94,7 +94,7 @@
 						$("#arrivedJob").show();
 						calculateDistances(job.from_detail,job.to_detail);
 						
-						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id,  }] };
+						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id, dDistance: localStorage.getItem('driverDistance'), dTime:localStorage.getItem('arrivalDuration') }] };
 						getAjaxData(params, 'callbackJobAccepted');
 					}else if (myId == 'rejectJob'){
 						//alert('pppppppp');
