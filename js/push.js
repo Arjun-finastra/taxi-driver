@@ -87,12 +87,12 @@
 							// if the notification contains a soundname, play it.
 							//var my_media = new Media(e.soundname);
 							//my_media.play();
-							var path = window.location.pathname;
-							path = path.substr( path, path.length - 10 );
-							path = 'file://' + path;
+							//var path = window.location.pathname;
+							//path = path.substr( path, path.length - 10 );
+							//path = 'file://' + path;
 							
-							var snd = new Media(path+'chacha.wav');
-							snd.play();
+							//var snd = new Media(path+'chacha.wav');
+							//snd.play();
 							
 							if(e.payload.title == 'New Job'){
 								//alert("New Job");
