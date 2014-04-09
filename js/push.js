@@ -85,8 +85,8 @@
 							//$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 							
 							// if the notification contains a soundname, play it.
-							var my_media = new Media(e.soundname);
-							my_media.play();
+							//var my_media = new Media(e.soundname);
+							//my_media.play();
 							if(e.payload.title == 'New Job'){
 								//alert("New Job");
 								window.location.reload();
