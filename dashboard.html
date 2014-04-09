@@ -306,13 +306,18 @@
 			function callbackJobAccepted(data){
 				if (data.success == true) {
 					setLocalStorage('acceptanceStatus',11);
-					navigator.google_navigate.navigate(window.currentLat,window.currentLng, function() {
+					geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+window.currentLat+','+window.currentLng+'&sensor=true';
+					
+					$.getJSON(geocodeUrl,function(result){
+							window.roadName = result.results[0].formatted_address;
+					});
+			
+					navigator.google_navigate.navigate(window.roadName, function() {
 						console.log('Success');
 					}, function(errMsg) {
 						console.log("Failed: " + errMsg);
 					});
-					//urlString = "geo:"+window.currentLat+","+window.currentLng+";u=35";
-					//window.open(urlString);
+
 				} else {
 
 				}
