@@ -25,6 +25,7 @@
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<script src="PushNotification.js"></script>
 		<script src="js/push.js"></script>
+		<script src="js/phonenavigator.js"></script>
 		<script type="text/javascript">
 
 		
@@ -305,8 +306,18 @@
 			function callbackJobAccepted(data){
 				if (data.success == true) {
 					setLocalStorage('acceptanceStatus',11);
-					urlString = "geo:"+window.currentLat+","+window.currentLng+";u=35";
-					window.open(urlString);
+					navigateTo(
+						window.currentLat,
+						window.currentLng,
+						function(){
+							console.log("Successfully opened navigator");
+						},
+						function(){
+							console.log("Error opening navigator");
+						}
+					);
+					//urlString = "geo:"+window.currentLat+","+window.currentLng+";u=35";
+					//window.open(urlString);
 				} else {
 
 				}
@@ -365,7 +376,9 @@
 							setLocalStorage('driverDistance',response.rows[0].elements[0].distance.text);
 							setLocalStorage('arrivalDuration',response.rows[0].elements[0].duration.text);
 							}
-						}
+			function navigateTo (lat, lon, successFn, errorFn) {
+				cordova.require('cordova/plugin/phonenavigator').doNavigate(lat, lon, successFn, errorFn);
+			}
 		</script>
 
 		<!-- InstanceEndEditable --> 
