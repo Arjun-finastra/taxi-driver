@@ -82,18 +82,7 @@
                     	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
                     	if (e.foreground)
                     	{
-							//$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
-							
-							// if the notification contains a soundname, play it.
-							//var my_media = new Media(e.soundname);
-							//my_media.play();
-							//var path = window.location.pathname;
-							//path = path.substr( path, path.length - 10 );
-							//path = 'file://' + path;
-							
-							//var snd = new Media(path+'chacha.wav');
-							//snd.play();
-							
+					
 							if(e.payload.title == 'New Job'){
 								//alert("New Job");
 								window.location.reload();
@@ -124,6 +113,11 @@
 							//navigator.notification.vibrate(2500);
 							$('#popupBasic').popup('open');
 						}*/
+						
+						//params = { callback : 'callbackSendMail', controller : 'Users', action : 'appid', data : [{ deviceRegId : e.regid, userId : currentUser.id }] }; 
+						//getAjaxData(params, 'callbackSendMail');
+						
+						
 						
                     break;
                     
