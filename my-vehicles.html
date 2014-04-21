@@ -94,14 +94,14 @@
 						function callbackMakeVehicleCurrent(data) { 
 						
 							if(data.success == true) {
-								window.location.href = "dashboard.html";
+								
 								//alert("vehicle change success");
 								try {
 									navigator.geolocation.getCurrentPosition(onSuccess, onError);
 								} catch (e){
 									alert(e.message);
 								}
-								
+								window.location.href = "dashboard.html";
 							}
 						}
 					
