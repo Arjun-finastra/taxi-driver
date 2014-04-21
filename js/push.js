@@ -94,6 +94,9 @@
 							if (e.coldstart){
 								if(e.payload.title == 'New Job'){
 									//alert("New Job");
+									
+									playAudio('/android_asset/www/chacha.wav');
+									navigator.notification.vibrate(2500);
 									window.location.reload();
 								}
 							}else{

@@ -428,3 +428,5 @@ function showHideLightBox(stat) {
 		}
 		$("#" + id).checkboxradio('refresh', true);
 	}
+	
+/* sound play */

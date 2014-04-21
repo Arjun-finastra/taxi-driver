@@ -29,15 +29,15 @@
 					// success callback
 					function () {
 						console.log("playAudio():Audio Success");
-						alert('success');
+						//alert('success');
 					},
 					// error callback
 					function (err) {
 						console.log("playAudio():Audio Error: " + err);
 						alert(err);
 						
-						params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : err }] };
-						getAjaxData(params, 'callbackSendMail');
+						//params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : err }] };
+						//getAjaxData(params, 'callbackSendMail');
 						
 						//alert(document.location.pathname);
 					}
@@ -50,7 +50,7 @@
 			//window.plugin.notification.local.add({ sound: 'TYPE_NOTIFICATION' });
 			//navigator.notification.vibrate(2500);
 				playAudio('/android_asset/www/chacha.wav');
-				alert(document.location.pathname);
+				//alert(document.location.pathname);
          		allowAccess();
              	//$(document).on( 'pagecreate','#page', function(event){
               		//setUserToken();
