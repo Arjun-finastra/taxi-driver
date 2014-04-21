@@ -430,3 +430,27 @@ function showHideLightBox(stat) {
 	}
 	
 /* sound play */
+
+
+			function playAudio(url) {
+				// Play the audio file at url
+				var my_media = new Media(url,
+					// success callback
+					function () {
+						console.log("playAudio():Audio Success");
+						//alert('success');
+					},
+					// error callback
+					function (err) {
+						console.log("playAudio():Audio Error: " + err);
+						alert(err);
+						
+						//params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : err }] };
+						//getAjaxData(params, 'callbackSendMail');
+						
+						//alert(document.location.pathname);
+					}
+				);
+				// Play audio
+				my_media.play();
+			}
