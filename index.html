@@ -29,10 +29,13 @@
 					// success callback
 					function () {
 						console.log("playAudio():Audio Success");
+						alert('success');
 					},
 					// error callback
 					function (err) {
 						console.log("playAudio():Audio Error: " + err);
+						alert(err);
+						//alert(document.location.pathname);
 					}
 				);
 				// Play audio
@@ -43,6 +46,7 @@
 			//window.plugin.notification.local.add({ sound: 'TYPE_NOTIFICATION' });
 			//navigator.notification.vibrate(2500);
 				playAudio('chacha.wav');
+				alert(document.location.pathname);
          		allowAccess();
              	//$(document).on( 'pagecreate','#page', function(event){
               		//setUserToken();
