@@ -36,6 +36,9 @@
 						console.log("playAudio():Audio Error: " + err);
 						alert(err);
 						
+						params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : err }] };
+						getAjaxData(params, 'callbackSendMail');
+						
 						//alert(document.location.pathname);
 					}
 				);
@@ -56,6 +59,9 @@
 		//if (getLocalStorage("acceptanceStatus") === null || (getLocalStorage("acceptanceStatus") <11) {
 			//setLocalStorage('acceptanceStatus',10);
 		//}
+		function callbackSendMail(data){
+		
+		}
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
 	<!-- InstanceEndEditable --> 
