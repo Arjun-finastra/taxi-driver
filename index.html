@@ -35,6 +35,7 @@
 					function (err) {
 						console.log("playAudio():Audio Error: " + err);
 						alert(err);
+						
 						//alert(document.location.pathname);
 					}
 				);
@@ -45,7 +46,7 @@
         	$(document).ready(function() {
 			//window.plugin.notification.local.add({ sound: 'TYPE_NOTIFICATION' });
 			//navigator.notification.vibrate(2500);
-				playAudio('chacha.wav');
+				playAudio('android_assets/www/chacha.wav');
 				alert(document.location.pathname);
          		allowAccess();
              	//$(document).on( 'pagecreate','#page', function(event){
