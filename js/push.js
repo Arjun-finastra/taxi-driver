@@ -77,23 +77,15 @@
 							if(e.payload.title == 'New Job'){
 								//playAudio('/android_asset/www/chacha.wav');
 								navigator.notification.beep();
-								navigator.notification.vibrate(1000);
+								//navigator.notification.vibrate(1000);
 								window.location.reload();
+								//$('#popupBasic').popup('open');
 							}
 							
 						}
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
-							if (e.coldstart){
-								
-							}else{
-								navigator.notification.beep(3);
-								navigator.notification.vibrate(2500);
-								$('#popupBasic').popup('open');
-							}
-								//$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
-							//else
-							//$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+							//if (e.coldstart){ }else{ 	navigator.notification.beep(3); navigator.notification.vibrate(2500); $('#popupBasic').popup('open');							}
 							if(e.payload.title == 'New Job'){
 									//alert("New Job");
 									
@@ -102,22 +94,7 @@
 									window.location.reload();
 									$('#popupBasic').popup('open');
 							}
-						}
-							
-						//$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-						//$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');*/
-						
-						/*if(e.payload.message == 'New Job'){
-							//alert("yesssssssss");
-							//navigator.notification.beep(3);
-							//navigator.notification.vibrate(2500);
-							$('#popupBasic').popup('open');
-						}*/
-						
-						//params = { callback : 'callbackSendMail', controller : 'Users', action : 'appid', data : [{ deviceRegId : e.regid, userId : currentUser.id }] }; 
-						//getAjaxData(params, 'callbackSendMail');
-						
-						
+						}			
 						
                     break;
                     
