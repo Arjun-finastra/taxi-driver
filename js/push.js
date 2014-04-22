@@ -92,19 +92,20 @@
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
 							if (e.coldstart){
-								if(e.payload.title == 'New Job'){
-									//alert("New Job");
-									
-									playAudio('/android_asset/www/chacha.wav');
-									navigator.notification.vibrate(2500);
-									window.location.reload();
-								}
+								
 							}else{
 							
 							}
 								//$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
 							//else
 							//$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+							if(e.payload.title == 'New Job'){
+									//alert("New Job");
+									
+									playAudio('/android_asset/www/chacha.wav');
+									navigator.notification.vibrate(2500);
+									window.location.reload();
+							}
 						}
 							
 						//$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
