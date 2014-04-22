@@ -75,9 +75,9 @@
                     	if (e.foreground)
                     	{
 							if(e.payload.title == 'New Job'){
-								playAudio('/android_asset/www/chacha.wav');
-								navigator.notification.beep(3);
-								navigator.notification.vibrate(2500);
+								//playAudio('/android_asset/www/chacha.wav');
+								navigator.notification.beep();
+								navigator.notification.vibrate(1000);
 								window.location.reload();
 							}
 							
@@ -97,9 +97,10 @@
 							if(e.payload.title == 'New Job'){
 									//alert("New Job");
 									
-									playAudio('/android_asset/www/chacha.wav');
-									navigator.notification.vibrate(2500);
+									//playAudio('/android_asset/www/chacha.wav');
+									//navigator.notification.vibrate(1000);
 									window.location.reload();
+									$('#popupBasic').popup('open');
 							}
 						}
 							
