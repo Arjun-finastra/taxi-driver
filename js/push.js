@@ -87,15 +87,16 @@
 						}
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
-							alert('Yes Background');
+							
 							//if (e.coldstart){ }else{ 	navigator.notification.beep(3); navigator.notification.vibrate(2500); $('#popupBasic').popup('open');							}
-							//if(e.payload.title == 'New Job'){
+							if(e.payload.title == 'New Job'){
 									//alert("New Job");
 									//playAudio('/android_asset/www/chacha.wav');
 									//navigator.notification.vibrate(1000);
 									//window.location.reload();
 									//$('#popupBasic').popup('open');
-							//}
+									alert('Yes Background');
+							}
 						}			
 						
                     break;
