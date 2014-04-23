@@ -77,11 +77,11 @@
 							
 							if(e.payload.title == 'New Job'){
 								//alert('Yes foreground');
-								playAudio('/android_asset/www/chacha.wav');
+								//playAudio('/android_asset/www/chacha.wav');
 								//navigator.notification.beep(3);
 								//navigator.notification.vibrate(1000);
-								//window.location.reload();
-								//$('#popupBasic').popup('open');
+								window.location.reload();
+								$('#popupBasic').popup('open');
 							}
 							
 						}
