@@ -74,26 +74,27 @@
                     	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
                     	if (e.foreground)
                     	{
+							alert('Yes foreground');
 							if(e.payload.title == 'New Job'){
 								//playAudio('/android_asset/www/chacha.wav');
-								navigator.notification.beep();
+								//navigator.notification.beep();
 								//navigator.notification.vibrate(1000);
-								window.location.reload();
+								//window.location.reload();
 								//$('#popupBasic').popup('open');
 							}
 							
 						}
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
+							alert('Yes Background');
 							//if (e.coldstart){ }else{ 	navigator.notification.beep(3); navigator.notification.vibrate(2500); $('#popupBasic').popup('open');							}
-							if(e.payload.title == 'New Job'){
+							//if(e.payload.title == 'New Job'){
 									//alert("New Job");
-									
 									//playAudio('/android_asset/www/chacha.wav');
 									//navigator.notification.vibrate(1000);
-									window.location.reload();
-									$('#popupBasic').popup('open');
-							}
+									//window.location.reload();
+									//$('#popupBasic').popup('open');
+							//}
 						}			
 						
                     break;
