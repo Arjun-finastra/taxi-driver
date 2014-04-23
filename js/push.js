@@ -74,8 +74,9 @@
                     	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
                     	if (e.foreground)
                     	{
-							alert('Yes foreground');
+							
 							if(e.payload.title == 'New Job'){
+								alert('Yes foreground');
 								//playAudio('/android_asset/www/chacha.wav');
 								//navigator.notification.beep();
 								//navigator.notification.vibrate(1000);
