@@ -78,9 +78,9 @@
 							if(e.payload.title == 'New Job'){
 								//alert('Yes foreground');
 								playAudio('/android_asset/www/chacha.wav');
-								//navigator.notification.beep(1);
+								//navigator.notification.beep(3);
 								//navigator.notification.vibrate(1000);
-								window.location.reload();
+								//window.location.reload();
 								//$('#popupBasic').popup('open');
 							}
 							
