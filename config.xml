@@ -29,13 +29,13 @@ version   = "0.0.2">
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
 
 	<feature name="Geolocation"><param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" /></feature>
-	<feature name="Notification"><param name="android-package" value="org.apache.cordova.Notification" /></feature>
+<!-- 	<feature name="Notification"><param name="android-package" value="org.apache.cordova.Notification" /></feature>
 	<feature name="Notification"><param name="android-package" value="org.apache.cordova.dialogs.Notification" /></feature>
-    <feature name="Vibration">    <param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature>
+    <feature name="Vibration">    <param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature> -->
 
 	<gap:plugin name="dk.interface.cordova.plugin.googlenavigate" version="0.1.2" />
 	<!-- <gap:plugin name="de.appplant.cordova.plugin.local-notification" /> -->
-	<gap:plugin name="org.apache.cordova.vibration" />
+	<gap:plugin name="org.apache.cordova.core.dialogs" />
 	<gap:plugin name="org.apache.cordova.media" version="0.2.8" />
 	<gap:plugin name="nl.x-services.plugins.socialsharing" />
 
