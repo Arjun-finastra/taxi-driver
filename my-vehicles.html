@@ -95,13 +95,13 @@
 						
 							if(data.success == true) {
 								
-								alert("vehicle change success");
+								//alert("vehicle change success");
 								try {
 									navigator.geolocation.getCurrentPosition(onSuccess, onError);
 								} catch (e){
 									alert(e.message);
 								}
-								window.location.href = "dashboard.html";
+								//window.location.href = "dashboard.html";
 							}
 						}
 					
@@ -120,7 +120,7 @@
 				
 				function callbackUpdateLocation(data) {
 					   if(data.success == true) {
-					   alert('lets redirect');
+					   //alert('lets redirect');
 						window.location.href = "dashboard.html";
 							//alert('updated');
 					   }
