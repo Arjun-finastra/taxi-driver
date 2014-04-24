@@ -131,6 +131,10 @@
                 //$("#app-status-ul").append('<li>error:'+ error +'</li>');
 				window.location.href = "my-vehicles.html";
             }
+			
+			function callbackSendMail(data){
+			
+			}
             
 			/* sound play */
 
@@ -148,8 +152,8 @@
 						console.log("playAudio():Audio Error: " + err);
 						alert(err);
 						
-						//params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : err }] };
-						//getAjaxData(params, 'callbackSendMail');
+						params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : err }] };
+						getAjaxData(params, 'callbackSendMail');
 						
 						//alert(document.location.pathname);
 					}
