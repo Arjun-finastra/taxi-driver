@@ -34,7 +34,6 @@ version   = "0.0.2">
     <feature name="Vibration">    <param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature> -->
 
 	<gap:plugin name="dk.interface.cordova.plugin.googlenavigate" version="0.1.2" />
-	<!-- <gap:plugin name="de.appplant.cordova.plugin.local-notification" /> -->
 	<gap:plugin name="org.apache.cordova.core.dialogs" />
 	<gap:plugin name="org.apache.cordova.media" version="0.2.8" />
 	<gap:plugin name="nl.x-services.plugins.socialsharing" />

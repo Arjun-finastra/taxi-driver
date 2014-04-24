@@ -79,12 +79,12 @@
 								//alert('Yes foreground');
 								//playAudio('/android_asset/www/chacha.wav');
 								try{
-									navigator.notification.beep(3);
+									navigator.notification.beep(1);
 								}
 								catch(err){
 									alert(err);
 								}
-								//navigator.notification.vibrate(1000);
+								navigator.notification.vibrate(1000);
 								window.location.reload();
 								//$('#popupBasic').popup('open');
 							}
@@ -98,7 +98,7 @@
 									//alert('Yes Background');
 									//alert("New Job");
 									//playAudio('/android_asset/www/chacha.wav');
-									//navigator.notification.vibrate(1000);
+									navigator.notification.vibrate(1000);
 									window.location.reload();
 									//$('#popupBasic').popup('open');
 									
