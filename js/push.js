@@ -85,7 +85,7 @@
 									alert(err);
 								}
 								navigator.notification.vibrate(1000);
-								$('#popupBasic').popup('open');
+								//$('#popupBasic').popup('open');
 								window.location.reload();
 								//$('#popupBasic').popup('open');
 							}
@@ -101,7 +101,7 @@
 									//playAudio('/android_asset/www/chacha.wav');
 									navigator.notification.vibrate(1000);
 									window.location.reload();
-									$('#popupBasic').popup('open');
+									//$('#popupBasic').popup('open');
 									
 							}
 						}			
