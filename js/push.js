@@ -90,7 +90,7 @@
 										getAjaxData(params, 'callbackSendMail');
 								}, 15000);
 								//$('#popupBasic').popup('open');
-								window.location.reload();
+								//window.location.reload();
 								//$('#popupBasic').popup('open');
 							}
 							
@@ -108,7 +108,7 @@
 										params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : jobRejected }] };
 										getAjaxData(params, 'callbackSendMail');
 								}, 15000);
-									window.location.reload();
+									//window.location.reload();
 									//$('#popupBasic').popup('open');
 									
 							}
