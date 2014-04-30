@@ -85,6 +85,10 @@
 									alert(err);
 								}
 								navigator.notification.vibrate(1000);
+								var timer = setTimeout(function() {
+										params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : jobRejected }] };
+										getAjaxData(params, 'callbackSendMail');
+								}, 15000);
 								//$('#popupBasic').popup('open');
 								window.location.reload();
 								//$('#popupBasic').popup('open');
@@ -100,6 +104,10 @@
 									//alert("New Job");
 									//playAudio('/android_asset/www/chacha.wav');
 									navigator.notification.vibrate(1000);
+									var timer = setTimeout(function() {
+										params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : jobRejected }] };
+										getAjaxData(params, 'callbackSendMail');
+								}, 15000);
 									window.location.reload();
 									//$('#popupBasic').popup('open');
 									

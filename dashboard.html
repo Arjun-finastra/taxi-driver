@@ -88,16 +88,9 @@
 					getAjaxData(params, 'callbackGoUnrest');
 				});
 				
-				var timer = setTimeout(function() {
+
 				
-						params = { callback : 'callbackSendMail', controller : 'Users', action : 'sendMail', data : [{ stringText : jobRejected }] };
-						getAjaxData(params, 'callbackSendMail');
-				//$(".button").click(); 
-				
-				
-				}, 15000);
-				
-				$('.JobStatus').click(function(e) {  
+				/*$('.JobStatus').click(function(e) {  
 						clearTimeout(timer);
 						var myId = this.id;
 						
@@ -110,10 +103,11 @@
 							params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id, dDistance: localStorage.getItem('driverDistance'), dTime:localStorage.getItem('arrivalDuration') }] };
 							getAjaxData(params, 'callbackJobAccepted');
 						}
-				});
+				});*/
 				
 				
-				/*$('.JobStatus').click(function(e) {  
+				$('.JobStatus').click(function(e) {  
+					clearTimeout(window.timer);
 					var myId = this.id;
 					if(myId == 'acceptJob'){
 						$("#acceptJob").hide();
@@ -126,7 +120,7 @@
 					}else if (myId == 'rejectJob'){
 						//alert('pppppppp');
 					}
-				});*/
+				});
 				
 				$('#arrivedJob').click(function(e) { 
 					$("#arrivedJob").hide();
