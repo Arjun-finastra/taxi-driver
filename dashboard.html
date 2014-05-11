@@ -113,7 +113,8 @@
 						$("#acceptJob").hide();
 						$("#rejectJob").hide();
 						$("#arrivedJob").show();
-						calculateDistances(job.from_detail,job.to_detail);
+						$("#navigateJob").show();
+						/* calculateDistances(job.from_detail,job.to_detail); */
 						
 						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id, dDistance: localStorage.getItem('driverDistance'), dTime:localStorage.getItem('arrivalDuration') }] };
 						getAjaxData(params, 'callbackJobAccepted');
@@ -124,14 +125,31 @@
 				
 				$('#arrivedJob').click(function(e) { 
 					$("#arrivedJob").hide();
+					$("#navigateJob").hide();
 					$("#pickedJob").show();
 					params = { callback : 'callbackDriverArrived', controller : 'Jobs', action : 'driverArrived', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
 					getAjaxData(params, 'callbackDriverArrived');
+				});
+								
+				$('#arrivedJob').click(function(e) { 
+					geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+window.currentLat+','+window.currentLng+'&sensor=true';
+					
+					$.getJSON(geocodeUrl,function(result){
+						window.roadName = result.results[0].formatted_address;
+							console.log(window.roadName);
+						navigator.google_navigate.navigate(window.roadName, function() {
+							console.log('Success');
+						}, function(errMsg) {
+							console.log("Failed: " + errMsg);
+						});
+					});
+					
 				});
 				
 				$('#pickedJob').click(function(e) { 
 					//$("#arrivedJob").hide();
 					$("#pickedJob").hide();
+					$("#navigateJob").hide();
 					$("#completeJob").show();
 					params = { callback : 'callbackDriverPicked', controller : 'Jobs', action : 'driverPicked', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
 					getAjaxData(params, 'callbackDriverPicked');
@@ -141,6 +159,7 @@
 					//$("#arrivedJob").hide();
 					//$("#pickedJob").hide();
 					$("#completeJob").show();
+					$("#navigateJob").hide();
 					params = { callback : 'callbackJobCompleted', controller : 'Jobs', action : 'jobCompleted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
 					getAjaxData(params, 'callbackJobCompleted');
 				});
@@ -171,7 +190,7 @@
 									$('#dutyStatus').append(' is offline');
 									$(".onoffswitch").css("display", "block");
 									$(".offonState").css("display", "none");
-									$('#activeVehicleInfo').css("display", "none");
+									$('#activeVehicleInfo').css("display", "block");
 									window.variable = 8;
 								} else if (valueUP.is_onduty == '1') {
 									//$('input[type=checkbox][name=onoffswitch]').prop('checked', true); .onoffswitch 
@@ -247,18 +266,22 @@
 					setLocalStorage('jobId',data.data.Job);
 					jobId = getLocalStorage('jobId');
 					setLocalStorage('JobPostNo',jobId.id);
+					//calculateDistances(job.from_detail,job.to_detail);
 					if( getLocalStorage("acceptanceStatus") == 10 && jobId.status !=5 ) {
-						$('#notification').append('<div class="message warning"><i class="icon-warning-sign"></i><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a></p></div>');
+						$('#notification').append('<div class="message warning"><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a> <br>From:  <span id="from_address_out"></span> <br>To: <span id="to_address_out"></span><br>Distance:'+localStorage.getItem('driverDistance')+'<br>RATE : <span id="rate_amount_out"><span></p></div>');
 						//$('#popupBasic').popup('open');
 					}else if(getLocalStorage("acceptanceStatus") == 15 && jobId.status !=5 ){
-						$('#notification').append('<div class="message warning"><i class="icon-warning-sign"></i><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a></p></div>');
+						$('#notification').append('<div class="message warning"><p><a href="#popupBasic" data-rel="popup" data-transition="pop" id="popupLink" data-icon="ok" data-iconpos="left" data-role="button" data-inline="true">New Job, Job id '+data.data.Notification.job_id+'</a> <br>From:  <span id="from_address_out"></span> <br>To: <span id="to_address_out"></span><br>Distance:'+localStorage.getItem('driverDistance')+'<br>RATE : <span id="rate_amount_out"><span></p></div>');
 						//$('#notification').append('<div class="message success"><p>You just completed a job</p></div>');
 						//$('#popupBasic').popup('open');
 					}
 					
 					$('#from_address_out').text(job.from_detail);
 					$('#to_address_out').text(job.to_detail);
+					$('#from_address_out1').text(job.from_detail);
+					$('#to_address_out1').text(job.to_detail);
 					$('#rate_amount_out').text(data.data.Job.customer_offer);
+					$('#rate_amount_out1').text(data.data.Job.customer_offer);
 					$('#vehichle_type_out').text(job.vehicle_type);
 					$('#taxi_type_out').text(job.taxi_type);
 					$('#baby_seat_out').text(job.baby_seat);
@@ -273,14 +296,17 @@
 							$("#acceptJob").hide();
 							$("#rejectJob").hide();
 							$("#arrivedJob").show();
+							$("#navigateJob").show();
 							$('#popupBasic').popup('open');
 						}else if(getLocalStorage("acceptanceStatus") == 12){
 							$("#acceptJob").hide();
+							$("#navigateJob").hide();
 							$("#rejectJob").hide();
 							$("#pickedJob").show();
 							$('#popupBasic').popup('open');
 						}else if(getLocalStorage("acceptanceStatus") == 13){
 							$("#acceptJob").hide();
+							$("#navigateJob").hide();
 							$("#rejectJob").hide();
 							$("#completeJob").show();
 							$('#popupBasic').popup('open');
@@ -289,6 +315,7 @@
 							$("#acceptJob").hide();
 							$("#rejectJob").hide();
 							$("#completeJob").hide();
+							$("#navigateJob").hide();
 							//$('#popupBasic').popup('open');
 							
 							
@@ -328,19 +355,8 @@
 			function callbackJobAccepted(data){
 				if (data.success == true) {
 					setLocalStorage('acceptanceStatus',11);
-					geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+window.currentLat+','+window.currentLng+'&sensor=true';
-					
-					$.getJSON(geocodeUrl,function(result){
-						window.roadName = result.results[0].formatted_address;
-							console.log(window.roadName);
-						navigator.google_navigate.navigate(window.roadName, function() {
-							console.log('Success');
-						}, function(errMsg) {
-							console.log("Failed: " + errMsg);
-						});
-					});
-						
 
+						
 
 				} else {
 
@@ -412,7 +428,7 @@
     </head>
     <body>
         
-    <div data-role="page" data-theme='b'>
+    <div data-role="page">
 		<header data-role="none">
 			<div id="header-logo">
 				<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
@@ -424,7 +440,12 @@
         
         <div id="content"> 
 		<!-- InstanceBeginEditable name="EditableBody" -->
+				<div id="leftInfo" data-role="none">
+							<span id="username"></span><span id="dutyStatus"></span>
+							
+				</div>
 				<div id="information" data-role="none">
+				
 					
 						
 						<div data-role="popup" id="popupBasic">
@@ -435,17 +456,18 @@
 								
 								<div data-role="content" data-theme="b">
 									<ul>
-										<li>From  <span id="from_address_out"></span> to <span id="to_address_out"></span> </li>
+										<li>From  <span id="from_address_out1"></span> to <span id="to_address_out1"></span> </li>
 										<li>Vehicle Type: <span id="vehichle_type_out"></span></li>
 										<li>Taxi Type: <span id="taxi_type_out"></span></li>
 										<li>Baby Seat: <span id="baby_seat_out"></span></li>
 										<li>Wheel Chair: <span id="wheel_chair_out"></span></li>
-										<li> RATE : <span id="rate_amount_out"></span> </li>
+										<li> RATE : <span id="rate_amount_out1"></span> </li>
 									</ul>
 									<div class='showastabs center nobg'>
 										<div class="JobStatus btn-off" id="acceptJob">Accept</div>
 										<div class="JobStatus btn-off" id="rejectJob">Reject</div>
 										<div class="JobStatus btn-off" id="arrivedJob" style="display:none">Arrived</div>
+										<div class="JobStatus btn-off" id="navigateJob" style="display:none">Navigate</div>
 										<div class="JobStatus btn-off" id="pickedJob" style="display:none">Picked UP</div>
 										<div class="JobStatus btn-off" id="completeJob" style="display:none">Dropped Off</div>
 									</div>
@@ -468,10 +490,8 @@
 							</div>
 						</div>
 						
-						<div id="leftInfo" data-role="none">
-							<span id="username"></span><span id="dutyStatus"></span>
-							<div id="activeVehicleInfo"></div>
-						</div>
+
+							
 						<div id="rightInfo" data-role="none">
 							<div class="offonState">
 								<div class="btn-off" id="goOffline">Offline</div>
@@ -489,13 +509,23 @@
 									</div>
 								</label>
 							</div>
-
+							
+							<div id="activeVehicleInfo"></div>
+							<div id="" style="padding-top:10px; font-weight:bold">Another Vehicle? <a href="my-vehicles.html">Click</a></div>
 						</div>
 						
+						
 				</div>
-				<div id="notification" data-role="none" style="clear:both; margin: 2px;"></div>	
+				<div id="notification" data-role="none"></div>
+				
+				<!-- <div style="clear:both, margin-bottom:10px; "></div> -->
 
-					<div class="tile mini onduty-bg">
+					<!-- InstanceEndEditable -->
+		<div style="clear:both"></div>
+	</div>
+	<footer data-role="footer" data-position="fixed">
+	
+	<div class="tile mini onduty-bg" >
 
 						<a href="my-vehicles.html" rel="external"></a>
 						<div class="tile-box">
@@ -513,12 +543,12 @@
 							<div> Change Password </div>
 						</div>
 					</div>
-					<div class="tile mini my-profile-bg">
+<!-- 					<div class="tile mini my-profile-bg">
 						<a href="socialShare.html" data-ajax="false"></a>
 						<div class="tile-box"><i class="fa fa-user fa-4x"></i>
 						<div>Social Share</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="tile mini my-profile-bg">
 						<a href="profile.html" rel="external"></a>
 						<div class="tile-box">
@@ -547,7 +577,7 @@
 						</div>
 					</div>
 
-					<div class="tile mini sign-out-bg">
+<!-- 					<div class="tile mini sign-out-bg">
 						<a href="logout.html" id="logout"></a>
 						<div class="tile-box">
 							<i class="icon-sign"></i>
@@ -555,12 +585,7 @@
 								Sign Out
 							</div>
 						</div>
-					</div>
-
-					<!-- InstanceEndEditable -->
-		<div style="clear:both"></div>
-	</div>
-	<footer data-role="footer" data-position="fixed">
+					</div> -->
 		
     <!-- InstanceBeginEditable name="EditableFooter" -->
  <!-- <a href="#" onClick="confirmDialog()">Confirm </a>

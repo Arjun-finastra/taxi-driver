@@ -20,7 +20,7 @@ body {
 html,body{
 	height:100% !important;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
-	background-color: #213540;
+	background-color: #FFF;
 	color: #fff;
 	font-size: 100%;
 }
@@ -32,12 +32,12 @@ html,body{
 
 header {
 	text-align: center;
-	margin: .25em;
-	padding: .25em;
+	/*margin: .25em;*/
+	padding: 3px;
 	text-align: center;
-	height: 4.5em;
-	line-height: 4em;
-	background-color: #808000;
+	height: 50px;
+	/*line-height: 4em;*/
+	background-color: #fff100;
 	/*width: 6em;
 	
 	line-height: 4em;
@@ -70,9 +70,9 @@ header {
 	z-index: 999;
 }
 .tile.mini {
-	width: 10em;
-	height: 10em;
-	line-height: 10em;
+	width: 5em;
+	height: 5em;
+	line-height: 5em;
 	text-align: center;
 	margin: .25em;
 	padding: .25em;
@@ -481,19 +481,26 @@ cursor: pointer;
 	
 	
 #information{
-	
-	height:80px;
-	background:#069;
-	margin:4px;
+	height:130px;
+	background:#FFF;	
+	/* position: relative; */
 }
+
 #leftInfo{
-left:0px;
-float:left;
+font-weight: bold;
+color: rgb(49, 184, 49);
+font-weight: bold;
+text-align: center;
+padding-top: 20px;
+padding-bottom:10px;
 }
 
 #rightInfo{
-//right:0px;
-float:right;
+height: 100px;
+background: cadetblue;
+margin: 10px;
+text-align:center;
+padding:5px;
 }
 
 [class*='btn-'] {
@@ -643,4 +650,20 @@ float:right;
 }
 .buttonContainer {
 	padding: 10px;
+}
+
+#notification{
+
+height: 200px;
+/* width: 100%; */
+margin: 10px !important;
+text-align: center;
+/* padding: 5px !important; */
+clear:both;
+/* position: absolute; */
+/* top */:0px;
+}
+
+.projectInfo{
+	
 }
