@@ -131,7 +131,7 @@
 					getAjaxData(params, 'callbackDriverArrived');
 				});
 								
-				$('#arrivedJob').click(function(e) { 
+				$('#navigateJob').click(function(e) { 
 					geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+window.currentLat+','+window.currentLng+'&sensor=true';
 					
 					$.getJSON(geocodeUrl,function(result){
