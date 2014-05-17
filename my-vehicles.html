@@ -4,7 +4,7 @@
         <title>Mobile App</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
 		<!-- jQueryMobileCSS - original without styling -->
         <link rel="stylesheet" href="css/jquerymobile.css" />
 		<!-- nativeDroid core CSS -->
@@ -53,8 +53,9 @@
 							getAjaxData(params, 'callbackVehicleList');
 							
 							checkedId = $("input[name='vehicleActive']:checked").val();
-							$("body").on('click', "input[name='vehicleActive']",function() { 
-								valueText = $(this).val(); 	
+							$("body").on('click', "label",function() { 
+								valueText = $(this).val();
+								alert(valueText);
 								params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ currentId : valueText, previousId: checkedId }] }; 
 								getAjaxData(params, 'callbackMakeVehicleCurrent');  
 								
@@ -71,7 +72,8 @@
 						
 						function callbackVehicleList(data) { 
 							if (data.success == true) { 
-								$.each(data.data, function(key, value) { $.each(data.data[key], function(key, value) { if (key == 'Vehicle') { $('#my-vehicle-list ul').append('<li>' + key + ': ' + value.registration_no + '&#9;&#9;<input type="radio" name="vehicleActive" value="' + value.id + '">Active</li>'); console.log(value.registration_no); } }) }); 
+								//$.each(data.data, function(key, value) { $.each(data.data[key], function(key, value) { if (key == 'Vehicle') { $('#my-vehicle-list ul').append('<li>' + key + ': ' + value.registration_no + '&#9;&#9;<input type="radio" name="vehicleActive" value="' + value.id + '">Active</li>'); console.log(value.registration_no); } }) }); 
+								$.each(data.data, function(key, value) { $.each(data.data[key], function(key, value) { if (key == 'Vehicle') { $('#my-vehicle-list form').append('<input type="radio" name="vehicleActive" class="radio" value="' + value.id + '" data-role="none"/><label for="'+value.id+'" style="clear:both">'+key +':'+value.registration_no+'</label>'); } }) }); 
 								checkDriversActiveVehicle(); 
 							}
 						}
@@ -86,7 +88,8 @@
 								$.each(data.data, function(key, value) { 
 									checkedId = value['DriversVehicle']['id']; 
 									console.log(value['DriversVehicle']['id']); 
-									$('input:radio[name=vehicleActive][value='+checkedId+']').prop('checked', true);								
+									$('input:radio[name=vehicleActive][value='+checkedId+']').prop('checked', true);
+									$("label[for='" + checkedId + "']").addClass('checkedInput');									
 								})
 							}			
 						}						
@@ -145,18 +148,19 @@
 						<div id="result"></div>
 						Assigned Vehicles are:-      </br></br>
 						<div id="my-vehicle-list">
-							<form data-role="none">
-								<ul>
-									<li>
-										No vechicle active &#9;&#9;
-										<input type="radio" name="vehicleActive" value="inactive" data-role="none"  checked>
-										
-									</li>
-								</ul>
-							</form>
+						<form data-role="none">
+						
+																		
+								<input type="radio" name="vehicleActive" class="radio" data-role="none" value="inactive" />
+								<label for="radio1" style="clear:both">No vechicle active</label>
+
+						</form>
+								
+							
 						</div>
 						
-
+						
+						<div style="clear:both"></div>
 						<div id="goback" data-role="none" style="text-align:center; cursor:pointer; ">Go to Dashboard</div>
 						
 

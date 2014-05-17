@@ -1,10 +1,11 @@
+
 <!DOCTYPE HTML>
 <html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
     <head>
         <title>Mobile App</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
 		<!-- jQueryMobileCSS - original without styling -->
         <link rel="stylesheet" href="css/jquerymobile.css" />
 		<!-- nativeDroid core CSS -->
@@ -62,7 +63,9 @@
 				
 
 				$("body").on('click', "input[type=checkbox][name=onoffswitch]", function() {
+					//alert('clicked');
 					if ($('input[type=checkbox][name=onoffswitch]').is(':checked')) { makeChange = 0; } else { makeChange = 1; }
+					//makeChange = 1;
 					params = { callback : 'callbackChangeDuty', controller : 'Drivers', action : 'changeOnduty', data : [{ changeStatus : makeChange, driverId : localStorage.getItem("driverid") }] };
 					getAjaxData(params, 'callbackChangeDuty');
 				});
@@ -189,6 +192,7 @@
 							if (valueUP.is_onduty == '0') {
 									$('#dutyStatus').append(' is offline');
 									$(".onoffswitch").css("display", "block");
+									//$(".onButton").css("display", "inline-block");
 									$(".offonState").css("display", "none");
 									$('#activeVehicleInfo').css("display", "block");
 									window.variable = 8;
@@ -227,6 +231,7 @@
 
 			function callbackChangeDuty(data) {
 				if (data.success == true) {
+					console.log(data);
 					document.addEventListener('deviceready', onDeviceReady, true);
 				} else {
 
@@ -498,9 +503,10 @@
 								<div class="btn-rest" id="goOnrest">Rest</div>
 								<div class="btn-rest" id="goUnrest">On duty</div>
 							</div>
-
+							
+							<!-- <div id="onSwitch" class="onButton">Go Online</div> -->
 						
-							<div class="onoffswitch" data-role="none">
+							<div class="onoffswitch" data-role="none" align="center">
 								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
 								<label class="onoffswitch-label" for="myonoffswitch" data-role="none">
 									<div class="onoffswitch-inner" data-role="none">
@@ -512,6 +518,7 @@
 							
 							<div id="activeVehicleInfo"></div>
 							<div id="" style="padding-top:10px; font-weight:bold">Another Vehicle? <a href="my-vehicles.html">Click</a></div>
+							<!-- <div class='input-container' style="clear:both"><button type="submit" class="login-width" data-role="none" >Login</button></div> -->
 						</div>
 						
 						
@@ -525,22 +532,18 @@
 	</div>
 	<footer data-role="footer" data-position="fixed">
 	
-	<div class="tile mini onduty-bg" >
+					<div class="tile mini onduty-bg" >
 
 						<a href="my-vehicles.html" rel="external"></a>
 						<div class="tile-box">
-							<i class="icon-play-circle fa-4x"></i>
-							<div>
-								My Vehicle
-							</div>
+							<i class="fa fa-car fa-3x"></i>
 						</div>
 
 					</div>
 					<div class="tile mini get-quote-bg">
 						<a href="passchange.html" rel="external"></a>
 						<div class="tile-box">
-							<i class="icon-play-circle fa-4x"></i>
-							<div> Change Password </div>
+							<i class="fa fa-pencil-square-o fa-3x"></i>
 						</div>
 					</div>
 <!-- 					<div class="tile mini my-profile-bg">
@@ -549,66 +552,34 @@
 						<div>Social Share</div>
 						</div>
 					</div> -->
-					<div class="tile mini my-profile-bg">
+					<div class="tile mini profile-change-bg">
 						<a href="profile.html" rel="external"></a>
 						<div class="tile-box">
-							<i class="icon-play-circle fa-4x"></i>
-							<div>
-								My Profile
-							</div>
+							<i class="fa fa-user fa-3x"></i> 
 						</div>
 					</div>
 					<div class="tile mini help-bg">
 						<a href="my-jobs.html" data-transition="flip"></a>
 						<div class="tile-box">
-							<i class="icon-briefcase"></i>
-							<div>
-								My Jobs
-							</div>
+							<i class="fa fa-tasks fa-3x"></i> 
 						</div>
 					</div>
-					<div class="tile mini my-profile-bg">
+					<div class="tile mini book-list-bg">
 						<a href="my-invoices.html" data-transition="flip"></a>
 						<div class="tile-box">
-							<i class="icon-circle"></i>
-							<div>
-								My Invoices
-							</div>
+							<i class="fa fa-book fa-3x"></i>
 						</div>
 					</div>
 
-<!-- 					<div class="tile mini sign-out-bg">
+					<div class="tile mini sign-out-bg">
 						<a href="logout.html" id="logout"></a>
 						<div class="tile-box">
-							<i class="icon-sign"></i>
-							<div>
-								Sign Out
-							</div>
+							<i class="fa fa-sign-out fa-3x"></i> 
+
 						</div>
-					</div> -->
+					</div>
 		
     <!-- InstanceBeginEditable name="EditableFooter" -->
- <!-- <a href="#" onClick="confirmDialog()">Confirm </a>
-<a href="#" onClick="showDialog('#job-dialog')">Custom Dialog</a>
-
-
-<div id="job-dialog" class="lightbox-container">
-	<div data-theme="a" class="lightbox-content">
-		<p class='popup-text'>Here comes all the data from the service</p>
-		<div class="buttonContainer">
-			<div id="acceptButtons" onClick="$('#btnArrived').show();">
-				<a href="#" data-role="button" data-theme="b"  data-inline="true" id="btnAccept">Accept</a>
-				<a href="#" data-role="button" data-theme="c"  data-inline="true" id="btnreject">Reject</a>
-			</div>
-			<div id="arrivedButtons" onClick="$('#btnDropped').show();">
-				<a href="#" data-role="button" data-theme="b"  data-inline="true" id="btnArrived" style="display:none">Arrived/Picked Up</a>
-			</div>
-			<div id="droppedButtons" >
-				<a href="#" data-role="button" data-theme="b"  data-inline="true" id="btnDropped" style="display:none">Dropped Off</a>
-			</div>
-		</div>
-	</div>
-</div> -->
 
 
 					<!-- InstanceEndEditable -->

@@ -117,6 +117,14 @@ header {
 .get-quote-bg{
 	background-color:#ffc300;
 }
+
+.profile-change-bg{
+	background-color:#ff1300;
+}
+
+.book-list-bg{
+	background-color:#aa1300;
+}
 .content-position{
 	margin: 0.25em;
 	padding: 0.25em 1em;
@@ -125,7 +133,7 @@ header {
 .get-quote-bg lable.ui-input-text, .get-quote-bg .label-color, .get-quote-bg .ui-select{ color: #000000;}
 .get-quote-bg .ui-btn{ padding: 3px 0 !important;}
 .my-profile-bg{
-	background:#093;
+	background:#FFF;
 /*background-image:url(../images/blur_background.jpg);*/
 }
 .help-bg{
@@ -411,7 +419,7 @@ cursor: pointer;
 }
 
 .onoffswitch {
-    position: relative; width: 100px;
+    position: relative; /* width: 100px; */
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 	display:none;
 }
@@ -439,22 +447,22 @@ cursor: pointer;
 
 .onoffswitch-inner .onoffswitch-active {
     padding-left: 15px;
-    background-color: #C2C2C2; color: #FFFFFF;
+    background-color: GREEN; color: #FFFFFF;
 }
 
 .onoffswitch-inner .onoffswitch-inactive {
     padding-right: 15px;
-    background-color: #C2C2C2; color: #FFFFFF;
+    background-color: GREEN; color: #FFFFFF;
     text-align: right;
 }
 
 .onoffswitch-switch {
-    width: 40px; margin: 0px; text-align: center; 
+    width: 200px; margin: 0px; text-align: center; 
     border: 0px solid #999999;border-radius: 0px; 
     position: absolute; top: 0; bottom: 0;
 }
 .onoffswitch-active .onoffswitch-switch {
-    background: #27A1CA; left: 0;
+    background: GREEN; left: 0;
 }
 .onoffswitch-inactive .onoffswitch-switch {
     background: #A1A1A1; right: 0;
@@ -462,13 +470,13 @@ cursor: pointer;
 
 .onoffswitch-active .onoffswitch-switch:before {
     content: " "; position: absolute; top: 0; left: 40px; 
-    border-style: solid; border-color: #27A1CA transparent transparent #27A1CA; border-width: 15px 10px;
+    border-style: solid; border-color: GREEN transparent transparent; border-width: 15px 10px;
 }
 
 
 .onoffswitch-inactive .onoffswitch-switch:before {
     content: " "; position: absolute; top: 0; right: 40px; 
-    border-style: solid; border-color: transparent #A1A1A1 #A1A1A1 transparent; border-width: 15px 10px;
+    border-width: 15px 10px;
 }
 
 
@@ -666,4 +674,82 @@ clear:both;
 
 .projectInfo{
 	
+}
+
+
+label {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio:empty {
+	margin-left: -999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+	position: relative;
+	float: left;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	margin-top: 2em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+	color: #888;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before, .checkedInput {
+	content:'\2714';
+	text-indent: .9em;
+	color: #9CE2AE;
+	background-color: #4DCB6D;
+}
+
+input.radio:checked ~ label {
+	color: #FFF;
+}
+
+/* radio focus */
+input.radio:focus ~ label:before {
+	box-shadow: 0 0 0 3px #999;
+}
+
+.onButton{
+	width: 100px;
+	height: 38px;
+	line-height: 30px;
+	text-align: center;
+	margin: .25em;
+	padding: .25em;
+	display: inline-block;
+	background: GREEN;
+	cursor : pointer;
 }

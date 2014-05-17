@@ -4,7 +4,7 @@
         <title>Mobile App</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
-        <link rel="stylesheet" href="../css/font-awesome.min.css" />
+        <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<!-- jQueryMobileCSS - original without styling -->
         <link rel="stylesheet" href="../css/jquerymobile.css" />
 		<!-- nativeDroid core CSS -->
