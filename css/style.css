@@ -700,6 +700,7 @@ input.radio:empty ~ label {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	color: #000; 
 }
 
 input.radio:empty ~ label:before {
