@@ -47,24 +47,40 @@
 						currentUser = getLocalStorage("User");
 						driver = currentUser.id;
 					
-						$(document).ready(function() {
+						$(document).ready(function() {							
+							params = { 
+								callback : 'callbackVehicleList', 
+								controller : 'Vehicles', 
+								action : 'vehicleList', 
+								data : [{ userId : driver }] 
+							}; 
 							
-							params = { callback : 'callbackVehicleList', controller : 'Vehicles', action : 'vehicleList', data : [{ userId : driver }] }; 
 							getAjaxData(params, 'callbackVehicleList');
 							
-							checkedId = $("input[name='vehicleActive']:checked").val();
+							//checkedId = $('input[type="radio"]:checked').val();
+							//checkedId = $('label.checkedInput').prev().attr('value');
+							//alert(checkedId);
+							//console.log(checkedId);
+							
 							$("body").on('click', "label",function() { 
-								valueText = $(this).val();
-								alert(valueText);
-								params = { callback : 'callbackMakeVehicleCurrent', controller : 'DriversVehicles', action : 'makeVehicleCurrent', data : [{ currentId : valueText, previousId: checkedId }] }; 
+								valueText = $(this).attr('for');
+								checkedId = $('label.checkedInput').prev().attr('value');
+								//alert(checkedId);
+								//console.log(checkedId);
+								params = { 
+									callback : 'callbackMakeVehicleCurrent', 
+									controller : 'DriversVehicles', 
+									action : 'makeVehicleCurrent', 
+									data : [{ currentId : valueText, previousId: checkedId }] 
+								}; 
 								getAjaxData(params, 'callbackMakeVehicleCurrent');  
 								
 							});
 							
-							$("#goback").click(function(e) {  
-								//alert(1);
-								//window.location.href = "dashboard.html";
-							});
+							/*$("#goback").click(function(e) {  
+								alert(1);
+								window.location.href = "dashboard.html";
+							});*/
 							
 							//navigator.geolocation.getCurrentPosition(onSuccess_current, onError);
 						
@@ -73,7 +89,13 @@
 						function callbackVehicleList(data) { 
 							if (data.success == true) { 
 								//$.each(data.data, function(key, value) { $.each(data.data[key], function(key, value) { if (key == 'Vehicle') { $('#my-vehicle-list ul').append('<li>' + key + ': ' + value.registration_no + '&#9;&#9;<input type="radio" name="vehicleActive" value="' + value.id + '">Active</li>'); console.log(value.registration_no); } }) }); 
-								$.each(data.data, function(key, value) { $.each(data.data[key], function(key, value) { if (key == 'Vehicle') { $('#my-vehicle-list form').append('<input type="radio" name="vehicleActive" class="radio" value="' + value.id + '" data-role="none"/><label for="'+value.id+'" style="clear:both">'+key +':'+value.registration_no+'</label>'); } }) }); 
+								$.each(data.data, function(key, value) {
+									$.each(data.data[key], function(key, value) { 
+										if (key == 'Vehicle') { 
+											$('#my-vehicle-list form').append('<input type="radio" name="vehicleActive" class="radio" value="' + value.id + '" id="'+ value.id +'" data-role="none"/><label for="'+value.id+'" style="clear:both">'+key +':'+value.registration_no+'</label>'); 
+										}
+									})
+								}); 
 								checkDriversActiveVehicle(); 
 							}
 						}
@@ -87,9 +109,11 @@
 							if(data.success == true){ 
 								$.each(data.data, function(key, value) { 
 									checkedId = value['DriversVehicle']['id']; 
-									console.log(value['DriversVehicle']['id']); 
-									$('input:radio[name=vehicleActive][value='+checkedId+']').prop('checked', true);
-									$("label[for='" + checkedId + "']").addClass('checkedInput');									
+									//console.log(value['DriversVehicle']['id']);
+									//alert(value['DriversVehicle']['id']); 
+									$('input:radio[name="vehicleActive"][value="'+checkedId+'"]').prop('checked', true);
+									$("label").removeClass('checkedInput').addClass('uncheckedInput');
+									$("label[for='" + checkedId + "']").removeClass('uncheckedInput').addClass('checkedInput');									
 								})
 							}			
 						}						
@@ -128,13 +152,6 @@
 							//alert('updated');
 					   }
 					}	
-
-
-						
-
-						
-
-
 
 					</script>
 					<!-- InstanceEndEditable -->
