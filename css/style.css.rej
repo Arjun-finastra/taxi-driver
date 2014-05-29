@@ -1,0 +1,74 @@
+diff a/css/style.css b/css/style.css	(rejected hunks)
+@@ -711,33 +711,66 @@
+ 	left: 0;
+ 	content: '';
+ 	width: 2.5em;
+-	background: #D1D3D4;
++	/*background: #D1D3D4;*/
+ 	border-radius: 3px 0 0 3px;
++	
++	color: #C2C2C2;
++	background-color: #D1D3D4;
+ }
+ 
+ /* toggle hover */
+-input.radio:hover:not(:checked) ~ label:before {
++/*input.radio:hover:not(:checked) ~ label:before {
++	content:'\2714';
++	text-indent: .9em;
++	color: #C2C2C2;
++	background-color: #D1D3D4;
++}*/
++
++label:before {
+ 	content:'\2714';
+ 	text-indent: .9em;
+ 	color: #C2C2C2;
++	background-color: #D1D3D4;
+ }
+ 
+-input.radio:hover:not(:checked) ~ label {
++/*input.radio:hover:not(:checked) ~ label {
+ 	color: #888;
+-}
++}*/
+ 
+ /* toggle on */
+-input.radio:checked ~ label:before, .checkedInput {
++label:before {
+ 	content:'\2714';
+ 	text-indent: .9em;
+-	color: #9CE2AE;
++	color: #C2C2C2;
++	background-color: #D1D3D4;
++}
++
++input.radio:checked ~ label:before, .checkedInput, .checkedInput:before {
++	content:'\2714';
++	text-indent: .9em;
++	color: #FFFFFF;
+ 	background-color: #4DCB6D;
+ }
+ 
++.uncheckedInput:before {
++	content:'\2714' !important;
++	text-indent: .9em;
++	color: #C2C2C2 !important;
++	background-color: #D1D3D4 !important;
++}
++
++label.uncheckedInput {
++	color: #000 !important;
++}
++
+ input.radio:checked ~ label {
+ 	color: #FFF;
+ }
+ 
++.uncheckedInput:hover, .checkedInput:hover{
++	color: #C2C2C2 !important;
++}
++
+ /* radio focus */
+ input.radio:focus ~ label:before {
+ 	box-shadow: 0 0 0 3px #999;
