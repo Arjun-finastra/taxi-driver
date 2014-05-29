@@ -87,7 +87,7 @@ body{
 
 #header-logo{
 	display: inline-block;
-	width: 45%;
+	width: 35%;
 	text-align: center;
 }
 
@@ -100,7 +100,7 @@ body{
 	display:inline-block;
 	font-size: 1.2em;	
 	padding: 12px 0px 0px;
-	width:25%;	
+	width:30%;	
 }
 
 .top-icons a{

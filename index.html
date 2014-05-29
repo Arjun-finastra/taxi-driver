@@ -66,13 +66,11 @@
 	
 	$(document).ready(function() {
 		$("#godashboard").click(function(e) {  
-								//alert(1);
 			window.location.href = "dashboard.html";
 		});
 	});
 
-    function callbackLogin(data) {
-        
+    function callbackLogin(data) {        
         if(data.success != false) {
             setLoginState(data);
             window.location.href = "dashboard.html";
