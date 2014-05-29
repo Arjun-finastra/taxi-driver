@@ -1,45 +1,36 @@
-
 <!DOCTYPE HTML>
 <html><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
-    <head>
-        <title>Mobile App</title>
+    <head>        
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
-        <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
-		<!-- jQueryMobileCSS - original without styling -->
-        <link rel="stylesheet" href="css/jquerymobile.css" />
-		<!-- nativeDroid core CSS -->
-        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
-		<!-- nativeDroid: Light/Dark -->
-        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
-		<!-- nativeDroid: Color Schemes -->
-        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
-		<!-- jQuery / jQueryMobile Scripts -->
-        <link href="css/style.css" type="text/css" rel="stylesheet">
- 		<!-- style link -->       
-		<script src="js/jquery-1.9.1.min.js"></script>
-        <script src="js/jquery.mobile-1.3.1.min.js"></script>
         
-		<script src="js/logger.js"></script>
-		<script src="cordova.js"></script>
-		<script src="js/functions.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-		<script src="PushNotification.js"></script>
-		<script src="js/push.js"></script>
-		<!-- <script src="js/phonenavigator.js"></script> -->
+        <title>Mobile App</title>        
+        
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" 
+        rel="stylesheet" type="text/css"/>
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="css/jquerymobile.css" rel="stylesheet" type="text/css"/>                
+		<!-- nativeDroid core CSS -->
+        <link href="css/jquerymobile.nativedroid.css" rel="stylesheet" type="text/css"/>
+        
+		<!-- nativeDroid: Light/Dark -->
+        <link href="css/jquerymobile.nativedroid.dark.css" rel="stylesheet" type="text/css" id='jQMnDTheme'/>
+        
+		<!-- nativeDroid: Color Schemes -->
+        <link href="css/jquerymobile.nativedroid.color.green.css" rel="stylesheet" type="text/css" id='jQMnDColor'/>        	
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+         		       
+		<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mobile-1.4.2.min.js" type="text/javascript"></script>        
+		<script src="js/logger.js" type="text/javascript"></script>
+		<script src="cordova.js" type="text/javascript"></script>
+		<script src="js/functions.js" type="text/javascript"></script>
 		<script type="text/javascript">
-
-		
         	$(document).ready(function() {
          		allowAccess();
-				
              	$(document).on( 'pagecreate','#page', function(event){
               		setUserToken();
              	});
         	});
-		if ( getLocalStorage("acceptanceStatus") === null || getLocalStorage("acceptanceStatus") < 11 ) 	{	
-			setLocalStorage('acceptanceStatus',10);  
-		}	
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
 
@@ -49,45 +40,70 @@
 			 var currentLat;
 			 var currentLng;
 			 var roadName;
-			$(document).ready(function() {
-			
+			$(document).ready(function() {			
 				currentUser = getLocalStorage("User");
 							
-				params = { callback : 'callbackGetDriverid', controller : 'Drivers', action : 'getDriverid', data : [{ userId : currentUser.id }] };
+				params = { 
+					callback : 'callbackGetDriverid', 
+					controller : 'Drivers', 
+					action : 'getDriverid', 
+					data : [{ userId : currentUser.id }] 
+				};
 				getAjaxData(params, 'callbackGetDriverid');
-				
-
-				
-				params = { callback : 'callbackNotification', controller : 'Notifications', action : 'notification', data : [{ driverId : localStorage.getItem("driverid") }] };
+								
+				params = { 
+					callback : 'callbackNotification', 
+					controller : 'Notifications', 
+					action : 'notification', 
+					data : [{ driverId : localStorage.getItem("driverid") }] 
+				};
 				getAjaxData(params, 'callbackNotification');
 				
-
 				$("body").on('click', "input[type=checkbox][name=onoffswitch]", function() {
 					//alert('clicked');
 					if ($('input[type=checkbox][name=onoffswitch]').is(':checked')) { makeChange = 0; } else { makeChange = 1; }
 					//makeChange = 1;
-					params = { callback : 'callbackChangeDuty', controller : 'Drivers', action : 'changeOnduty', data : [{ changeStatus : makeChange, driverId : localStorage.getItem("driverid") }] };
+					params = { 
+						callback : 'callbackChangeDuty', 
+						controller : 'Drivers', 
+						action : 'changeOnduty', 
+						data : [{ changeStatus : makeChange, 
+						driverId : localStorage.getItem("driverid") }] 
+					};
 					getAjaxData(params, 'callbackChangeDuty');
 				});
 				
-				$("#logout").click(function(){ 	
-				
+				$("#logout").click(function(){ 					
 					logout();
-
 				});
 										
 				$('#goOffline').click(function(e) {  
-					params = { callback : 'callbackGoOffline', controller : 'Drivers', action : 'goOffline', data : [{ driverId : localStorage.getItem("driverid") }] };
+					params = { 
+						callback : 'callbackGoOffline', 
+						controller : 'Drivers', 
+						action : 'goOffline', 
+						data : [{ driverId : localStorage.getItem("driverid") }] 
+					};
 					getAjaxData(params, 'callbackGoOffline');
 				});
 				
 				$('#goOnrest').click(function(e) {  
-					params = { callback : 'callbackGoOnrest', controller : 'Drivers', action : 'goOnrest', data : [{ driverId : localStorage.getItem("driverid") }] };
+					params = { 
+						callback : 'callbackGoOnrest', 
+						controller : 'Drivers', 
+						action : 'goOnrest', 
+						data : [{ driverId : localStorage.getItem("driverid") }] 
+					};
 					getAjaxData(params, 'callbackGoOnrest');
 				});
 				
 				$('#goUnrest').click(function(e) {  
-					params = { callback : 'callbackGoUnrest', controller : 'Drivers', action : 'goUnrest', data : [{ driverId : localStorage.getItem("driverid") }] };
+					params = { 
+						callback : 'callbackGoUnrest', 
+						controller : 'Drivers', 
+						action : 'goUnrest', 
+						data : [{ driverId : localStorage.getItem("driverid") }] 
+					};
 					getAjaxData(params, 'callbackGoUnrest');
 				});
 				
@@ -119,7 +135,16 @@
 						$("#navigateJob").show();
 						/* calculateDistances(job.from_detail,job.to_detail); */
 						
-						params = { callback : 'callbackJobAccepted', controller : 'Jobs', action : 'jobAccepted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id, dDistance: localStorage.getItem('driverDistance'), dTime:localStorage.getItem('arrivalDuration') }] };
+						params = { 
+						callback : 'callbackJobAccepted', 
+						controller : 'Jobs', action : 'jobAccepted', 
+							data : [{ 
+								driverId : localStorage.getItem('driverid'), 
+								jobId : jobId.id, 
+								dDistance: localStorage.getItem('driverDistance'), 
+								dTime:localStorage.getItem('arrivalDuration') 
+							}] 
+						};
 						getAjaxData(params, 'callbackJobAccepted');
 					}else if (myId == 'rejectJob'){
 						//alert('pppppppp');
@@ -130,7 +155,12 @@
 					$("#arrivedJob").hide();
 					$("#navigateJob").hide();
 					$("#pickedJob").show();
-					params = { callback : 'callbackDriverArrived', controller : 'Jobs', action : 'driverArrived', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
+					params = { 
+						callback : 'callbackDriverArrived', 
+						controller : 'Jobs',
+						 action : 'driverArrived', 
+						data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] 
+					};
 					getAjaxData(params, 'callbackDriverArrived');
 				});
 								
@@ -154,7 +184,12 @@
 					$("#pickedJob").hide();
 					$("#navigateJob").hide();
 					$("#completeJob").show();
-					params = { callback : 'callbackDriverPicked', controller : 'Jobs', action : 'driverPicked', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
+					params = { 
+						callback : 'callbackDriverPicked', 
+						controller : 'Jobs', 
+						action : 'driverPicked', 
+						data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] 
+					};
 					getAjaxData(params, 'callbackDriverPicked');
 				});
 				
@@ -163,7 +198,12 @@
 					//$("#pickedJob").hide();
 					$("#completeJob").show();
 					$("#navigateJob").hide();
-					params = { callback : 'callbackJobCompleted', controller : 'Jobs', action : 'jobCompleted', data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] };
+					params = { 
+						callback : 'callbackJobCompleted', 
+						controller : 'Jobs', 
+						action : 'jobCompleted', 
+						data : [{ driverId : localStorage.getItem('driverid'), jobId : jobId.id }] 
+					};
 					getAjaxData(params, 'callbackJobCompleted');
 				});
 				
@@ -200,7 +240,7 @@
 									//$('input[type=checkbox][name=onoffswitch]').prop('checked', true); .onoffswitch 
 									$(".offonState").css("display", "block");
 									$('#dutyStatus').append(' is on duty. '+'<span class="green_circle"></span>'); 
-									$('#goOnrest').css("display", "inline");
+									$('#goOnrest').css("display", "inline-block");
 									$('#goUnrest').css("display", "none");
 									window.variable = 9;
 								} else if (valueUP.is_onduty == '2') {
@@ -342,7 +382,12 @@
 					localStorage.driverid = data.data.Driver.id;
 					myVariable = data.data.Driver.id; 
 					
-					params = { callback : 'callbackIsOnduty', controller : 'Drivers', action : 'isOnduty', data : [{ driverId : data.data.Driver.id }] };
+					params = { 
+						callback : 'callbackIsOnduty', 
+						controller : 'Drivers', 
+						action : 'isOnduty', 
+						data : [{ driverId : data.data.Driver.id }] 
+					};
 					getAjaxData(params, 'callbackIsOnduty');
 				} else {
 
@@ -431,20 +476,43 @@
 
 		<!-- InstanceEndEditable --> 
     </head>
-    <body>
-        
-    <div data-role="page">
-		<header data-role="none">
-			<div id="header-logo">
-				<div class="tile-box"><a href="dashboard.html" rel="external"><img src="images/taxi-logo.png" alt="Get a Taxi App"></a></div>
-			</div>
-		<!-- InstanceBeginEditable name="EditableHeader" -->
+    
+    <body>        
+        <div data-role="page" style="">            
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e" 
+            id="header">
+                <div class="container">
+                	<div class="top-icons ti-left">
+                    	<a href="#" data-ajax="false" target="_blank">
+                            <i class="icon-android"></i>
+                        </a>
+                    </div>                	
+                    
+                    <div id="header-logo">
+                        <div class="tile-box text-center">
+                            <a href="dashboard.html" rel="external">
+                                <img src="images/taxi-logo.png" alt="Get a Taxi App">
+                            </a>
+                        </div>
+                    </div>                                   
+                    
+                    <div class="top-icons ti-right">
+                        <a href="#">
+                            <i class='icon-cogs'></i>&nbsp;Settings
+                        </a>
+                    </div>
+                    
+                <!-- InstanceBeginEditable name="EditableHeader" -->
 
 					<!-- InstanceEndEditable -->
-		</header>
+                <div class="clearfix"></div>
+                </div>
+            </div>               
         
-        <div id="content"> 
-		<!-- InstanceBeginEditable name="EditableBody" -->
+        
+            <div id="content"> 
+                <div class="container">
+                <!-- InstanceBeginEditable name="EditableBody" -->
 				<div id="leftInfo" data-role="none">
 							<span id="username"></span><span id="dutyStatus"></span>
 							
@@ -497,8 +565,8 @@
 						
 
 							
-						<div id="rightInfo" data-role="none">
-							<div class="offonState">
+						<div id="rightInfo" class="text-center" data-role="none">
+							<div class="offonState mar-b-8">
 								<div class="btn-off" id="goOffline">Offline</div>
 								<div class="btn-rest" id="goOnrest">Rest</div>
 								<div class="btn-rest" id="goUnrest">On duty</div>
@@ -506,7 +574,7 @@
 							
 							<!-- <div id="onSwitch" class="onButton">Go Online</div> -->
 						
-							<div class="onoffswitch" data-role="none" align="center">
+							<div class="onoffswitch mar-b-8" data-role="none" align="center">
 								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
 								<label class="onoffswitch-label" for="myonoffswitch" data-role="none">
 									<div class="onoffswitch-inner" data-role="none">
@@ -516,8 +584,11 @@
 								</label>
 							</div>
 							
-							<div id="activeVehicleInfo"></div>
-							<div id="" style="padding-top:10px; font-weight:bold">Another Vehicle? <a href="my-vehicles.html">Click</a></div>
+							<div id="activeVehicleInfo" class="mar-b-8" style="color:#000;font-weight:bold"></div>
+							<div style="color:#000;font-weight:bold">
+                            	Another Vehicle? 
+                            	<a href="my-vehicles.html" style="color:#0088CC;">Click</a>
+                            </div>
 							<!-- <div class='input-container' style="clear:both"><button type="submit" class="login-width" data-role="none" >Login</button></div> -->
 						</div>
 						
@@ -528,63 +599,41 @@
 				<!-- <div style="clear:both, margin-bottom:10px; "></div> -->
 
 					<!-- InstanceEndEditable -->
-		<div style="clear:both"></div>
-	</div>
-	<footer data-role="footer" data-position="fixed">
-	
-					<div class="tile mini onduty-bg" >
-
-						<a href="my-vehicles.html" rel="external"></a>
-						<div class="tile-box">
-							<i class="fa fa-car fa-3x"></i>
-						</div>
-
-					</div>
-					<div class="tile mini get-quote-bg">
-						<a href="passchange.html" rel="external"></a>
-						<div class="tile-box">
-							<i class="fa fa-pencil-square-o fa-3x"></i>
-						</div>
-					</div>
-<!-- 					<div class="tile mini my-profile-bg">
-						<a href="socialShare.html" data-ajax="false"></a>
-						<div class="tile-box"><i class="fa fa-user fa-4x"></i>
-						<div>Social Share</div>
-						</div>
-					</div> -->
-					<div class="tile mini profile-change-bg">
-						<a href="profile.html" rel="external"></a>
-						<div class="tile-box">
-							<i class="fa fa-user fa-3x"></i> 
-						</div>
-					</div>
-					<div class="tile mini help-bg">
-						<a href="my-jobs.html" data-transition="flip"></a>
-						<div class="tile-box">
-							<i class="fa fa-tasks fa-3x"></i> 
-						</div>
-					</div>
-					<div class="tile mini book-list-bg">
-						<a href="my-invoices.html" data-transition="flip"></a>
-						<div class="tile-box">
-							<i class="fa fa-book fa-3x"></i>
-						</div>
-					</div>
-
-					<div class="tile mini sign-out-bg">
-						<a href="logout.html" id="logout"></a>
-						<div class="tile-box">
-							<i class="fa fa-sign-out fa-3x"></i> 
-
-						</div>
-					</div>
-		
-    <!-- InstanceBeginEditable name="EditableFooter" -->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div data-position="fixed" data-tap-toggle="false" data-role="footer" 
+            data-tap-toggle="false" data-theme="b" id="footer">
+                <div class="container">
+                    <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a href="index.html">
+                                    <i class="icon-home"></i><br/>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-picture"></i><br/>
+                                    Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="logout.htnl" id="logout">
+                                    <i class="icon-signout"></i><br/>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- InstanceBeginEditable name="EditableFooter" -->
 
 
 					<!-- InstanceEndEditable -->
-	</footer>
-	</div>
-	</div>
-</body>
+                </div>
+            </div>            
+        </div>
+	</body>
 <!-- InstanceEnd --></html>
