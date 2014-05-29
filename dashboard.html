@@ -26,10 +26,11 @@
 		<script src="js/functions.js" type="text/javascript"></script>
 		<script type="text/javascript">
         	$(document).ready(function() {
-         		allowAccess();
+         		allowAccess();				
              	$(document).on( 'pagecreate','#page', function(event){
-              		setUserToken();
-             	});
+              		setUserToken();					
+             	});	
+				getHeaderBgColor();				
         	});
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
@@ -40,8 +41,9 @@
 			 var currentLat;
 			 var currentLng;
 			 var roadName;
-			$(document).ready(function() {			
-				currentUser = getLocalStorage("User");
+			$(document).ready(function() {	
+			
+				currentUser = getLocalStorage("User");								
 							
 				params = { 
 					callback : 'callbackGetDriverid', 
@@ -67,8 +69,10 @@
 						callback : 'callbackChangeDuty', 
 						controller : 'Drivers', 
 						action : 'changeOnduty', 
-						data : [{ changeStatus : makeChange, 
-						driverId : localStorage.getItem("driverid") }] 
+						data : [{ 
+							changeStatus : makeChange, 
+							driverId : localStorage.getItem("driverid") 
+						}] 
 					};
 					getAjaxData(params, 'callbackChangeDuty');
 				});
@@ -235,6 +239,9 @@
 									//$(".onButton").css("display", "inline-block");
 									$(".offonState").css("display", "none");
 									$('#activeVehicleInfo').css("display", "block");
+									//$('#header').removeClass('bg-red');
+									//$('#header').removeClass('bg-green');
+									//$('#header').addClass('bg-orange');
 									window.variable = 8;
 								} else if (valueUP.is_onduty == '1') {
 									//$('input[type=checkbox][name=onoffswitch]').prop('checked', true); .onoffswitch 
@@ -242,12 +249,18 @@
 									$('#dutyStatus').append(' is on duty. '+'<span class="green_circle"></span>'); 
 									$('#goOnrest').css("display", "inline-block");
 									$('#goUnrest').css("display", "none");
+									//$('#header').removeClass('bg-red');
+									//$('#header').removeClass('bg-orange');
+									//$('#header').addClass('bg-green');
 									window.variable = 9;
 								} else if (valueUP.is_onduty == '2') {
 									window.variable = 7;
-									$('#goUnrest').css("display", "inline");
+									$('#goUnrest').css("display", "inline-block");
 									$('#goOnrest').css("display", "none");
 									$('#dutyStatus').append(' is on rest.'+'<span class="yellow_circle"></span>');
+									//$('#header').removeClass('bg-red');
+									//$('#header').removeClass('bg-green');
+									//$('#header').addClass('bg-orange');
 								}
 							driverCounting++;	
 						}						
@@ -271,8 +284,9 @@
 
 			function callbackChangeDuty(data) {
 				if (data.success == true) {
-					console.log(data);
+					//console.log(data);					
 					document.addEventListener('deviceready', onDeviceReady, true);
+					window.location.reload();
 				} else {
 
 				}
@@ -282,7 +296,7 @@
 				if (data.success == true) {
 					window.location.reload();
 				} else {
-
+					
 				}
 			}
 			
@@ -480,7 +494,7 @@
     <body>        
         <div data-role="page" style="">            
             <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e" 
-            id="header">
+            id="header" class="bg-black">
                 <div class="container">
                 	<div class="top-icons ti-left">
                     	<a href="#" data-ajax="false" target="_blank">
@@ -581,8 +595,12 @@
 								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
 								<label class="onoffswitch-label" for="myonoffswitch" data-role="none">
 									<div class="onoffswitch-inner" data-role="none">
-										<div class="onoffswitch-active" data-role="none"><div class="onoffswitch-switch" data-role="none">Duty</div></div>
-										<div class="onoffswitch-inactive" data-role="none"><div class="onoffswitch-switch" data-role="none">Online</div></div>
+										<div class="onoffswitch-active" data-role="none">
+                                        	<div class="onoffswitch-switch" data-role="none">Duty</div>
+                                        </div>
+										<div class="onoffswitch-inactive" data-role="none">
+                                        	<div class="onoffswitch-switch" data-role="none">Go Online</div>
+                                        </div>
 									</div>
 								</label>
 							</div>

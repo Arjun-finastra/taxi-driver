@@ -14,17 +14,63 @@ var pageTitle		= '';
 var nonSecurePages	= ["index.html","forgot-password.html","register.html"];
 
 var User = null;
-	$(document).bind("mobileinit", function(){
-		$.extend(  $.mobile , {
-			ajaxEnabled: true,
-			allowCrossDomainPages: true,
-			phonegapNavigationEnabled: true
-		});
-		//$(function(){ $('input').attr('autocomplete', 'off'); });
-		$(function(){ $('[data-role=header],[data-role=footer]').fixedtoolbar({ tapToggle:false }); });
-      });
+$(document).bind("mobileinit", function(){
+	$.extend(  $.mobile , {
+		ajaxEnabled: true,
+		allowCrossDomainPages: true,
+		phonegapNavigationEnabled: true
+	});
+	//$(function(){ $('input').attr('autocomplete', 'off'); });
+	$(function(){ $('[data-role=header],[data-role=footer]').fixedtoolbar({ tapToggle:false }); });
+  });
+  
+function getHeaderBgColor() {
+	
+	did = localStorage.driverid;
+	
+	params = { 
+		callback : 'callbackDutyStatus', 
+		controller : 'Drivers', 
+		action : 'isOnduty', 
+		data : [{ driverId : did }] 
+	};
+	getAjaxData(params, 'callbackDutyStatus');	
+}
 
-
+function callbackDutyStatus(data) {
+	
+	if (data.success == true) {
+		
+		for (var i = 0; i <data.data.length; i++) {
+			//alert(data.data[i].Driver.is_onduty);
+			//console.log(data.data[i].Driver.is_onduty);
+			var duty_status = data.data[i].Driver.is_onduty;
+		}
+		
+		if (duty_status == '0') {
+			$('#header').removeClass('bg-black');
+			$('#header').removeClass('bg-orange');
+			$('#header').removeClass('bg-green');
+			$('#header').addClass('bg-red');
+		} else if (duty_status == '1') {
+			$('#header').removeClass('bg-black');
+			$('#header').removeClass('bg-red');
+			$('#header').removeClass('bg-orange');
+			$('#header').addClass('bg-green');
+		} else if (duty_status == '2') {
+			$('#header').removeClass('bg-black');						
+			$('#header').removeClass('bg-red');
+			$('#header').removeClass('bg-green');
+			$('#header').addClass('bg-orange');
+		} else {
+			$('#header').removeClass('bg-orange');						
+			$('#header').removeClass('bg-red');
+			$('#header').removeClass('bg-green');
+			$('#header').addClass('bg-black');
+		}
+	}
+}
+	
 
 /* Set login State*/
 function setLoginState(data) {

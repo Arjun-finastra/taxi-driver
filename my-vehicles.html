@@ -26,10 +26,11 @@
 		<script src="js/functions.js" type="text/javascript"></script>
 		<script type="text/javascript">
         	$(document).ready(function() {
-         		allowAccess();
+         		allowAccess();				
              	$(document).on( 'pagecreate','#page', function(event){
-              		setUserToken();
-             	});
+              		setUserToken();					
+             	});	
+				getHeaderBgColor();				
         	});
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
@@ -41,7 +42,7 @@
     <body>        
         <div data-role="page" style="">            
             <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e" 
-            id="header">
+            id="header" class="bg-black">
                 <div class="container">
                 	<div class="top-icons ti-left">
                     	<a href="#" data-ajax="false" target="_blank">
@@ -102,8 +103,12 @@
 							if (data.success == true) { 
 								$.each(data.data, function(key, value) { 
 									$.each(data.data[key], function(key, value) { 
-										if (key == 'Vehicle') { 
-											$('#my-vehicle-list form').append('<input type="radio" name="vehicleActive" class="radio" value="' + value.id + '" data-role="none"/><label for="'+value.id+'" style="clear:both;">'+key +':'+value.registration_no+'</label>'); 
+										if (key == 'Vehicle') {
+var _html ='<div class="input-container clearfix">';
+_html+='<input type="radio" name="vehicleActive" class="radio" value="'+value.id+'" data-role="none"/>';
+_html+='<label for="'+value.id+'">'+key +':'+value.registration_no+'</label><div class="clearfix">';
+_html+='</div></div>';
+$('#my-vehicle-list form').append(_html); 
 										} 
 									}) 
 								}); 
@@ -189,17 +194,20 @@
 						<h4>Assigned Vehicles are :-</h4>
                         
 						<div id="my-vehicle-list">
-                            <form data-role="none">																								
-                            	<input type="radio" name="vehicleActive" class="radio" 
-                                data-role="none" value="inactive" />
-                                <label for="radio1" style="clear:both">No vechicle active</label>  
+                            <form data-role="none">
+                            	<div class="input-container">																								
+        	<input type="radio" name="vehicleActive" class="radio" value="inactive" data-role="none"/>
+                                <label for="radio1" style="">No vechicle active</label>
+                                <div class="clearfix"></div>
+                                </div>                                  
                             </form>
+                            <div class="clearfix"></div>
 						</div>
 												
 						<div class="clearfix"></div>
                         
-						<div data-role="none" style="text-align:center; cursor:pointer;">
-                        	Go to Dashboard
+						<div data-role="none" class="btn-off btn-commom" style="width:200px;">
+                        	<a href="dashboard.html" style="color: #FFFFFF;">Go to Dashboard</a>                        	
                         </div>
 					</div>
 
