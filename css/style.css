@@ -54,6 +54,10 @@ body{
 	margin-bottom: 8px;	
 }
 
+.border-gray{
+	border: 1px solid #EBEBEB;
+}
+
 .text-center{
 	text-align: center;	
 }
