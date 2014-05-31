@@ -24,6 +24,27 @@ $(document).bind("mobileinit", function(){
 	$(function(){ $('[data-role=header],[data-role=footer]').fixedtoolbar({ tapToggle:false }); });
   });
   
+$(document).on('click', '.dd a', function(){
+	if($(this).parent().find('.ud-menu').is(':hidden')){						
+		$(this).parent().find('.ud-menu').show().animate({top: 40}, 200);
+	} else {
+		$(this).parent().find('.ud-menu').hide().animate({top: 0}, 200);
+	}
+});
+
+function getUserMenu(){
+	curUser = localStorage;
+	if(curUser.loggedin == '"yes"'){
+		var option = '<ul class="user-menu">';
+		option+='<li class="dd"><a href="#"><i class="icon-user"></i></a>';
+		option+='<ul class="ud-menu"><li><a href="#">Profile</a></li>';
+		option+='<li><a href="#">Change Password</a></li>';
+		option+='<li><a href="#">Logout</a></li></ul>';
+		option += '</li></ul>';
+		return $('#header-right').append(option);
+	}
+}
+  
 function getHeaderBgColor() {
 	
 	did = localStorage.driverid;

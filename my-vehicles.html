@@ -30,7 +30,8 @@
              	$(document).on( 'pagecreate','#page', function(event){
               		setUserToken();					
              	});	
-				getHeaderBgColor();				
+				getHeaderBgColor();
+				getUserMenu();												
         	});
         </script>
 	<!-- InstanceBeginEditable name="EditableHead" -->
@@ -40,7 +41,8 @@
     </head>
     
     <body>        
-        <div data-role="page" style="">            
+        <div data-role="page" style="">                
+                    
             <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e" 
             id="header" class="bg-black">
                 <div class="container">
@@ -58,14 +60,32 @@
                         </div>
                     </div>                                   
                     
-                    <div class="top-icons ti-right">
-                    	<a href="#">
+                    <div class="top-icons ti-right" id="header-right">
+                    	<!--<a href="#">
                             <i class="icon-user"></i>
                         </a>
-                        <a href="#">
+                        <a href="#right-panel" data-role="button" data-icon="tasks" data-iconpos="right" data-inline="true">
+                        	<i class="icon-cogs"></i>
+                        </a>
+                       <a href="#">
                             <i class="icon-cogs"></i>
-                        </a>                        
+                        </a>-->                        
                     </div>
+                    
+                    <!--<div data-role="panel" id="right-panel" data-theme="b">
+                        <div class="ui-panel-inner">
+                            <ul data-role="listview" class="ui-listview">
+                                <li class="ui-li-static ui-body-inherit ui-first-child">Your wishes</li>
+                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-coffee"></i>Need a Coffee</a></li>
+                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-beer"></i>Have a Beer</a></li>
+                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-music"></i>Play Music</a></li>
+                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-fire"></i>Make a fire</a></li>
+                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-bullhorn"></i>Shout it loud</a></li>
+                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-heart"></i>Meet friends</a></li>
+                                <li data-icon="false" class="ui-last-child"><a href="#" class="ui-btn"><i class="lIcon fa fa-trophy"></i>Win a Trophy</a></li>
+                            </ul>
+                        </div>
+                	</div>-->
                     
                 <!-- InstanceBeginEditable name="EditableHeader" -->
 					<script type="text/javascript">
@@ -82,11 +102,12 @@
 							getAjaxData(params, 'callbackVehicleList');
 							
 							
-							$("body").on('click', "label",function() { 
+							$("body").on("click", "label",function() { 
 								clickedId = $(this).prev('input[type="radio"]').attr('value');
-								checkedId = $(this).parent('form').find('.checkedInput').attr('for');
+								checkedId = $(this).parents('form').find('.checkedInput').attr('for');
 								//alert(clickedId);
 								//console.log(checkedId);
+								//return false;
 								params = { 
 									callback : 'callbackMakeVehicleCurrent', 
 									controller : 'DriversVehicles', 
@@ -179,9 +200,9 @@ $('#my-vehicle-list form').append(_html);
 					<!-- InstanceEndEditable -->
                 <div class="clearfix"></div>
                 </div>
-            </div>               
-        
-        
+            </div>   
+                        
+                
             <div id="content"> 
                 <div class="container">
                 <!-- InstanceBeginEditable name="EditableBody" -->
@@ -196,9 +217,9 @@ $('#my-vehicle-list form').append(_html);
 						<div id="my-vehicle-list">
                             <form data-role="none">
                             	<div class="input-container">																								
-        	<input type="radio" name="vehicleActive" class="radio" value="inactive" data-role="none"/>
-                                <label for="radio1" style="">No vechicle active</label>
-                                <div class="clearfix"></div>
+        							<input type="radio" name="vehicleActive" class="radio" value="inactive" data-role="none"/>
+                                	<label for="radio1" style="">No vechicle active</label>
+                                	<div class="clearfix"></div>
                                 </div>                                  
                             </form>
                             <div class="clearfix"></div>
@@ -206,7 +227,7 @@ $('#my-vehicle-list form').append(_html);
 												
 						<div class="clearfix"></div>
                         
-						<div data-role="none" class="btn-off btn-commom" style="width:200px;">
+						<div data-role="none" class="btn-off btn-commom" style="width:100%;">
                         	<a href="dashboard.html" style="color: #FFFFFF;">Go to Dashboard</a>                        	
                         </div>
 					</div>
@@ -216,8 +237,8 @@ $('#my-vehicle-list form').append(_html);
                 <div class="clearfix"></div>
             </div>
             
-            <div data-position="fixed" data-tap-toggle="false" data-role="footer" 
-            data-tap-toggle="false" data-theme="b" id="footer">
+            <div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme="b" 
+            id="footer">
                 <div class="container">
                     <div data-role="navbar">
                         <ul>
@@ -242,7 +263,8 @@ $('#my-vehicle-list form').append(_html);
 
 					<!-- InstanceEndEditable -->
                 </div>
-            </div>            
+            </div> 
+                                               
         </div>
 	</body>
 <!-- InstanceEnd --></html>
