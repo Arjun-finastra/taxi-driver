@@ -48,10 +48,6 @@ $(document).ready(function() {
 		getAjaxData(params, 'callbackChangeDuty');
 	});
 
-	$("#logout").click(function() {
-		logout();
-	});
-
 	$('#goOffline').click(function(e) {
 		params = {
 			callback : 'callbackGoOffline',

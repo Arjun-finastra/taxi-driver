@@ -32,6 +32,10 @@ $(document).on('click', '.dd a', function(){
 	}
 });
 
+$("#logout").click(function() {
+	logout();
+});
+
 function getUserMenu(){
 	curUser = localStorage;
 	if(curUser.loggedin == '"yes"'){
