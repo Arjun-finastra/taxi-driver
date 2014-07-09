@@ -37,20 +37,19 @@
 	<!-- InstanceBeginEditable name="EditableHead" -->
 
 		<script src="js/dashboard.js" type="text/javascript"></script>
+		<script src="js/custom.js"></script>
 
 		<!-- InstanceEndEditable --> 
     </head>
     
     <body>        
-        <div data-role="page" style="">                
+        <div data-role="page" id="pageone" class="content_wrapper container" data-theme='b'>             
                     
             <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e" 
             id="header" class="bg-black">
                 <div class="container">
                 	<div class="top-icons ti-left">
-                    	<a href="#" data-ajax="false" target="_blank">
-                            <i class="icon-android"></i>
-                        </a>
+                    	<a href="#sidebar_panael" class="ui-btn ui-corner-all ui-shadow manu_btn" data-role='button' data-icon='tasks' data-iconpos='left' data-inline='true'><i class='fa fa-bars'></i></a> 
                     </div>                	
                     
                     <div id="header-logo">
@@ -59,7 +58,7 @@
                                 <img src="images/taxi-logo.png" alt="Get a Taxi App">
                             </a>
                         </div>
-                    </div>                                   
+                    </div>         
                     
                     <div class="top-icons ti-right" id="header-right">
                     	<!--<a href="#">
@@ -73,20 +72,7 @@
                         </a>-->                        
                     </div>
                     
-                    <!--<div data-role="panel" id="right-panel" data-theme="b">
-                        <div class="ui-panel-inner">
-                            <ul data-role="listview" class="ui-listview">
-                                <li class="ui-li-static ui-body-inherit ui-first-child">Your wishes</li>
-                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-coffee"></i>Need a Coffee</a></li>
-                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-beer"></i>Have a Beer</a></li>
-                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-music"></i>Play Music</a></li>
-                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-fire"></i>Make a fire</a></li>
-                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-bullhorn"></i>Shout it loud</a></li>
-                                <li data-icon="false"><a href="#" class="ui-btn"><i class="lIcon fa fa-heart"></i>Meet friends</a></li>
-                                <li data-icon="false" class="ui-last-child"><a href="#" class="ui-btn"><i class="lIcon fa fa-trophy"></i>Win a Trophy</a></li>
-                            </ul>
-                        </div>
-                	</div>-->
+                    
                     
                 <!-- InstanceBeginEditable name="EditableHeader" -->
 
@@ -99,20 +85,98 @@
             <div id="content"> 
                 <div class="container">
                 <!-- InstanceBeginEditable name="EditableBody" -->
-                <div id="leftInfo" data-role="none">
+             <!--   <div id="leftInfo" data-role="none">
 					<span id="username"></span><span id="dutyStatus"></span>							
 				</div>
                 
-                <div class="widget-area mar-t-10">
-                    <div id="wgt-top-left" class="widget col-3-4 float-left" data-role="none"></div>
+               -->
+                    
+				<div class="section_area_one">
+					<div class="lg_btn margin_right lg_btn_max">
+						
+							<div  class="selection-one" id="notification" data-role="none">
+										<h4>One new Job...</h4>
+								
+									<ul>
+										<li>From  <span id="from_address_out1"></span> to <span id="to_address_out1"></span> </li>
+										<li>Vehicle Type: <span id="vehichle_type_out"></span></li>
+										<li>Taxi Type: <span id="taxi_type_out"></span></li>
+										<li>Baby Seat: <span id="baby_seat_out"></span></li>
+										<li>Wheel Chair: <span id="wheel_chair_out"></span></li>
+										<li> RATE : <span id="rate_amount_out1"></span> </li>
+									</ul>
+								
+							</div>
+						
+					</div>
+					<div class="sm_btn_wrap sm_btn_one">
+						<div class="sm_btn" id="sm_btn_top_one">
+							<div class="selection-two" id="accept">
+								
+								<p>Accept</p>
+								<i class="blIcon fa fa-check"></i>
+							</div>
+							<div class="selection-two hidden" id="pickup">
+								<p>Pick up</p>
+								<i class="blIcon fa fa-meh-o"></i>
+							</div>
+						</div>
+						<div class="sm_btn">
+							<div class="selection-two">
+									<p>Deny</p>
+									<i class="blIcon fa fa-times"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section_area_two">
+					<div class="sm_btn_wrap sm_btn_two">
+						<div class="sm_btn" id="sm_btn_bottom_one">
+							<!--<div class="selection-two offonState" id="online">
+								<p>On-line</p>
+								<i class="blIcon fa fa-check-circle"></i>
+								
+							</div>-->
+							<div class="selection-two hidden offonState" id="goOffline">
+								<p>Off-line</p>
+								<i class="blIcon fa fa-times-circle"></i>
+							</div>
+							
+						</div>
+						<div class="sm_btn" id="sm_btn_bottom_two">
+							<div class="selection-two offonState" id="goUnrest">
+								<p>Go-duty</p>
+								<i class="blIcon fa fa-car"></i>
+							</div>
+							<div class="selection-two hidden offonState" id="goOnrest">
+								<p>Go-rest</p>
+								<i class="blIcon fa fa-minus-square"></i>
+							</div>
+						</div>
+					</div>
+						
+					<div class="lg_btn margin_left lg_btn_min">
+						<div class="selection-three">
+							<div class="button_group">
+								<a href="" class="group_one_btn"><i class="fa fa-taxi"></i></a>
+								
+								<a href="" class="group_one_btn"><i class="fa fa-cog"></i></a>
+								<a href="" class="group_one_btn"><i class="fa fa-user"></i></a>
+								<a href="" class="group_one_btn"><i class="fa fa-power-off"></i></a>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+						<div style="clear:both"></div>
+					
+					
+					
                     <div id="wgt-top-right" class="widget col-1-4 float-right" data-role="none">
                    <div id="activeVehicleInfo" class="mar-b-8 text-center border-gray" style="color:#000;font-weight:bold"></div>
                         							
-                    	<div class="offonState mar-b-8">
-                            <div class="btn btn-off mar-b-8" id="goOffline">Offline</div>
-                            <div class="btn btn-rest mar-b-8" id="goOnrest">Rest</div>
-                            <div class="btn btn-rest mar-b-8" id="goUnrest">On duty</div>
-                        </div>
+                    
                         
                         <div class="onoffswitch mar-b-8" data-role="none" align="center">
                             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" data-role="none">
@@ -127,15 +191,16 @@
                                 </div>
                             </label>
                         </div>
-                            
+                        <!--    
                         <div class="text-center border-gray" style="color:#000;font-weight:bold">
                             Another Vehicle? 
                             <a href="my-vehicles.html" style="color:#0088CC;">Click</a>	
                         </div>
+						-->
                     </div>
                     <div class="clearfix"></div>
-                </div>
                 
+                <!--
                 <div class="widget-area">                    
                     <div id="wgt-bottom-left" class="widget col-1-4 float-left" data-role="none">
                     	<a href='#popupDialogModal' data-rel='popup' data-position-to='window' data-role='button' data-icon='external-link' data-transition='pop' data-inline='true' style="color:blueviolet;">Open popup dialog</a>
@@ -155,7 +220,7 @@
                         </div>
                     </div>
                 </div>
-                
+                -->
                 <div data-role="popup" id="popupBasic" data-theme="b">
 							<div data-role="none" class="joboffer">
 								<div data-role="header" data-theme="b">
@@ -182,8 +247,9 @@
 								</div>
 							</div>
 						</div>
+						<!--
 						 <div data-role="popup" id="popupDialog" data-theme="b">
-            
+						
 							<div data-role="header" data-theme="b">
 								<h1>Delete from library?</h1>
 							</div>
@@ -198,16 +264,14 @@
 							</div>
 						</div>
                                                                                 								
-				<div id="notification" data-role="none"></div>
-				
-				<!-- <div style="clear:both, margin-bottom:10px; "></div> -->
+				-->
 
 					<!-- InstanceEndEditable -->
                 </div>
                 <div class="clearfix"></div>
             </div>
             
-            <div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme="b" 
+           <!-- <div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme="b" 
              id="footer">
                 <div class="container">
                     <div data-role="navbar">
@@ -228,13 +292,26 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>-->
                     <!-- InstanceBeginEditable name="EditableFooter" -->
 
 					<!-- InstanceEndEditable -->
-                </div>
-            </div> 
-                                               
+              <!--  </div> -->
+              
+               <!--left panel content-->
+				<div data-role="panel" id="sidebar_panael" data-dismissible="false" data-display="push"  data-theme="b"> 
+					<ul data-role="listview">
+						<li><h2>Your wishes</h2></li>
+						<li data-icon='false'><a href="#"><i class='lIcon fa fa-coffee'></i>About us</a></li>
+						<li data-icon='false'><a href="#"><i class='lIcon fa fa-beer'></i>Testomonial</a></li>
+						<li data-icon='false'><a href="#"><i class='lIcon fa fa-music'></i>Hire a taxi</a></li>
+						<li data-icon='false'><a href="#"><i class='lIcon fa fa-fire'></i>Location</a></li>
+						<li data-icon='false'><a href="#"><i class='lIcon fa fa-bullhorn'></i>Contact us</a></li>
+						<li data-icon='false'><a href="#"><i class='lIcon fa fa-heart'></i>Tell a friend</a></li>
+						<li data-icon='false'><a href="#"><i class='lIcon fa fa-trophy'></i>Rate this apps</a></li>
+					</ul>
+				</div> 
+            </div>                                 
         </div>
 	</body>
 <!-- InstanceEnd --></html>

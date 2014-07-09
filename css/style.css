@@ -40,19 +40,11 @@ body{
 	display: table;
 }
 
-.container{
+/*.container{
 	max-width:640px; 
 	margin:0 auto;
 	position: relative;	
-}
-
-.mar-t-10{
-	margin-top: 10px;	
-}
-
-.mar-b-8{
-	margin-bottom: 8px;	
-}
+}*/
 
 .border-gray{
 	border: 1px solid #EBEBEB;
@@ -95,15 +87,13 @@ body{
 
 .top-icons{
 	color: #000000;
-	display:inline-block;
-	font-size: 1.2em;	
-	padding: 12px 0px 0px;
-	width:30%;	
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 0 12px;	
 }
 
 .top-icons a{
 	color: #000000;
-	padding: 7px;
 	font-weight: 700;		
 }
 
@@ -119,41 +109,41 @@ body{
 .ui-mobile .bg-black{
 	background-color: #C5C5C5;
 	
-	-webkit-box-shadow: 0px 5px 0px 0px #B8B8B8;
-	-moz-box-shadow: 0px 5px 0px 0px #B8B8B8;
-	-ms-box-shadow: 0px 5px 0px 0px #B8B8B8;
-	-o-box-shadow: 0px 5px 0px 0px #B8B8B8;
-	box-shadow: 0px 5px 0px 0px #B8B8B8;
+	-webkit-box-shadow: 0px 3px 0px 0px #B8B8B8;
+	-moz-box-shadow: 0px 3px 0px 0px #B8B8B8;
+	-ms-box-shadow: 0px 3px 0px 0px #B8B8B8;
+	-o-box-shadow: 0px 3px 0px 0px #B8B8B8;
+	box-shadow: 0px 3px 0px 0px #B8B8B8;
 }
 
 .ui-mobile .bg-orange{
 	background-color: #fff100;
 	
-	-webkit-box-shadow: 0px 5px 0px 0px #FCDE69;
-	-moz-box-shadow: 0px 5px 0px 0px #FCDE69;
-	-ms-box-shadow: 0px 5px 0px 0px #FCDE69;
-	-o-box-shadow: 0px 5px 0px 0px #FCDE69;
-	box-shadow: 0px 5px 0px 0px #FCDE69;
+	-webkit-box-shadow: 0px 3px 0px 0px #FCDE69;
+	-moz-box-shadow: 0px 3px 0px 0px #FCDE69;
+	-ms-box-shadow: 0px 3px 0px 0px #FCDE69;
+	-o-box-shadow: 0px 3px 0px 0px #FCDE69;
+	box-shadow: 0px 3px 0px 0px #FCDE69;
 }
 
 .ui-mobile .bg-green{
 	background-color: #37ab2f;
 	
-	-webkit-box-shadow: 0px 5px 0px 0px #39BB31;
-	-moz-box-shadow: 0px 5px 0px 0px #39BB31;
-	-ms-box-shadow: 0px 5px 0px 0px #39BB31;
-	-o-box-shadow: 0px 5px 0px 0px #39BB31;
-	box-shadow: 0px 5px 0px 0px #39BB31;
+	-webkit-box-shadow: 0px 3px 0px 0px #39BB31;
+	-moz-box-shadow: 0px 3px 0px 0px #39BB31;
+	-ms-box-shadow: 0px 3px 0px 0px #39BB31;
+	-o-box-shadow: 0px 3px 0px 0px #39BB31;
+	box-shadow: 0px 3px 0px 0px #39BB31;
 }
 
 .ui-mobile .bg-red{
 	background-color: #ef3244;
 	
-	-webkit-box-shadow: 0px 5px 0px 0px #DD3B4A;
-	-moz-box-shadow: 0px 5px 0px 0px #DD3B4A;
-	-ms-box-shadow: 0px 5px 0px 0px #DD3B4A;
-	-o-box-shadow: 0px 5px 0px 0px #DD3B4A;
-	box-shadow: 0px 5px 0px 0px #DD3B4A;
+	-webkit-box-shadow: 0px 3px 0px 0px #DD3B4A;
+	-moz-box-shadow: 0px 3px 0px 0px #DD3B4A;
+	-ms-box-shadow: 0px 3px 0px 0px #DD3B4A;
+	-o-box-shadow: 0px 3px 0px 0px #DD3B4A;
+	box-shadow: 0px 3px 0px 0px #DD3B4A;
 }
 
 .user-menu{
@@ -206,62 +196,8 @@ body{
 	display:block;	
 }*/
 
-/*
-* Floating Class Css
-*/
 
-.float-left{
-	float: left;
-}
 
-.float-right{
-	float: right;
-}
-
-/*
-* Widget Css
-*/
-
-.widget-area{
-	margin:10px;
-}
-
-.col-4-4{
-	width: 100%;	
-}
-
-.col-3-4{
-	width: 68%;	
-}
-
-.col-1-4{
-	width: 30%;
-	
-}
-
-.widget{
-	min-height:180px;
-}
-
-.widget {
-	border-color: rgba(235, 235, 235, 1);
-	border-width: 1px 1px 5px 1px;
-	border-style: solid;
-	font-size: 14px;
-	padding: 10px;
-	text-decoration: none;
-	display: inline-block;
-	font-weight: bold;
-	color: #FFFFFF;
-	background-color:rgba(255, 255, 255, 1);
-	background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255, 255, 255, 0.15)),to(rgba(255,255,255,0.15)));
-	background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
-	background-image:-moz-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
-	background-image:-ms-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
-	background-image:-o-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
-	background-image:linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
-	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=rgba(0,0,0,.15),endColorstr=rgba(0,0,0,.15));
-}
 
 /*
 * Map-canvas Css
@@ -312,6 +248,7 @@ body{
 	display: inline-block;
 	vertical-align: middle;
 	line-height: normal;
+	margin-left: 54%;
 }
 
 .tile-box img {
@@ -968,10 +905,9 @@ cursor: pointer;
 
 #notification{
 
-height: 200px;
-/* width: 100%; */
-margin: 10px !important;
-text-align: center;
+/*height: 200px;
+ width: 100%; 
+margin: 10px !important;*/
 /* padding: 5px !important; */
 clear:both;
 /* position: absolute; */
@@ -1107,3 +1043,133 @@ input.radio:focus ~ label:before {
 		margin: 0 auto 0 20px !important;
 	}*/
 }
+
+/*anowar css*/
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+ 
+.hidden{
+    display:none;
+}
+.shown{
+    display: block;
+}
+
+.manu_btn{/*padding-right:28px;*/}
+.lg_btn{
+	
+	border:1px solid #2B2B2B; 
+	background:#3D3C3C;  
+	box-shadow:4px 4px 4px rgb(7,7,7); 
+	text-align:center; 
+	border-radius:2px;
+}
+
+.lg_btn {
+	width:68.5%;
+	float:left;
+	font-family: 'open sans',sans-serif;
+	min-height:100px;
+	}
+.sm_btn_wrap {
+	width:29.5%;
+	float:left;
+	min-height:49px;
+}
+
+.margin_right{margin-right:1.25%;}
+.margin_left{margin-left:1.25%;}
+.sm_btn{
+	margin-bottom:1px;
+	border:1px solid #2B2B2B;
+	background:#3D3C3C; 
+	box-shadow:4px 4px 4px rgb(7,7,7);
+	text-align:center;
+	text-shadow:none;
+	border-radius:2px;
+	height: same-as-width;
+	font-family: 'open sans',sans-serif;
+}
+.footer_btn{padding:1px;}
+.footer_icn{margin:1px;}
+
+/*overwrited from nativdroid & jquerry css =if you remove this css you can get default css from thoese css */
+.ui-page-theme-b .ui-btn, html .ui-bar-b .ui-btn, html .ui-page-theme-b .ui-btn, html body .ui-group-theme-b .ui-btn, html head + body .ui-btn.ui-btn-b, html body .ui-group-theme-b {
+    background: none repeat scroll 0 0 #393939;
+    color: #A9A9A9;
+	font-family: 'open sans',sans-serif;
+}
+/* end of over-writed css*/
+
+
+/* Main body css*/
+
+.lg_btn > .selection-one{
+	color:#B6DB49;
+	padding:5px;
+	text-align:left;
+	position:relative;
+}
+.lg_btn  > .selection-one {
+	
+	
+	padding:5px;
+	font-family: 'open sans',sans-serif;
+	
+}
+
+.lg_btn  > .selection-one ul li{text-align:left; font-family: 'open sans',sans-serif;}
+.lg_btn  > .selection-one h4{text-align:left; font-family: 'open sans',sans-serif;}
+.selection-two{
+	color:#B6DB49; 
+	text-align:center; 
+	font-size:120%; 
+	position:relative; 
+	vertical-align:middle;
+	
+	font-family: 'open sans',sans-serif;
+	
+	
+}
+.selection-two p{
+font-family: 'open sans',sans-serif;
+margin-top:0;
+vertical-align:middle;
+font-size:1.05em;
+}
+
+.sm_btn >.selection-two i{
+
+}
+#pickup{color:#FCD208;}
+#online {color:#00FF00;}
+#goOffline{color:#FF0000;}
+#goOnrest{color:#A52A2A;}
+#goUnrest{color:#FFA500;}
+
+.button_group{
+	margin:auto;
+	width:98%;
+}
+.group_one_btn {}
+
+.group_one_btn {
+	color:#1D9B72;
+	border:1px dashed #B6DB49;
+	margin-left:1%;
+	margin-top:5px;
+	margin-right:1%;
+	margin-bottom:1px;
+	box-sizing:border-box;
+	float:left;
+	width:47%;
+	font-size:30px;
+	
+}
+.group_one_btn a i{color:#B6DB49;}
+.icon_bar_single {float:right; width:25px;}
+.icon_bar_single > .fa-dot-circle-o {color:#FCD208;}
+.icon_bar_single > .fa-taxi {color:#FCD208;}
+
+.ui-panel-inner ul li a{padding-top:2px; padding-bottom:2px; line-height:normal; color:green;}

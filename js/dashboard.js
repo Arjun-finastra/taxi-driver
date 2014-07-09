@@ -319,7 +319,7 @@ function callbackNotification(data) {
 
 		window.currentLat = job.current_lat;
 		window.currentLng = job.current_lng;
-		//console.log(job.latitude+"=>"+job.longitude);
+		console.log(job.latitude+"=>"+job.longitude);
 		$(".joboffer").css({
 			height : $(window).height(),
 			width : $(window).width()
